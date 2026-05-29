@@ -1,0 +1,17 @@
+{
+  "name": "enervivo-audit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EnerVivo - Outil d'audit juridique des projets photovoltaïques",
+  "scripts": {
+    "dev:web": "pnpm --filter @enervivo/web dev",
+    "build:web": "pnpm --filter @enervivo/web build",
+    "lint": "pnpm -r run lint",
+    "typecheck": "pnpm -r run typecheck"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.12.0"
+}

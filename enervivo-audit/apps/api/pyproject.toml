@@ -1,0 +1,76 @@
+[project]
+name = "enervivo-audit-api"
+version = "0.1.0"
+description = "EnerVivo Audit — FastAPI backend + Celery worker"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "pydantic[email]>=2.9",
+    "pydantic-settings>=2.6",
+    "sqlalchemy[asyncio]>=2.0.36",
+    "asyncpg>=0.30",
+    "alembic>=1.13",
+    "httpx>=0.28",
+    "pdfplumber>=0.11",
+    "pymupdf>=1.24",
+    "python-docx>=1.1",
+    "python-pptx>=1.0",
+    "extract-msg>=0.49",
+    "msal>=1.31",
+    "celery[redis]>=5.4",
+    "redis>=5.2",
+    "minio>=7.2",
+    "python-slugify>=8.0",
+    "python-jose[cryptography]>=3.3",
+    "openpyxl>=3.1",
+    "pyxlsb>=1.0.10",
+    "Pillow>=10.4",
+    "pandas>=2.2",
+    "sse-starlette>=2.1",
+    "tenacity>=9.0",
+    "structlog>=24.4",
+    "flower>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=6.0",
+    "ruff>=0.7",
+    "mypy>=1.13",
+    "datamodel-code-generator>=0.26",
+    "respx>=0.21",
+    "freezegun>=1.5",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM", "RET", "ASYNC"]
+ignore = ["B008", "B904"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-ra -q"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["routers", "services", "tasks", "models", "db", "config"]

@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============ TOKENS — Charte EnerVivo officielle ============ */
+/* Copie 1:1 depuis rapport_audit_DDENIS_v6.html — ne pas modifier */
+:root {
+  --bg: #F4F6F4;
+  --bg-card: #FFFFFF;
+  --bg-soft: #E8EEEB;
+  --ink: #1C7862;
+  --ink-mid: #445469;
+  --ink-soft: #878787;
+  --line: #D9E3DE;
+  --line-strong: #1C7862;
+
+  --solar: #FFDD00;
+  --solar-deep: #C4A300;
+  --solar-soft: #FFF7B8;
+
+  --green: #00A875;
+  --green-soft: #CFEEE2;
+  --amber: #B8860B;
+  --amber-soft: #FFF0B8;
+  --red: #C0504D;
+  --red-soft: #F5DDDC;
+  --violet: #5A87A6;
+  --violet-soft: #DBE5EE;
+
+  --shadow-sm: 0 1px 2px rgba(28, 120, 98, 0.06);
+  --shadow-md: 0 4px 16px rgba(28, 120, 98, 0.08);
+
+  --radius: 6px;
+  --radius-lg: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink-mid);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-montserrat), -apple-system, sans-serif;
+}

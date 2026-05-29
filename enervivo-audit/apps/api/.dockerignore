@@ -1,0 +1,28 @@
+# Caches & artefacts Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Env local & secrets
+.env
+.env.*
+.venv/
+venv/
+
+# Tests (jamais nécessaires en runtime)
+tests/
+
+# Doc / dev artifacts
+*.md
+# Re-include README.md : requis par hatchling (pyproject.toml readme = "README.md")
+!README.md
+.git/
+.gitignore
+.dockerignore
+Dockerfile

@@ -1,0 +1,26 @@
+# Override dev : hot reload + montages locaux
+services:
+  web:
+    build:
+      target: builder
+    command: ["pnpm", "dev"]
+    volumes:
+      - ../apps/web:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      NODE_ENV: development
+
+  api:
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    volumes:
+      - ../apps/api:/app
+
+  worker:
+    command: ["watchfiles", "celery -A celery_app worker --loglevel=info --concurrency=2", "/app"]
+    volumes:
+      - ../apps/api:/app
+
+  minio:
+    ports:
+      - "9001:9001"  # Console MinIO accessible en dev sur localhost:9001

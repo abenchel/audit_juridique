@@ -1,0 +1,2368 @@
+{
+  "version": "V2",
+  "source": "EnerVivo_Liste_Documents_Projet_V2.xlsx",
+  "total_documents": 227,
+  "documents": [
+    {
+      "code": "documents_archives_anciennes_versions_projet",
+      "name": "Documents archives / anciennes versions projet",
+      "folder_n1": "0-OLD",
+      "folder_path": "0-OLD",
+      "extensions": [],
+      "comment": "Versions superseded - exclus du scope POC audit"
+    },
+    {
+      "code": "etudes_externes_litterature_scientifique",
+      "name": "Etudes externes / litterature scientifique",
+      "folder_n1": "1-Bibliographie",
+      "folder_path": "1-Bibliographie/Donnees d'entrees",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Documentation generale"
+    },
+    {
+      "code": "plu_plui_communes_concernees",
+      "name": "PLU / PLUi communes concernees",
+      "folder_n1": "1-Bibliographie",
+      "folder_path": "1-Bibliographie/Donnees d'entrees",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reglement zone applicable"
+    },
+    {
+      "code": "documentation_agronomique_sectorielle",
+      "name": "Documentation agronomique sectorielle",
+      "folder_n1": "1-Bibliographie",
+      "folder_path": "1-Bibliographie/Donnees d'entrees",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "AgriPV - selon culture/elevage"
+    },
+    {
+      "code": "documentation_reglementaire_textes_decrets",
+      "name": "Documentation reglementaire (textes, decrets)",
+      "folder_n1": "1-Bibliographie",
+      "folder_path": "1-Bibliographie/Donnees d'entrees",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Cadre legal photovoltaique"
+    },
+    {
+      "code": "presentation_projet_exploitant",
+      "name": "Presentation projet - exploitant",
+      "folder_n1": "2-Presentations ppt",
+      "folder_path": "2-Presentations ppt",
+      "extensions": [
+        ".pptx"
+      ],
+      "comment": "Slides cession agriculteur / cooperative"
+    },
+    {
+      "code": "presentation_projet_mairie_epci_comcom",
+      "name": "Presentation projet - mairie / EPCI / ComCom",
+      "folder_n1": "2-Presentations ppt",
+      "folder_path": "2-Presentations ppt",
+      "extensions": [
+        ".pptx"
+      ],
+      "comment": "Reunions publiques / elus"
+    },
+    {
+      "code": "presentation_projet_ddt_ddtm_sdis",
+      "name": "Presentation projet - DDT / DDTM / SDIS",
+      "folder_n1": "2-Presentations ppt",
+      "folder_path": "2-Presentations ppt",
+      "extensions": [
+        ".pptx"
+      ],
+      "comment": "Pour reunions instances"
+    },
+    {
+      "code": "presentation_projet_chambre_agriculture_cdpenaf",
+      "name": "Presentation projet - Chambre Agriculture / CDPENAF",
+      "folder_n1": "2-Presentations ppt",
+      "folder_path": "2-Presentations ppt",
+      "extensions": [
+        ".pptx"
+      ],
+      "comment": "Avis CDPENAF"
+    },
+    {
+      "code": "dossier_de_qualification_agripv",
+      "name": "Dossier de qualification AgriPV",
+      "folder_n1": "2-Presentations ppt",
+      "folder_path": "2-Presentations ppt/Dossiers de qualification",
+      "extensions": [
+        ".pptx"
+      ],
+      "comment": "Si projet AgriPV"
+    },
+    {
+      "code": "dossier_de_qualification_s21",
+      "name": "Dossier de qualification S21",
+      "folder_n1": "2-Presentations ppt",
+      "folder_path": "2-Presentations ppt/Dossiers de qualification",
+      "extensions": [
+        ".pptx"
+      ],
+      "comment": "Si projet S21 (toiture)"
+    },
+    {
+      "code": "dossier_de_qualification_autoconsommation",
+      "name": "Dossier de qualification Autoconsommation",
+      "folder_n1": "2-Presentations ppt",
+      "folder_path": "2-Presentations ppt/Dossiers de qualification",
+      "extensions": [
+        ".pptx"
+      ],
+      "comment": "Si projet ACC / autoconso"
+    },
+    {
+      "code": "offre_commerciale_exploitant_proprietaire",
+      "name": "Offre commerciale exploitant / proprietaire",
+      "folder_n1": "2-Presentations ppt",
+      "folder_path": "2-Presentations ppt/Offres",
+      "extensions": [
+        ".pptx",
+        ".pdf"
+      ],
+      "comment": "Propose au foncier"
+    },
+    {
+      "code": "fichier_tad_tadd_principal",
+      "name": "Fichier TAD / TADD principal",
+      "folder_n1": "3-TAD",
+      "folder_path": "3-TAD",
+      "extensions": [
+        ".pvc",
+        ".xlsx"
+      ],
+      "comment": "Etude productible PVsyst / TADD interne EnerVivo"
+    },
+    {
+      "code": "fichier_tmy_donnees_meteo",
+      "name": "Fichier TMY (donnees meteo)",
+      "folder_n1": "3-TAD",
+      "folder_path": "3-TAD",
+      "extensions": [
+        ".csv",
+        ".xlsx"
+      ],
+      "comment": "Source meteo de reference"
+    },
+    {
+      "code": "esquisse_de_developpement_pre_faisabilite",
+      "name": "Esquisse de developpement (pre-faisabilite)",
+      "folder_n1": "3-TAD",
+      "folder_path": "3-TAD",
+      "extensions": [
+        ".pdf",
+        ".pptx"
+      ],
+      "comment": "Phase amont"
+    },
+    {
+      "code": "captures_tad_images_export",
+      "name": "Captures TAD / images export",
+      "folder_n1": "3-TAD",
+      "folder_path": "3-TAD",
+      "extensions": [
+        ".png",
+        ".jpg"
+      ],
+      "comment": "Visuels productible"
+    },
+    {
+      "code": "contrat_epc_engineering_procurement_construction",
+      "name": "Contrat EPC (Engineering Procurement Construction)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/1-Contrats",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Contrat global travaux"
+    },
+    {
+      "code": "contrat_amo_assistance_maitrise_d_ouvrage",
+      "name": "Contrat AMO (Assistance Maitrise d'Ouvrage)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/1-Contrats",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Si AMO mandate"
+    },
+    {
+      "code": "avenants_contrats_epc_amo",
+      "name": "Avenants contrats EPC / AMO",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/1-Contrats",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Modifications contractuelles"
+    },
+    {
+      "code": "modeles_templates_contrats",
+      "name": "Modeles / templates contrats",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/1-Contrats",
+      "extensions": [
+        ".docx",
+        ".dotx"
+      ],
+      "comment": "Versions de reference"
+    },
+    {
+      "code": "loi_signee_lettre_d_intention",
+      "name": "LOI signee (Lettre d'Intention)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/2-LOI",
+      "extensions": [
+        ".pdf",
+        ".jpg"
+      ],
+      "comment": "Premier engagement foncier - jalon J1"
+    },
+    {
+      "code": "loi_versions_draft_negociation",
+      "name": "LOI - versions draft / negociation",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/2-LOI",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Versions de travail"
+    },
+    {
+      "code": "dossier_appel_a_manifestation_d_interet_ami",
+      "name": "Dossier Appel a Manifestation d'Interet (AMI)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/5-Dossiers subventions (AMI, AAP)",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Si candidature AMI"
+    },
+    {
+      "code": "dossier_appel_a_projets_aap",
+      "name": "Dossier Appel a Projets (AAP)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/5-Dossiers subventions (AMI, AAP)",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Si candidature AAP"
+    },
+    {
+      "code": "decisions_notifications_subventions",
+      "name": "Decisions / notifications subventions",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/5-Dossiers subventions (AMI, AAP)",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses ADEME, Region, etc."
+    },
+    {
+      "code": "pieces_justificatives_subvention",
+      "name": "Pieces justificatives subvention",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/5-Dossiers subventions (AMI, AAP)",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Annexes financieres"
+    },
+    {
+      "code": "bail_emphyteotique_notarie_signe",
+      "name": "Bail emphyteotique notarie signe",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Acte authentique"
+    },
+    {
+      "code": "bail_signe_toutes_versions",
+      "name": "Bail signe (toutes versions)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Bail",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Versions intermediaires + finale"
+    },
+    {
+      "code": "promesse_de_bail_signee",
+      "name": "Promesse de Bail signee",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/PDB",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "PDB notariee ou sous seing prive"
+    },
+    {
+      "code": "annexes_pdb_plan_cadastre",
+      "name": "Annexes PDB (plan, cadastre)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/PDB",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pieces attendues a la PDB"
+    },
+    {
+      "code": "pdb_drafts_versions_negociation",
+      "name": "PDB - drafts / versions negociation",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/PDB",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Versions de travail"
+    },
+    {
+      "code": "attestation_de_vente_notaire",
+      "name": "Attestation de vente notaire",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Attestation de vente du notaire ou releve de propriete",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuve propriete"
+    },
+    {
+      "code": "releve_de_propriete_extrait_cadastral",
+      "name": "Releve de propriete (extrait cadastral)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Attestation de vente du notaire ou releve de propriete",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Document cadastral"
+    },
+    {
+      "code": "etat_hypothecaire_des_parcelles",
+      "name": "Etat hypothecaire des parcelles",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Etat hypothecaire",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Releve hypotheques service publicite fonciere"
+    },
+    {
+      "code": "titre_de_propriete_des_parcelles",
+      "name": "Titre de propriete des parcelles",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Titre de propriete pour la ou les parcelles",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Acte authentique propriete"
+    },
+    {
+      "code": "baux_ruraux_ou_autres_baux_existants",
+      "name": "Baux ruraux ou autres baux existants",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Si baux sur la ou les parcelles",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si parcelles deja louees"
+    },
+    {
+      "code": "note_projet_agricole_compatibilite_agripv",
+      "name": "Note projet agricole (compatibilite AgriPV)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Projet agricole compatible avec PV",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Justification activite agricole maintenue"
+    },
+    {
+      "code": "rib_du_proprietaire_bailleur",
+      "name": "RIB du proprietaire / bailleur",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/RIB",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pour versements loyers"
+    },
+    {
+      "code": "cni_passeport_proprietaire_personne_physique",
+      "name": "CNI / passeport proprietaire personne physique",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Si le Proprietaire est une Personne/Carte d'identite",
+      "extensions": [
+        ".pdf",
+        ".jpg"
+      ],
+      "comment": "Si proprietaire = personne physique"
+    },
+    {
+      "code": "livret_de_famille_proprietaire_personne_physique",
+      "name": "Livret de famille proprietaire personne physique",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Si le Proprietaire est une Personne/Livret de famille",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si proprietaire = personne physique mariee"
+    },
+    {
+      "code": "cni_representant_legal",
+      "name": "CNI representant legal",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Si le Proprietaire est une Societe/Carte d'identite du representant legal",
+      "extensions": [
+        ".pdf",
+        ".jpg"
+      ],
+      "comment": "Si proprietaire = societe"
+    },
+    {
+      "code": "k_bis_societe_proprietaire",
+      "name": "K-BIS societe proprietaire",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Si le Proprietaire est une Societe/K-BIS",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si proprietaire = societe"
+    },
+    {
+      "code": "statuts_societe_proprietaire",
+      "name": "Statuts societe proprietaire",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/6-Bail/Si le Proprietaire est une Societe/Statut",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si proprietaire = societe"
+    },
+    {
+      "code": "recipisses_depots_urbanisme",
+      "name": "Recipisses depots urbanisme",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuves depot mairie"
+    },
+    {
+      "code": "certificat_d_urbanisme_cu_demande_et_reponse",
+      "name": "Certificat d'urbanisme (CU) - demande et reponse",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)/Certificat Urbanisme",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "CU positif requis avant PC"
+    },
+    {
+      "code": "dossier_permis_de_construire_pc_complet",
+      "name": "Dossier Permis de Construire (PC) complet",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)/PC",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Si PC requis (>250 kWc generalement)"
+    },
+    {
+      "code": "recipisse_de_depot_pc",
+      "name": "Recipisse de depot PC",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)/PC",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Cachet mairie"
+    },
+    {
+      "code": "arrete_pc_accord_ou_refus",
+      "name": "Arrete PC (accord ou refus)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)/PC",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Decision administrative"
+    },
+    {
+      "code": "demandes_pieces_complementaires",
+      "name": "Demandes pieces complementaires",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)/PC",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si instruction prolongee"
+    },
+    {
+      "code": "declaration_prealable_dp_alternative_au_pc",
+      "name": "Declaration Prealable (DP) - alternative au PC",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)/PC",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Si DP au lieu de PC"
+    },
+    {
+      "code": "anrnr_attestation_de_non_recours_non_retrait",
+      "name": "ANRNR - Attestation de non recours non retrait",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)/Attestation Non-Recours Non_Retrait",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Apres delais purges PC/DP"
+    },
+    {
+      "code": "pv_de_passage_huissier_constat_affichage",
+      "name": "PV de passage huissier (constat affichage)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/7-Urbanisme (PC, DP, Certificats, ANRNR)/Constat Huissier",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Constats reguliers panneau PC"
+    },
+    {
+      "code": "dt_declaration_de_travaux",
+      "name": "DT (Declaration de Travaux)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/8-DT DICT",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Avant travaux"
+    },
+    {
+      "code": "dict_declaration_d_intention_de_commencement_travaux",
+      "name": "DICT (Declaration d'Intention de Commencement Travaux)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/8-DT DICT",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Avant travaux"
+    },
+    {
+      "code": "reponses_concessionnaires_reseaux",
+      "name": "Reponses concessionnaires reseaux",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/8-DT DICT",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Enedis, GRDF, telecoms, eau, etc."
+    },
+    {
+      "code": "plans_dt_dict_recus",
+      "name": "Plans DT-DICT recus",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/8-DT DICT",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Cartographies reseaux concessionnaires"
+    },
+    {
+      "code": "ppsps_plan_particulier_securite_protection_sante",
+      "name": "PPSPS (Plan Particulier Securite Protection Sante)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/10-QHSE (PPSPS, PP)",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Avant chantier"
+    },
+    {
+      "code": "pp_plan_de_prevention",
+      "name": "PP (Plan de Prevention)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/10-QHSE (PPSPS, PP)",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Co-activite chantier"
+    },
+    {
+      "code": "documents_coordonnateur_sps_csps",
+      "name": "Documents Coordonnateur SPS (CSPS)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/10-QHSE (PPSPS, PP)",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Mission SPS"
+    },
+    {
+      "code": "procedures_qhse_chantier",
+      "name": "Procedures QHSE chantier",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/10-QHSE (PPSPS, PP)",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Documentation HSE"
+    },
+    {
+      "code": "pv_de_reception_travaux_avec_ou_sans_reserves",
+      "name": "PV de reception travaux (avec ou sans reserves)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/11-PV de reception",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reception ouvrage par MOA"
+    },
+    {
+      "code": "levee_des_reserves",
+      "name": "Levee des reserves",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/11-PV de reception",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Apres traitement reserves"
+    },
+    {
+      "code": "pv_de_reception_partielle_par_lot",
+      "name": "PV de reception partielle / par lot",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/11-PV de reception",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si reception par allotissement"
+    },
+    {
+      "code": "formulaire_dc4_demande_agrement_marche_prive",
+      "name": "Formulaire DC4 / demande agrement marche prive",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/12-Demande d'agrement sous-traitant",
+      "extensions": [
+        ".docx",
+        ".dotx",
+        ".pdf"
+      ],
+      "comment": "Si sous-traitance"
+    },
+    {
+      "code": "pieces_justificatives_sous_traitant_kbis_attestations",
+      "name": "Pieces justificatives sous-traitant (Kbis, attestations)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/12-Demande d'agrement sous-traitant",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Annexes demande agrement"
+    },
+    {
+      "code": "kbis_spv_producteur",
+      "name": "Kbis SPV producteur",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/1-Identite producteur",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Attestation conformite S21"
+    },
+    {
+      "code": "statuts_spv_pacte_d_actionnaires",
+      "name": "Statuts SPV / Pacte d'actionnaires",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/1-Identite producteur",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Constitution societe projet"
+    },
+    {
+      "code": "rib_spv",
+      "name": "RIB SPV",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/1-Identite producteur",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pour versements OA"
+    },
+    {
+      "code": "contrat_oa_solaire_edf_oa",
+      "name": "Contrat OA Solaire (EDF OA)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/2-Contrat EDF OA",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Contrat d'achat S21"
+    },
+    {
+      "code": "avenants_contrat_oa",
+      "name": "Avenants contrat OA",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/2-Contrat EDF OA",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si modifications"
+    },
+    {
+      "code": "documents_enedis_crd_attestation_conformite",
+      "name": "Documents Enedis (CRD, attestation conformite)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/3-ENEDIS",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Confirmation raccordement"
+    },
+    {
+      "code": "consuel_attestation_conformite_electrique",
+      "name": "CONSUEL (attestation conformite electrique)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/3-ENEDIS",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pre-MES"
+    },
+    {
+      "code": "fiches_techniques_modules_pv",
+      "name": "Fiches techniques modules PV",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/4-Modules",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Datasheets modules"
+    },
+    {
+      "code": "certificats_modules_iec_61215_61730",
+      "name": "Certificats modules (IEC 61215, 61730)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/4-Modules",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Certifications normes"
+    },
+    {
+      "code": "certificat_ppe2_carbon_footprint_modules",
+      "name": "Certificat PPE2 / Carbon Footprint modules",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/4-Modules",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Bilan carbone CRE"
+    },
+    {
+      "code": "note_d_integration_modules_structure",
+      "name": "Note d'integration modules / structure",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/5-Procede d'integration des modules",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Description integration"
+    },
+    {
+      "code": "atex_avis_technique_d_experimentation",
+      "name": "ATEx / Avis Technique d'Experimentation",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/5-Procede d'integration des modules",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si systeme non standard"
+    },
+    {
+      "code": "qualibat_qualifelec_installateur",
+      "name": "Qualibat / Qualifelec installateur",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/6-Entreprises",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Qualification entreprise"
+    },
+    {
+      "code": "attestations_assurances_entreprises",
+      "name": "Attestations assurances entreprises",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/6-Entreprises",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "RC Pro, decennale"
+    },
+    {
+      "code": "kbis_entreprises_intervenantes",
+      "name": "Kbis entreprises intervenantes",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/6-Entreprises",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Identification entreprises"
+    },
+    {
+      "code": "schema_unifilaire_signe",
+      "name": "Schema unifilaire signe",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/7-Documents techniques",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Schema electrique"
+    },
+    {
+      "code": "plans_d_execution_finaux",
+      "name": "Plans d'execution finaux",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/7-Documents techniques",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Plans tels que construits"
+    },
+    {
+      "code": "check_list_s21_par_tranche_kwc",
+      "name": "Check List S21 (par tranche kWc)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/13-Attestation conformite S21/7-Documents techniques",
+      "extensions": [
+        ".xlsx"
+      ],
+      "comment": "100-500 kWc, 500kWc-1MWc, etc."
+    },
+    {
+      "code": "demande_examen_au_cas_par_cas_formulaire_cerfa",
+      "name": "Demande examen au Cas par Cas (formulaire CERFA)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/14-Dossier Cas par Cas",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Saisine DREAL"
+    },
+    {
+      "code": "decision_cas_par_cas_dreal",
+      "name": "Decision Cas par Cas (DREAL)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/14-Dossier Cas par Cas",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponse DREAL : EIE requise ou non"
+    },
+    {
+      "code": "etude_eie_complete_si_requise",
+      "name": "Etude EIE complete (si requise)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/14-Dossier Cas par Cas",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si decision soumis a EIE"
+    },
+    {
+      "code": "etude_epa_evaluation_environnementale",
+      "name": "Etude EPA (Evaluation Environnementale)",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/14-Dossier Cas par Cas",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Selon procedure"
+    },
+    {
+      "code": "vnei_volet_naturaliste_faune_flore",
+      "name": "VNEI / Volet naturaliste / faune-flore",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/14-Dossier Cas par Cas",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si EIE / EPA"
+    },
+    {
+      "code": "pre_diagnostic_ecologique",
+      "name": "Pre-diagnostic ecologique",
+      "folder_n1": "4-Documents Administratifs",
+      "folder_path": "4-Documents Administratifs/14-Dossier Cas par Cas",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Etape amont"
+    },
+    {
+      "code": "photos_terrain_panoramiques",
+      "name": "Photos terrain panoramiques",
+      "folder_n1": "5-Visuels",
+      "folder_path": "5-Visuels/Photos du site",
+      "extensions": [
+        ".jpg",
+        ".jpeg",
+        ".png",
+        ".tif"
+      ],
+      "comment": "Documentation visuelle"
+    },
+    {
+      "code": "photos_par_campagne_datees",
+      "name": "Photos par campagne datees",
+      "folder_n1": "5-Visuels",
+      "folder_path": "5-Visuels/Photos du site",
+      "extensions": [
+        ".jpg",
+        ".png"
+      ],
+      "comment": "Suivi temporel site"
+    },
+    {
+      "code": "visuels_3d_vue_generale_projet",
+      "name": "Visuels 3D - vue generale projet",
+      "folder_n1": "5-Visuels",
+      "folder_path": "5-Visuels/3D et implantation",
+      "extensions": [
+        ".png",
+        ".jpg"
+      ],
+      "comment": "Pour PC"
+    },
+    {
+      "code": "photomontages_proche_lointain",
+      "name": "Photomontages proche / lointain",
+      "folder_n1": "5-Visuels",
+      "folder_path": "5-Visuels/3D et implantation",
+      "extensions": [
+        ".png",
+        ".jpg"
+      ],
+      "comment": "Integration paysagere PC / EIE"
+    },
+    {
+      "code": "cartes_de_visibilite",
+      "name": "Cartes de visibilite",
+      "folder_n1": "5-Visuels",
+      "folder_path": "5-Visuels/3D et implantation",
+      "extensions": [
+        ".png",
+        ".pdf"
+      ],
+      "comment": "Pour EIE / EPA"
+    },
+    {
+      "code": "photos_references_projets_similaires",
+      "name": "Photos references projets similaires",
+      "folder_n1": "5-Visuels",
+      "folder_path": "5-Visuels/Photos projets similaires",
+      "extensions": [
+        ".jpg",
+        ".png"
+      ],
+      "comment": "Argumentaire commercial"
+    },
+    {
+      "code": "etude_pvsyst_complete",
+      "name": "Etude PVsyst complete",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/1-PVSyst",
+      "extensions": [
+        ".pvc",
+        ".pdf"
+      ],
+      "comment": "Calcul productible final"
+    },
+    {
+      "code": "hypotheses_pvsyst_meteo_ombrages",
+      "name": "Hypotheses PVsyst (meteo, ombrages)",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/1-PVSyst",
+      "extensions": [
+        ".pdf",
+        ".png"
+      ],
+      "comment": "Justification"
+    },
+    {
+      "code": "rapport_pvsyst_final_exporte",
+      "name": "Rapport PVsyst final exporte",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/1-PVSyst",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Document de reference"
+    },
+    {
+      "code": "plan_de_masse_projet",
+      "name": "Plan de Masse projet",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/2-Plans",
+      "extensions": [
+        ".dwg",
+        ".pdf"
+      ],
+      "comment": "Plan PC / DP"
+    },
+    {
+      "code": "plans_iteratifs_implantation",
+      "name": "Plans iteratifs implantation",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/2-Plans",
+      "extensions": [
+        ".dwg",
+        ".pdf"
+      ],
+      "comment": "Historique"
+    },
+    {
+      "code": "plans_cadastraux",
+      "name": "Plans cadastraux",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/2-Plans",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Reference cadastrale"
+    },
+    {
+      "code": "schema_unifilaire",
+      "name": "Schema unifilaire",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/3-Schema_elec",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Pour raccordement / CRD"
+    },
+    {
+      "code": "schema_architecture_electrique_bt_hta",
+      "name": "Schema architecture electrique BT/HTA",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/3-Schema_elec",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Vue d'ensemble elec"
+    },
+    {
+      "code": "notes_calcul_electrique",
+      "name": "Notes calcul electrique",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/3-Schema_elec",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Justifications dimensionnement"
+    },
+    {
+      "code": "doe_complet_dossier_ouvrages_executes",
+      "name": "DOE complet (Dossier Ouvrages Executes)",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/4-DOE",
+      "extensions": [
+        ".pdf",
+        ".zip"
+      ],
+      "comment": "Apres travaux"
+    },
+    {
+      "code": "plans_doe",
+      "name": "Plans DOE",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/4-DOE",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Plans tels qu'executes"
+    },
+    {
+      "code": "notices_techniques_equipements",
+      "name": "Notices techniques equipements",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/4-DOE",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Modules, onduleurs, structures"
+    },
+    {
+      "code": "fiches_techniques_modules_pv_2",
+      "name": "Fiches techniques modules PV",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/5-Fiches_techniques",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Datasheets fournisseurs"
+    },
+    {
+      "code": "fiches_techniques_onduleurs",
+      "name": "Fiches techniques onduleurs",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/5-Fiches_techniques",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Datasheets fournisseurs"
+    },
+    {
+      "code": "fiches_techniques_structures_support",
+      "name": "Fiches techniques structures support",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/5-Fiches_techniques",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Datasheets"
+    },
+    {
+      "code": "fiches_techniques_cables_coffrets_equipements_bt",
+      "name": "Fiches techniques cables / coffrets / equipements BT",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/5-Fiches_techniques",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Datasheets"
+    },
+    {
+      "code": "projet_qgis",
+      "name": "Projet QGIS",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/6-QGIS",
+      "extensions": [
+        ".qgz",
+        ".qgs"
+      ],
+      "comment": "Projet SIG complet"
+    },
+    {
+      "code": "couches_shapefile",
+      "name": "Couches Shapefile",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/6-QGIS",
+      "extensions": [
+        ".shp",
+        ".shx",
+        ".dbf",
+        ".prj"
+      ],
+      "comment": "4 fichiers solidaires par couche"
+    },
+    {
+      "code": "couches_geojson",
+      "name": "Couches GeoJSON",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/6-QGIS",
+      "extensions": [
+        ".geojson",
+        ".json"
+      ],
+      "comment": "Format alternatif"
+    },
+    {
+      "code": "donnees_lidar",
+      "name": "Donnees LIDAR",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/6-QGIS",
+      "extensions": [
+        ".las",
+        ".laz"
+      ],
+      "comment": "Si LIDAR commande"
+    },
+    {
+      "code": "mnt_modele_numerique_de_terrain",
+      "name": "MNT / Modele Numerique de Terrain",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/6-QGIS",
+      "extensions": [
+        ".tif",
+        ".asc"
+      ],
+      "comment": "Issu LIDAR / IGN"
+    },
+    {
+      "code": "cartes_exportees_qgis",
+      "name": "Cartes exportees QGIS",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/6-QGIS",
+      "extensions": [
+        ".pdf",
+        ".png"
+      ],
+      "comment": "Pour rendus PC, EIE"
+    },
+    {
+      "code": "etude_geotechnique_g2_avp",
+      "name": "Etude geotechnique G2 AVP",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/8-Etude_sol",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Etude sol pre-conception"
+    },
+    {
+      "code": "sondages_essais_in_situ",
+      "name": "Sondages / essais in situ",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/8-Etude_sol",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Donnees brutes"
+    },
+    {
+      "code": "note_d_hypotheses_sol",
+      "name": "Note d'hypotheses sol",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/8-Etude_sol",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Synthese geotechnique"
+    },
+    {
+      "code": "note_de_calcul_beton_fondations",
+      "name": "Note de calcul beton (fondations)",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/9-Etude_beton",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si fondations beton"
+    },
+    {
+      "code": "plans_coffrage_ferraillage",
+      "name": "Plans coffrage / ferraillage",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/9-Etude_beton",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Si fondations beton"
+    },
+    {
+      "code": "etude_de_structure_axeplan_ou_autre_be",
+      "name": "Etude de structure (AXEPLAN ou autre BE)",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/10-Etude_structure",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Calculs structure portante"
+    },
+    {
+      "code": "note_de_calcul_structure",
+      "name": "Note de calcul structure",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/10-Etude_structure",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Justification dimensionnement"
+    },
+    {
+      "code": "plans_structure_detail_assemblages",
+      "name": "Plans structure / detail assemblages",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/10-Etude_structure",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Detail technique"
+    },
+    {
+      "code": "etude_consommation_dimensionnement_aci",
+      "name": "Etude consommation / dimensionnement ACI",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/11-Conso_ACI",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Si Autoconsommation Individuelle"
+    },
+    {
+      "code": "profils_de_consommation",
+      "name": "Profils de consommation",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/11-Conso_ACI",
+      "extensions": [
+        ".xlsx",
+        ".csv"
+      ],
+      "comment": "Donnees Enedis ou compteurs"
+    },
+    {
+      "code": "simulation_bess_aci",
+      "name": "Simulation BESS + ACI",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/11-Conso_ACI",
+      "extensions": [
+        ".xlsx",
+        ".pdf"
+      ],
+      "comment": "Si stockage prevu"
+    },
+    {
+      "code": "etude_infiltration_gestion_eaux_pluviales",
+      "name": "Etude infiltration / gestion eaux pluviales",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/12-Etude_infiltration",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si requise par PC ou loi sur l'eau"
+    },
+    {
+      "code": "note_dimensionnement_bassins_noues",
+      "name": "Note dimensionnement bassins / noues",
+      "folder_n1": "6-Technique",
+      "folder_path": "6-Technique/12-Etude_infiltration",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pour gestion EP"
+    },
+    {
+      "code": "cahier_des_charges_architecte",
+      "name": "Cahier des charges architecte",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Architecte",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Si mission architecte"
+    },
+    {
+      "code": "offres_architectes",
+      "name": "Offres architectes",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Architecte",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "diagnostic_amiante",
+      "name": "Diagnostic amiante",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Desamiantage",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si batiment existant"
+    },
+    {
+      "code": "devis_desamiantage",
+      "name": "Devis desamiantage",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Desamiantage",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si amiante detecte"
+    },
+    {
+      "code": "cahier_des_charges_eie",
+      "name": "Cahier des charges EIE",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/EIE",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Si EIE requise"
+    },
+    {
+      "code": "offres_bureau_d_etudes_eie",
+      "name": "Offres bureau d'etudes EIE",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/EIE",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "etude_eie_livrable_final",
+      "name": "Etude EIE livrable final",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/EIE",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si EIE commandee"
+    },
+    {
+      "code": "cahier_des_charges_epa",
+      "name": "Cahier des charges EPA",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/EPA",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Si EPA requise"
+    },
+    {
+      "code": "offres_bureau_d_etudes_epa",
+      "name": "Offres bureau d'etudes EPA",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/EPA",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "etude_epa_livrable_final",
+      "name": "Etude EPA livrable final",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/EPA",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si EPA commandee"
+    },
+    {
+      "code": "cahier_des_charges_esap",
+      "name": "Cahier des charges ESAP",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/ESAP",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Etude Specifique"
+    },
+    {
+      "code": "etude_esap_livrable",
+      "name": "Etude ESAP livrable",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/ESAP",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si ESAP requise"
+    },
+    {
+      "code": "cahier_des_charges_etude_beton",
+      "name": "Cahier des charges etude beton",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Etude beton",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Si fondations beton"
+    },
+    {
+      "code": "offres_be_beton",
+      "name": "Offres BE beton",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Etude beton",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "cahier_des_charges_etude_geotechnique",
+      "name": "Cahier des charges etude geotechnique",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Etude de sol",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "G2 AVP minimum"
+    },
+    {
+      "code": "offres_be_geotechnique",
+      "name": "Offres BE geotechnique",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Etude de sol",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "cahier_des_charges_etude_structure",
+      "name": "Cahier des charges etude structure",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Etude de structure",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Pour dimensionnement"
+    },
+    {
+      "code": "offres_be_structure",
+      "name": "Offres BE structure",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Etude de structure",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "cahier_des_charges_geometre",
+      "name": "Cahier des charges geometre",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Geometre",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Pour bornage / topo"
+    },
+    {
+      "code": "offres_geometres",
+      "name": "Offres geometres",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Geometre",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "plans_releves_geometre_livrables",
+      "name": "Plans / releves geometre livrables",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Geometre",
+      "extensions": [
+        ".pdf",
+        ".dwg"
+      ],
+      "comment": "Livrables geometre"
+    },
+    {
+      "code": "cahier_des_charges_modules_onduleurs_structures",
+      "name": "Cahier des charges modules / onduleurs / structures",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Materiel PV",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Pour AO equipements"
+    },
+    {
+      "code": "offres_fournisseurs_materiel_pv",
+      "name": "Offres fournisseurs materiel PV",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Materiel PV",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "comparatif_technique_financier_offres",
+      "name": "Comparatif technique / financier offres",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Materiel PV",
+      "extensions": [
+        ".xlsx"
+      ],
+      "comment": "Aide decision"
+    },
+    {
+      "code": "cahier_des_charges_renforcement_structurel",
+      "name": "Cahier des charges renforcement structurel",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Renforcement",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Si toiture/structure existante"
+    },
+    {
+      "code": "offres_entreprises_renforcement",
+      "name": "Offres entreprises renforcement",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Renforcement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "cahier_des_charges_fournisseur_structures",
+      "name": "Cahier des charges fournisseur structures",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Structure",
+      "extensions": [
+        ".docx",
+        ".pdf"
+      ],
+      "comment": "Pour AO structures"
+    },
+    {
+      "code": "offres_fournisseurs_structures",
+      "name": "Offres fournisseurs structures",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/1-Consultations/Structure",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Reponses consultation"
+    },
+    {
+      "code": "devis_valides_go_projet",
+      "name": "Devis valides (Go projet)",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/2-GO_Projet_Devis",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Devis retenus apres consultation"
+    },
+    {
+      "code": "bons_de_commande",
+      "name": "Bons de commande",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/2-GO_Projet_Devis",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Documents engagement depense"
+    },
+    {
+      "code": "factures_fournisseurs_sous_traitants",
+      "name": "Factures fournisseurs / sous-traitants",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/3-GO_Projet_Factures",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Suivi paiements"
+    },
+    {
+      "code": "justificatifs_paiements_releves",
+      "name": "Justificatifs paiements (releves)",
+      "folder_n1": "7-Achat-Fournisseurs",
+      "folder_path": "7-Achat-Fournisseurs/3-GO_Projet_Factures",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Suivi tresorerie"
+    },
+    {
+      "code": "planning_de_construction_gantt",
+      "name": "Planning de construction (Gantt)",
+      "folder_n1": "8-Planning",
+      "folder_path": "8-Planning",
+      "extensions": [
+        ".xlsx",
+        ".mpp",
+        ".pdf"
+      ],
+      "comment": "Phasage chantier"
+    },
+    {
+      "code": "planning_de_developpement_projet",
+      "name": "Planning de developpement projet",
+      "folder_n1": "8-Planning",
+      "folder_path": "8-Planning",
+      "extensions": [
+        ".xlsx",
+        ".pdf"
+      ],
+      "comment": "Suivi developpement"
+    },
+    {
+      "code": "planning_de_jalons_cles_milestones",
+      "name": "Planning de jalons cles (milestones)",
+      "folder_n1": "8-Planning",
+      "folder_path": "8-Planning",
+      "extensions": [
+        ".xlsx",
+        ".pdf"
+      ],
+      "comment": "Vue synthetique"
+    },
+    {
+      "code": "tableau_de_suivi_facturation_epc",
+      "name": "Tableau de suivi facturation EPC",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC",
+      "extensions": [
+        ".xlsx"
+      ],
+      "comment": "Vue d'ensemble paiements EPC"
+    },
+    {
+      "code": "contrat_epc_reference_lien_vers_4_1_contrats",
+      "name": "Contrat EPC reference (lien vers 4>1-Contrats)",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reference contractuelle"
+    },
+    {
+      "code": "facture_10_signature_contrat",
+      "name": "Facture 10% signature contrat",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/1- 10% a la signature du contrat",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Premier appel de fonds EPC"
+    },
+    {
+      "code": "justificatif_declenchement_contrat_signe",
+      "name": "Justificatif declenchement (contrat signe)",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/1- 10% a la signature du contrat",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuve declenchement"
+    },
+    {
+      "code": "facture_20_fin_vrd",
+      "name": "Facture 20% fin VRD",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/2- 20% fin VRD yc tranchees",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Voirie + Reseaux Divers + tranchees"
+    },
+    {
+      "code": "justificatif_fin_vrd_pv_ou_attestation",
+      "name": "Justificatif fin VRD (PV ou attestation)",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/2- 20% fin VRD yc tranchees",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuve avancement"
+    },
+    {
+      "code": "facture_20_fin_structures",
+      "name": "Facture 20% fin structures",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/3- 20% fin des structures",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pose structures terminee"
+    },
+    {
+      "code": "justificatif_fin_structures_pv_ou_photos",
+      "name": "Justificatif fin structures (PV ou photos)",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/3- 20% fin des structures",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuve avancement"
+    },
+    {
+      "code": "facture_20_livraison_modules",
+      "name": "Facture 20% livraison modules",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/4- 20% livraison des modules",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Modules sur site"
+    },
+    {
+      "code": "flash_list_modules",
+      "name": "Flash list modules",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/4- 20% livraison des modules/flash list - BL - certificat PPE2",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Inventaire modules livres"
+    },
+    {
+      "code": "bons_de_livraison_bl_modules",
+      "name": "Bons de livraison (BL) modules",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/4- 20% livraison des modules/flash list - BL - certificat PPE2",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuve livraison"
+    },
+    {
+      "code": "certificat_ppe2_carbon_footprint",
+      "name": "Certificat PPE2 / Carbon Footprint",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/4- 20% livraison des modules/flash list - BL - certificat PPE2",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Bilan carbone CRE"
+    },
+    {
+      "code": "facture_20_fin_pose_modules",
+      "name": "Facture 20% fin pose modules",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/5- 20% fin pose des modules",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pose terminee"
+    },
+    {
+      "code": "justificatif_fin_pose_pv_ou_photos",
+      "name": "Justificatif fin pose (PV ou photos)",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/5- 20% fin pose des modules",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuve avancement"
+    },
+    {
+      "code": "facture_5_attestation_bc",
+      "name": "Facture 5% attestation BC",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/6- 5% attestation controle specifique BC",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Bureau de Controle"
+    },
+    {
+      "code": "attestation_controle_specifique_bc",
+      "name": "Attestation controle specifique BC",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/6- 5% attestation controle specifique BC",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Verification conformite"
+    },
+    {
+      "code": "facture_5_gpa",
+      "name": "Facture 5% GPA",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/7- 5% garantie de parfait achevement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Garantie parfait achevement"
+    },
+    {
+      "code": "justificatif_fin_gpa_1_an_apres_reception",
+      "name": "Justificatif fin GPA (1 an apres reception)",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation EPC/7- 5% garantie de parfait achevement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Levee retenue garantie"
+    },
+    {
+      "code": "tableau_de_suivi_facturation_allotissements",
+      "name": "Tableau de suivi facturation allotissements",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements",
+      "extensions": [
+        ".xlsx"
+      ],
+      "comment": "Vue d'ensemble paiements lots"
+    },
+    {
+      "code": "contrats_lots_marches_travaux",
+      "name": "Contrats lots / marches travaux",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reference contractuelle par lot"
+    },
+    {
+      "code": "facture_20_signature_lot",
+      "name": "Facture 20% signature lot",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/1- 20% Signature contrat",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Acompte demarrage par lot"
+    },
+    {
+      "code": "facture_15_demarrage_lot",
+      "name": "Facture 15% demarrage lot",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/2- 15% demarrage projet",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Apres mobilisation"
+    },
+    {
+      "code": "facture_30_mi_parcours_lot",
+      "name": "Facture 30% mi-parcours lot",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/3- 30% mi parcours projet",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Avancement intermediaire"
+    },
+    {
+      "code": "justificatif_avancement",
+      "name": "Justificatif avancement",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/3- 30% mi parcours projet",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuve mi-parcours"
+    },
+    {
+      "code": "facture_15_pv_reception_lot",
+      "name": "Facture 15% PV reception lot",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/4- 15% PV reception",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "A la reception travaux"
+    },
+    {
+      "code": "pv_reception_lot_lien_vers_4_11",
+      "name": "PV reception lot (lien vers 4>11)",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/4- 15% PV reception",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reference PV"
+    },
+    {
+      "code": "facture_15_levee_reserves_lot",
+      "name": "Facture 15% levee reserves lot",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/5- 15% Levee des reserves",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Apres traitement reserves"
+    },
+    {
+      "code": "pv_levee_reserves_lot",
+      "name": "PV levee reserves lot",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/5- 15% Levee des reserves",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Preuve levee"
+    },
+    {
+      "code": "facture_5_gpa_lot",
+      "name": "Facture 5% GPA lot",
+      "folder_n1": "9-Suivi Budget",
+      "folder_path": "9-Suivi Budget/Suivi facturation entreprises allotissements/6- 5% garantie parfait achevement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Garantie parfait achevement par lot"
+    },
+    {
+      "code": "crd_signee_convention_de_raccordement",
+      "name": "CRD signee (Convention de Raccordement)",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/1-CRD",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Convention signee Enedis"
+    },
+    {
+      "code": "avenants_crd",
+      "name": "Avenants CRD",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/1-CRD",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Si modifications"
+    },
+    {
+      "code": "justificatifs_paiement_crd",
+      "name": "Justificatifs paiement CRD",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/1-CRD",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Suivi paiement Enedis"
+    },
+    {
+      "code": "mandat_de_raccordement",
+      "name": "Mandat de raccordement",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/2-Demande de raccordement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Mandat client a developpeur"
+    },
+    {
+      "code": "formulaire_demande_raccordement_s26",
+      "name": "Formulaire demande raccordement S26",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/2-Demande de raccordement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pour S26 (sol)"
+    },
+    {
+      "code": "formulaire_demande_raccordement_s21",
+      "name": "Formulaire demande raccordement S21",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/2-Demande de raccordement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Pour S21 (toiture)"
+    },
+    {
+      "code": "accuse_reception_demande_enedis",
+      "name": "Accuse reception demande Enedis",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/2-Demande de raccordement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Confirmation Enedis"
+    },
+    {
+      "code": "ptf_proposition_technique_et_financiere",
+      "name": "PTF (Proposition Technique et Financiere)",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/2-Demande de raccordement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Reponse Enedis"
+    },
+    {
+      "code": "cardi_convention_d_acces_au_reseau",
+      "name": "CARDi (Convention d'Acces au Reseau)",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/2-Demande de raccordement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Convention acces"
+    },
+    {
+      "code": "attestation_bridage_onduleurs_enedis",
+      "name": "Attestation BRIDAGE Onduleurs Enedis",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/2-Demande de raccordement",
+      "extensions": [
+        ".pptx",
+        ".pdf"
+      ],
+      "comment": "Si bridage demande"
+    },
+    {
+      "code": "echanges_techniques_enedis_mails_courriers",
+      "name": "Echanges techniques Enedis (mails / courriers)",
+      "folder_n1": "10-Raccordement",
+      "folder_path": "10-Raccordement/2-Demande de raccordement",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Trace echanges"
+    },
+    {
+      "code": "fiche_recap_mise_en_service_mes",
+      "name": "Fiche recap mise en service (MES)",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Donnees de la centrale/FICHE RECAP MES",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Synthese MES"
+    },
+    {
+      "code": "pv_de_mise_en_service",
+      "name": "PV de mise en service",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Donnees de la centrale/FICHE RECAP MES",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Document officiel MES"
+    },
+    {
+      "code": "releves_index_enedis_production",
+      "name": "Releves index Enedis (production)",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Donnees de la centrale/Index ENEDIS",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Suivi production reelle"
+    },
+    {
+      "code": "factures_de_vente_oa_production",
+      "name": "Factures de vente OA / production",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Donnees de la centrale/Index ENEDIS",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Vente d'electricite"
+    },
+    {
+      "code": "pvsyst_de_reference_post_mes",
+      "name": "PVsyst de reference post-MES",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Donnees de la centrale/PV SYST",
+      "extensions": [
+        ".pvc",
+        ".pdf"
+      ],
+      "comment": "Reference performance attendue"
+    },
+    {
+      "code": "tadd_version_finale",
+      "name": "TADD Version Finale",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Donnees de la centrale/TADD VF",
+      "extensions": [
+        ".xlsx"
+      ],
+      "comment": "Tableau Aide Decision Definitif"
+    },
+    {
+      "code": "rapports_d_intervention_curative",
+      "name": "Rapports d'intervention curative",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Maintenance curative",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Suite a panne / alarme"
+    },
+    {
+      "code": "bons_d_intervention",
+      "name": "Bons d'intervention",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Maintenance curative",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Tracking interventions"
+    },
+    {
+      "code": "devis_factures_interventions_curatives",
+      "name": "Devis / factures interventions curatives",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Maintenance curative",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Suivi couts"
+    },
+    {
+      "code": "plan_de_maintenance_preventive_annuel",
+      "name": "Plan de maintenance preventive annuel",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Maintenance preventive",
+      "extensions": [
+        ".xlsx",
+        ".pdf"
+      ],
+      "comment": "Programme entretien"
+    },
+    {
+      "code": "rapports_visites_preventives",
+      "name": "Rapports visites preventives",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Maintenance preventive",
+      "extensions": [
+        ".pdf"
+      ],
+      "comment": "Comptes-rendus visites"
+    },
+    {
+      "code": "checklists_entretien",
+      "name": "Checklists entretien",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Maintenance preventive",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Modeles standardises"
+    },
+    {
+      "code": "documents_archivage_preventif",
+      "name": "Documents archivage preventif",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Maintenance preventive/Nouveau dossier",
+      "extensions": [],
+      "comment": "A organiser"
+    },
+    {
+      "code": "rapport_annuel_d_exploitation",
+      "name": "Rapport annuel d'exploitation",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Rapports/annuelle",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Synthese annuelle production / disponibilite"
+    },
+    {
+      "code": "kpi_annuels_pr_disponibilite_productible",
+      "name": "KPI annuels (PR, disponibilite, productible)",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Rapports/annuelle",
+      "extensions": [
+        ".xlsx",
+        ".pdf"
+      ],
+      "comment": "Indicateurs cles"
+    },
+    {
+      "code": "rapport_mensuel_d_exploitation",
+      "name": "Rapport mensuel d'exploitation",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Rapports/mensuelle",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Suivi mensuel"
+    },
+    {
+      "code": "kpi_mensuels",
+      "name": "KPI mensuels",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Rapports/mensuelle",
+      "extensions": [
+        ".xlsx",
+        ".pdf"
+      ],
+      "comment": "Tableau de bord"
+    },
+    {
+      "code": "rapports_provisoires_en_cours",
+      "name": "Rapports provisoires (en cours)",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Rapports/provisoire",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Drafts avant validation"
+    },
+    {
+      "code": "journal_des_alarmes_export_gmao_scada",
+      "name": "Journal des alarmes (export GMAO / SCADA)",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Suivi des alarmes",
+      "extensions": [
+        ".xlsx",
+        ".csv"
+      ],
+      "comment": "Historique alertes"
+    },
+    {
+      "code": "analyses_incidents_recurrents",
+      "name": "Analyses incidents recurrents",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Suivi des alarmes",
+      "extensions": [
+        ".pdf",
+        ".docx"
+      ],
+      "comment": "Diagnostic"
+    },
+    {
+      "code": "rapports_scada_supervision",
+      "name": "Rapports SCADA / supervision",
+      "folder_n1": "11- O&M",
+      "folder_path": "11- O&M/Suivi des alarmes",
+      "extensions": [
+        ".pdf",
+        ".xlsx"
+      ],
+      "comment": "Donnees supervision"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+# EnerVivo Audit — stack production-like
+# Tous les ports sont internes au réseau Docker.
+# Seul nginx expose vers l'hôte (port ${PUBLIC_PORT:-11118} en dev, 80/443 en prod).
+
+name: enervivo-audit
+
+x-api-env: &api-env
+  ENVIRONMENT: ${ENVIRONMENT:-development}
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+  CORS_ORIGINS: ${CORS_ORIGINS}
+  POSTGRES_USER: ${POSTGRES_USER}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  POSTGRES_DB: ${POSTGRES_DB}
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: 5432
+  REDIS_HOST: redis
+  REDIS_PORT: 6379
+  REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+  MINIO_ENDPOINT: minio:9000
+  MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+  MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
+  MINIO_SECURE: "false"
+  MINIO_BUCKET: ${MINIO_BUCKET:-pdf-cache}
+  MINIO_RETENTION_DAYS: ${MINIO_RETENTION_DAYS:-30}
+  MINIO_QUOTA_GB: ${MINIO_QUOTA_GB:-5}
+  LLM_PROVIDER: ${LLM_PROVIDER:-openrouter}
+  OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+  OPENROUTER_BASE_URL: ${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}
+  OPENROUTER_DEFAULT_MODEL: ${OPENROUTER_DEFAULT_MODEL:-anthropic/claude-haiku-4.5}
+  ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+  LLM_MAX_RETRIES: ${LLM_MAX_RETRIES:-3}
+  LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-60}
+  AZURE_AD_TENANT_ID: ${AZURE_AD_TENANT_ID}
+  AZURE_AD_CLIENT_ID: ${AZURE_AD_CLIENT_ID}
+  AZURE_AD_CLIENT_SECRET: ${AZURE_AD_CLIENT_SECRET}
+  SHAREPOINT_SITE_ID: ${SHAREPOINT_SITE_ID:-}
+  SHAREPOINT_DRIVE_ID: ${SHAREPOINT_DRIVE_ID:-}
+  SHAREPOINT_FOLDER_PATH: ${SHAREPOINT_FOLDER_PATH:-/09-Projets}
+  SHAREPOINT_ALLOWED_ROOT_PATH: ${SHAREPOINT_ALLOWED_ROOT_PATH:-/09-Projets}
+  SHAREPOINT_EXCLUDED_FOLDERS: ${SHAREPOINT_EXCLUDED_FOLDERS:-Visuels}
+  NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+  NEXTAUTH_URL: ${NEXTAUTH_URL}
+  ALLOWED_EMAIL_DOMAIN: ${ALLOWED_EMAIL_DOMAIN:-enervivo.fr}
+  CONFIDENCE_THRESHOLD_PRESENT: ${CONFIDENCE_THRESHOLD_PRESENT:-70}
+  CONFIDENCE_THRESHOLD_AMBIGUOUS: ${CONFIDENCE_THRESHOLD_AMBIGUOUS:-40}
+
+services:
+  # ---------- Nginx reverse proxy ----------
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "${PUBLIC_PORT:-11118}:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    depends_on:
+      - web
+      - api
+    networks: [enervivo]
+
+  # ---------- Frontend ----------
+  # Build context = monorepo root pour que packages/shared-types soit accessible.
+  web:
+    build:
+      context: ..
+      dockerfile: apps/web/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      AZURE_AD_TENANT_ID: ${AZURE_AD_TENANT_ID}
+      AZURE_AD_CLIENT_ID: ${AZURE_AD_CLIENT_ID}
+      AZURE_AD_CLIENT_SECRET: ${AZURE_AD_CLIENT_SECRET}
+      ALLOWED_EMAIL_DOMAIN: ${ALLOWED_EMAIL_DOMAIN:-enervivo.fr}
+      API_INTERNAL_URL: http://api:8000
+    networks: [enervivo]
+
+  # ---------- INIT (one-shot) : migrate + seed au premier démarrage ----------
+  # Tourne UNE FOIS, applique alembic upgrade head + python -m scripts.seed (idempotent),
+  # puis exit 0. Les services api/worker/beat attendent sa complétion.
+  init:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    environment: *api-env
+    command:
+      - sh
+      - -c
+      - |
+        set -e
+        echo "[init] alembic upgrade head"
+        alembic upgrade head
+        echo "[init] seed projets (idempotent)"
+        python -m scripts.seed
+        echo "[init] OK"
+    depends_on:
+      postgres: { condition: service_healthy }
+    restart: "no"
+    networks: [enervivo]
+
+  # ---------- Backend API ----------
+  api:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment: *api-env
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    depends_on:
+      init:     { condition: service_completed_successfully }
+      postgres: { condition: service_healthy }
+      redis:    { condition: service_healthy }
+      minio:    { condition: service_healthy }
+    networks: [enervivo]
+
+  # ---------- Celery worker ----------
+  worker:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment: *api-env
+    command: ["celery", "-A", "celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    # Mémoire augmentée pour traiter les gros PDF (plans cadastraux, PADD scannés).
+    # --concurrency réduit à 2 (au lieu de 4) pour limiter le pic RAM.
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+    depends_on:
+      init:     { condition: service_completed_successfully }
+      postgres: { condition: service_healthy }
+      redis:    { condition: service_healthy }
+      minio:    { condition: service_healthy }
+    networks: [enervivo]
+
+  # ---------- Celery beat (scheduler, prêt pour v2 sync SharePoint) ----------
+  beat:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment: *api-env
+    command: ["celery", "-A", "celery_app", "beat", "--loglevel=info"]
+    depends_on:
+      init:  { condition: service_completed_successfully }
+      redis: { condition: service_healthy }
+    networks: [enervivo]
+
+  # ---------- Flower (Celery UI, admin only via nginx basic auth) ----------
+  flower:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment: *api-env
+    command: ["celery", "-A", "celery_app", "flower", "--port=5555", "--url_prefix=flower"]
+    depends_on:
+      redis: { condition: service_healthy }
+    networks: [enervivo]
+
+  # ---------- PostgreSQL ----------
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks: [enervivo]
+
+  # ---------- Redis ----------
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: >
+      sh -c "if [ -n \"$$REDIS_PASSWORD\" ];
+             then redis-server --requirepass $$REDIS_PASSWORD --appendonly yes;
+             else redis-server --appendonly yes;
+             fi"
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    networks: [enervivo]
+
+  # ---------- MinIO (cache PDF, quota 5Go, lifecycle 30j) ----------
+  minio:
+    image: minio/minio:RELEASE.2024-12-13T22-19-12Z
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY}
+    volumes:
+      - minio-data:/data
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.5"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: [enervivo]
+
+volumes:
+  pgdata:
+  redis-data:
+  minio-data:
+
+networks:
+  enervivo:
+    driver: bridge

@@ -1,0 +1,1229 @@
+{
+  "version": "V12",
+  "source": "260518_Document_par_Jalon_V12.xlsx",
+  "total_documents": 107,
+  "jalons": [
+    {
+      "jalon": "Avant J1",
+      "documents": [
+        {
+          "code": "avant_j1_loi_signee",
+          "num": 1,
+          "name": "LOI signee",
+          "jalon": "Avant J1",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "Avant J1",
+          "note": "Drafts ignores",
+          "format": ".jpg"
+        }
+      ]
+    },
+    {
+      "jalon": "J1",
+      "documents": [
+        {
+          "code": "j1_pdb_signee",
+          "num": 2,
+          "name": "PDB signee",
+          "jalon": "J1",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J1",
+          "note": "Drafts ignores - signature = validation jalon",
+          "format": ".pdf"
+        },
+        {
+          "code": "j1_plan_de_masse_version_j1",
+          "num": 3,
+          "name": "Plan de masse version J1",
+          "jalon": "J1",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J1",
+          "note": "Version au moment du comite J1",
+          "format": ".pdf"
+        },
+        {
+          "code": "j1_tadd_version_j1",
+          "num": 4,
+          "name": "TADD version J1",
+          "jalon": "J1",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J1",
+          "note": "Business plan au comite J1",
+          "format": ".xlsx"
+        },
+        {
+          "code": "j1_dossier_de_qualification_j1",
+          "num": 5,
+          "name": "Dossier de qualification J1",
+          "jalon": "J1",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J1",
+          "note": "PPT comite - integre PVsyst, plan masse, TADD",
+          "format": ".pptx"
+        }
+      ]
+    },
+    {
+      "jalon": "J2a",
+      "documents": [
+        {
+          "code": "j2a_certificat_d_urbanisme_operationnel_cu",
+          "num": 6,
+          "name": "Certificat d'urbanisme opérationnel (CU)",
+          "jalon": "J2a",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Delivre une fois par mairie/DDT",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_compte_rendu_rdv_maire_et_elus",
+          "num": 7,
+          "name": "Compte-rendu RDV maire et elus",
+          "jalon": "J2a",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Peut etre multiple - 1 par RDV",
+          "format": null
+        },
+        {
+          "code": "j2a_compte_rendu_rdv_epci_comcom",
+          "num": 8,
+          "name": "Compte-rendu RDV EPCI / ComCom",
+          "jalon": "J2a",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Peut etre multiple - 1 par RDV",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_compte_rendu_rdv_chambre_d_agriculture",
+          "num": 9,
+          "name": "Compte-rendu RDV Chambre d'Agriculture",
+          "jalon": "J2a",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Peut etre multiple - 1 par RDV",
+          "format": null
+        },
+        {
+          "code": "j2a_compte_rendu_rdv_ddt_m",
+          "num": 10,
+          "name": "Compte-rendu RDV DDT(M)",
+          "jalon": "J2a",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Peut etre multiple - 1 par RDV",
+          "format": null
+        },
+        {
+          "code": "j2a_feuille_d_emargement_comite_projet",
+          "num": 11,
+          "name": "Feuille d'émargement comité projet",
+          "jalon": "J2a",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Document qui peut être hors J2a",
+          "format": ".xlsx"
+        },
+        {
+          "code": "j2a_devis_signe_epa",
+          "num": 12,
+          "name": "Devis signé EPA",
+          "jalon": "J2a",
+          "propriete": "Cas par cas",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J2a",
+          "note": "Etude Prealable Agricole - commande lancee",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_devis_signe_enviro",
+          "num": 13,
+          "name": "Devis signé Enviro",
+          "jalon": "J2a",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J2a",
+          "note": "Regroupe les commandes EIE / VNEI / PEDO-ZH / FAUNE et FLORE",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_dt_dt_resume",
+          "num": 14,
+          "name": "DT - DT résumé",
+          "jalon": "J2a",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Declaration de Travaux J2a, on cherche le document résumé de la demande, dans ce document on doit avoir : Nature de la consultation : DT",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_dict_dict_resume",
+          "num": 15,
+          "name": "DICT - DICT résumé",
+          "jalon": "J2a",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Déclaration d’Intention de Commencement de Travaux, on cherche le document résumé de la demande, dans ce document on doit avoir : Nature de la consultation : DICT",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_plan_de_masse_version_j2a",
+          "num": 16,
+          "name": "Plan de masse version J2a",
+          "jalon": "J2a",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J2a",
+          "note": "Plan valide par l'agriculteur",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_tadd_version_j2a",
+          "num": 17,
+          "name": "TADD version J2a",
+          "jalon": "J2a",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J2a",
+          "note": "Business plan au comite J2a",
+          "format": ".xlsx"
+        },
+        {
+          "code": "j2a_carte_nationale_d_identite_cni_proprio_personne_physique",
+          "num": 18,
+          "name": "Carte Nationale d'Identité (CNI) (proprio personne physique)",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Si proprietaire = personne physique",
+          "format": ".jpg"
+        },
+        {
+          "code": "j2a_copie_livret_de_famille_proprio_personne_physique",
+          "num": 19,
+          "name": "Copie livret de famille (proprio personne physique)",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Si proprietaire = personne physique",
+          "format": ".jpg"
+        },
+        {
+          "code": "j2a_statuts_societe_proprio_personne_morale",
+          "num": 20,
+          "name": "Statuts societe (proprio personne morale)",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Si proprietaire = societe",
+          "format": null
+        },
+        {
+          "code": "j2a_extrait_kbis_a_jour_proprio_personne_morale",
+          "num": 21,
+          "name": "Extrait Kbis a jour (proprio personne morale)",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Si proprietaire = societe",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_titre_de_propriete_des_parcelles",
+          "num": 22,
+          "name": "Titre de propriete des parcelles",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Toutes parcelles concernees jusqu'au point de livraison - PDF complet",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_attestation_de_vente_notaire_2_ans_ou_releve_de_propriete_mairie",
+          "num": 23,
+          "name": "Attestation de vente notaire (< 2 ans) ou releve de propriete mairie",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Recente, datee, tamponnee, signee par la mairie",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_copie_baux_en_cours_coordonnees_preneurs",
+          "num": 24,
+          "name": "Copie baux en cours + coordonnees preneurs",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Tous baux portant sur les biens objets de la promesse",
+          "format": null
+        },
+        {
+          "code": "j2a_releve_d_hypotheques_etat_hypothecaire",
+          "num": 25,
+          "name": "Releve d'hypotheques (etat hypothecaire)",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Parcelles concernees",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_releve_parcellaire_a_jour",
+          "num": 26,
+          "name": "Releve parcellaire a jour",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Plan cadastral actualise",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_lettre_de_motivation_projet_agrivoltaique",
+          "num": 27,
+          "name": "Lettre de motivation projet agrivoltaique",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Justification necessite du projet pour l'exploitation - quelques lignes suffisent",
+          "format": ".docx"
+        },
+        {
+          "code": "j2a_declaration_icpe_ou_attestation_non_assujettissement",
+          "num": 28,
+          "name": "Declaration ICPE OU attestation non-assujettissement",
+          "jalon": "J2a",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Selon situation exploitation - declaration/enregistrement/autorisation OU attestation sur l'honneur",
+          "format": null
+        },
+        {
+          "code": "j2a_releve_d_identite_bancaire_rib_pour_versement_redevances_et_loyers_du_bail",
+          "num": 29,
+          "name": "Relevé d'identité bancaire (RIB) pour versement redevances et loyers du bail",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Pour les versements prevus au bail du propriétaire ou client",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_attestation_msa_chef_d_exploitation_6_mois",
+          "num": 30,
+          "name": "Attestation MSA chef d'exploitation (< 6 mois)",
+          "jalon": "J2a",
+          "propriete": "Annexes 3 PDB",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "AgriPV - de plein droit, chef d'exploitation, attestation < 6 mois",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2a_dossier_de_qualification_j2a",
+          "num": 31,
+          "name": "Dossier de qualification J2a",
+          "jalon": "J2a",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J2a",
+          "note": "PPT comite - integre PVsyst, plan masse, TADD",
+          "format": ".pptx"
+        },
+        {
+          "code": "j2a_lettre_d_engagement",
+          "num": 32,
+          "name": "Lettre d'engagement",
+          "jalon": "J2a",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2a",
+          "note": "Contrat indicant les obligations des parties prenantes",
+          "format": null
+        }
+      ]
+    },
+    {
+      "jalon": "J2b",
+      "documents": [
+        {
+          "code": "j2b_compte_rendu_rdv_sdis",
+          "num": 33,
+          "name": "Compte-rendu RDV SDIS",
+          "jalon": "J2b",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "SDIS contacte en phase post-depot PC",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_avis_de_cadrage_ddtm_sur_projet_enr",
+          "num": 34,
+          "name": "Avis de cadrage DDTM sur projet ENR",
+          "jalon": "J2b",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Avis de cadrage amont de la DDT sur les notes réglementaire d'urbanisme et d'implantation et APER",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_rapport_g2avp",
+          "num": 35,
+          "name": "Rapport G2AVP",
+          "jalon": "J2b",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Etude geotechnique",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_rapport_etude_pedologique_zh_faune_et_flore_eie",
+          "num": 36,
+          "name": "Rapport etude pedologique / ZH / Faune et Flore / EIE",
+          "jalon": "J2b",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "AgriPV uniquement",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_rapport_epa_final",
+          "num": 37,
+          "name": "Rapport EPA final",
+          "jalon": "J2b",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Version finale EPA - cabinet ou chambre agri",
+          "format": null
+        },
+        {
+          "code": "j2b_etude_architecte",
+          "num": 38,
+          "name": "Etude architecte",
+          "jalon": "J2b",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Si PC requis batiment",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_rapport_geometre",
+          "num": 39,
+          "name": "Rapport geometre",
+          "jalon": "J2b",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Si parcelle a delimiter",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_attestation_cas_par_cas_valide",
+          "num": 40,
+          "name": "Attestation cas par cas valide",
+          "jalon": "J2b",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Decision DREAL apres examen au cas par cas, arreté préfecoral",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_prac_recue",
+          "num": 41,
+          "name": "PRAC recue",
+          "jalon": "J2b",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Procedure de Revision Allegee adoptee - si lancee en J2a",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_arrete_municipal_passage_des_parcelles_en_zaenr",
+          "num": 42,
+          "name": "Arrêté municipal passage des parcelles en ZAENR",
+          "jalon": "J2b",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Arrété qui justifie le passage d'une zone projet en ZAENR, le cas échéant il faut avoir une feuille d'émargement de comité projet élargi",
+          "format": null
+        },
+        {
+          "code": "j2b_recepisse_depot_pc_ou_dp",
+          "num": 43,
+          "name": "Recepisse depot PC ou DP",
+          "jalon": "J2b",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Cachet mairie une seule fois",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_projet_de_bail_notaire",
+          "num": 44,
+          "name": "Projet de bail (notaire)",
+          "jalon": "J2b",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J2b",
+          "note": "Premiere version - sera signee a J3",
+          "format": null
+        },
+        {
+          "code": "j2b_plan_de_masse_version_j2b",
+          "num": 45,
+          "name": "Plan de masse version J2b",
+          "jalon": "J2b",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J2b",
+          "note": "Plan affine au moment du depot PC",
+          "format": ".pdf"
+        },
+        {
+          "code": "j2b_tadd_version_j2b",
+          "num": 46,
+          "name": "TADD version J2b",
+          "jalon": "J2b",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J2b",
+          "note": "Business plan au comite J2b",
+          "format": ".xlsx"
+        },
+        {
+          "code": "j2b_dossier_de_qualification_j2b",
+          "num": 47,
+          "name": "Dossier de qualification J2b",
+          "jalon": "J2b",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J2b",
+          "note": "PPT comite - integre PVsyst, plan masse, TADD",
+          "format": ".pptx"
+        }
+      ]
+    },
+    {
+      "jalon": "J3",
+      "documents": [
+        {
+          "code": "j3_anrnr",
+          "num": 48,
+          "name": "ANRNR",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Attestation de Non-Recours Non-Retrait - vaut decision PC",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_avis_cdpenaf",
+          "num": 49,
+          "name": "Avis CDPENAF",
+          "jalon": "J3",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Avis officiel de la commission - recu apres saisine",
+          "format": null
+        },
+        {
+          "code": "j3_pv_1er_passage_huissier",
+          "num": 50,
+          "name": "PV 1er passage huissier",
+          "jalon": "J3",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Constat affichage passage 1",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_pv_2eme_passage_huissier",
+          "num": 51,
+          "name": "PV 2eme passage huissier",
+          "jalon": "J3",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Constat affichage passage 2 (30 jours apres)",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_pv_3eme_passage_huissier",
+          "num": 52,
+          "name": "PV 3eme passage huissier",
+          "jalon": "J3",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Constat affichage passage 3 (fin recours)",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_presentation_de_la_creation_spv_a_la_mairie",
+          "num": 53,
+          "name": "Présentation de la création SPV à la mairie",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Preuve d'envoie à la mairie du fait de la création d'une SPV",
+          "format": ".pptx"
+        },
+        {
+          "code": "j3_kbis_spv",
+          "num": 54,
+          "name": "Kbis SPV",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Extrait Kbis",
+          "format": null
+        },
+        {
+          "code": "j3_statuts_spv_signes",
+          "num": 55,
+          "name": "Statuts SPV signes",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Drafts ignores",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_pacte_d_actionnaires_signe",
+          "num": 56,
+          "name": "Pacte d'actionnaires signe",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Drafts ignores",
+          "format": null
+        },
+        {
+          "code": "j3_bail_signe_acte_notarie",
+          "num": 57,
+          "name": "Bail signe (acte notarie)",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J3",
+          "note": "Acte authentique - drafts ignores",
+          "format": null
+        },
+        {
+          "code": "j3_recepisse_de_la_demande_de_raccordement_crd",
+          "num": 58,
+          "name": "Recepisse de la demande de raccordement / CRD",
+          "jalon": "J3",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Accuse reception ENEDIS de la demande",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_ptf_crd_recue_d_enedis",
+          "num": 59,
+          "name": "PTF / CRD recue d'ENEDIS",
+          "jalon": "J3",
+          "propriete": "Facultatif",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Proposition Technique et Financiere recue",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_ptf_crd_signee",
+          "num": 60,
+          "name": "PTF / CRD signee",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J3",
+          "note": "PTF/CRD signee par VivEpic",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_crd_transferee_vivepic_vers_spv",
+          "num": 61,
+          "name": "CRD transferee VivEpic vers SPV",
+          "jalon": "J3",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Transfert au profit de la SPV",
+          "format": null
+        },
+        {
+          "code": "j3_consultations_devis_aupres_des_fournisseurs",
+          "num": 62,
+          "name": "Consultations / Devis aupres des fournisseurs",
+          "jalon": "J3",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Recueil des consultations - phase pre-allotissement",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_ceti",
+          "num": 63,
+          "name": "CETI",
+          "jalon": "J3",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Certificat délivré par la prefecture (éligibilité d'implantation du terrain), si AO CRE",
+          "format": ".pdf"
+        },
+        {
+          "code": "j3_candidature_tarif_d_achat_ao_cre_aos_s21_acc",
+          "num": 64,
+          "name": "Candidature tarif d'achat (AO CRE, AOS, S21, ACC)",
+          "jalon": "J3",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Candidature au tarif d'achat applicable selon le projet",
+          "format": null
+        },
+        {
+          "code": "j3_rapport_g2pro",
+          "num": 65,
+          "name": "Rapport G2PRO",
+          "jalon": "J3",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J3",
+          "note": "Etude geotechnique",
+          "format": null
+        },
+        {
+          "code": "j3_plan_de_masse_version_j3",
+          "num": 66,
+          "name": "Plan de masse version J3",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J3",
+          "note": "Plan version Ready to Build",
+          "format": null
+        },
+        {
+          "code": "j3_tadd_version_j3",
+          "num": 67,
+          "name": "TADD version J3",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J3",
+          "note": "Business plan au comite J3",
+          "format": ".xlsx"
+        },
+        {
+          "code": "j3_dossier_de_qualification_j3",
+          "num": 68,
+          "name": "Dossier de qualification J3",
+          "jalon": "J3",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J3",
+          "note": "PPT comite - integre PVsyst, plan masse, TADD",
+          "format": ".pptx"
+        }
+      ]
+    },
+    {
+      "jalon": "J4",
+      "documents": [
+        {
+          "code": "j4_contrat_d_achat_d_electricite_signe",
+          "num": 69,
+          "name": "Contrat d'achat d'electricite signe",
+          "jalon": "J4",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "OA EDF, ACC, PPA - signe",
+          "format": null
+        },
+        {
+          "code": "j4_contrat_d_agregation_signe",
+          "num": 70,
+          "name": "Contrat d'agregation signe",
+          "jalon": "J4",
+          "propriete": "Cas par cas",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "Si projet en agregation (PPA agregateur)",
+          "format": null
+        },
+        {
+          "code": "j4_offre_bancaire_signee",
+          "num": 71,
+          "name": "Offre bancaire signee",
+          "jalon": "J4",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "Contrat financement signe",
+          "format": null
+        },
+        {
+          "code": "j4_closing_bancaire_documents_de_credit_signes",
+          "num": 72,
+          "name": "Closing Bancaire / Documents de crédit signés",
+          "jalon": "J4",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "Document attestant du closing et de la levée de dette",
+          "format": null
+        },
+        {
+          "code": "j4_contrat_epc_signe",
+          "num": 73,
+          "name": "Contrat EPC signe",
+          "jalon": "J4",
+          "propriete": "Cas par cas",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "Si > 5 MWc - signe",
+          "format": null
+        },
+        {
+          "code": "j4_contrat_amo_signe",
+          "num": 74,
+          "name": "Contrat AMO signe",
+          "jalon": "J4",
+          "propriete": "Cas par cas",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "Drafts ignores",
+          "format": null
+        },
+        {
+          "code": "j4_devis_genie_civil_signe",
+          "num": 75,
+          "name": "Devis genie civil signe",
+          "jalon": "J4",
+          "propriete": "Facultatif",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "Devis signe pour declenchement",
+          "format": null
+        },
+        {
+          "code": "j4_devis_installation_centrale_pv_signe",
+          "num": 76,
+          "name": "Devis installation centrale PV signe",
+          "jalon": "J4",
+          "propriete": "Facultatif",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "Devis signe pour declenchement",
+          "format": null
+        },
+        {
+          "code": "j4_contrat_o_m_signe",
+          "num": 77,
+          "name": "Contrat O&M signe",
+          "jalon": "J4",
+          "propriete": "Facultatif",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "J4",
+          "note": "Drafts ignores",
+          "format": null
+        },
+        {
+          "code": "j4_cardi",
+          "num": 78,
+          "name": "CARDi",
+          "jalon": "J4",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J4",
+          "note": "Convention d'Acces au Reseau ENEDIS",
+          "format": null
+        },
+        {
+          "code": "j4_assurance_rc_pro_souscrite",
+          "num": 79,
+          "name": "Assurance RC Pro souscrite",
+          "jalon": "J4",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J4",
+          "note": "Attestation assurance",
+          "format": null
+        },
+        {
+          "code": "j4_assurance_dommage_ouvrage_do",
+          "num": 80,
+          "name": "Assurance Dommage-Ouvrage (DO)",
+          "jalon": "J4",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J4",
+          "note": "Attestation DO",
+          "format": null
+        },
+        {
+          "code": "j4_assurances_decennales_prestataires",
+          "num": 81,
+          "name": "Assurances decennales prestataires",
+          "jalon": "J4",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J4",
+          "note": "Multiples - 1 par entreprise",
+          "format": null
+        },
+        {
+          "code": "j4_dossier_exe",
+          "num": 82,
+          "name": "Dossier EXE",
+          "jalon": "J4",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "J4",
+          "note": "Dossier EXE par Enervivo et EPC",
+          "format": ".pdf"
+        },
+        {
+          "code": "j4_pull_out_test",
+          "num": 83,
+          "name": "Pull out test",
+          "jalon": "J4",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "J4",
+          "note": "Test d'arrachement structures - validation tenue mecanique sur site",
+          "format": null
+        },
+        {
+          "code": "j4_plan_de_masse_version_j4",
+          "num": 84,
+          "name": "Plan de masse version J4",
+          "jalon": "J4",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J4",
+          "note": "Plan version montage financier",
+          "format": ".pdf"
+        },
+        {
+          "code": "j4_tadd_version_j4",
+          "num": 85,
+          "name": "TADD version J4",
+          "jalon": "J4",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J4",
+          "note": "Business plan final - bouclage financier",
+          "format": ".xlsx"
+        },
+        {
+          "code": "j4_dossier_de_qualification_j4",
+          "num": 86,
+          "name": "Dossier de qualification J4",
+          "jalon": "J4",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "J4",
+          "note": "PPT comite - integre PVsyst, plan masse, TADD",
+          "format": ".pptx"
+        }
+      ]
+    },
+    {
+      "jalon": "J5_Construction",
+      "documents": [
+        {
+          "code": "j5_construction_declaration_d_ouverture_de_chantier_doc",
+          "num": 87,
+          "name": "Declaration d'Ouverture de Chantier (DOC)",
+          "jalon": "J5_Construction",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "Construction",
+          "note": "Depot mairie",
+          "format": null
+        },
+        {
+          "code": "j5_construction_plans_d_execution_valides",
+          "num": 88,
+          "name": "Plans d'execution valides",
+          "jalon": "J5_Construction",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "Construction",
+          "note": "Tous plans (elec, schema unifilaire, masse, etc.)",
+          "format": null
+        },
+        {
+          "code": "j5_construction_rapport_bureau_de_controle_visa",
+          "num": 89,
+          "name": "Rapport bureau de controle (VISA)",
+          "jalon": "J5_Construction",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "Construction",
+          "note": "Validation BC",
+          "format": null
+        },
+        {
+          "code": "j5_construction_certification_carbone_des_modules",
+          "num": 90,
+          "name": "Certification carbone des modules",
+          "jalon": "J5_Construction",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "Construction",
+          "note": "Attestation fournisseur",
+          "format": null
+        },
+        {
+          "code": "j5_construction_agrements_et_decennales_installateurs",
+          "num": 91,
+          "name": "Agrements et decennales installateurs",
+          "jalon": "J5_Construction",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "Construction",
+          "note": "Multiples (1 par entreprise)",
+          "format": null
+        },
+        {
+          "code": "j5_construction_declarations_de_sous_traitance",
+          "num": 92,
+          "name": "Declarations de sous-traitance",
+          "jalon": "J5_Construction",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "Construction",
+          "note": "Multiples (1 par sous-traitant)",
+          "format": null
+        },
+        {
+          "code": "j5_construction_planning_chantier",
+          "num": 93,
+          "name": "Planning chantier",
+          "jalon": "J5_Construction",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "Construction",
+          "note": "Garder derniere version",
+          "format": null
+        },
+        {
+          "code": "j5_construction_plan_qhse",
+          "num": 94,
+          "name": "Plan QHSE",
+          "jalon": "J5_Construction",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "Construction",
+          "note": "Plan chantier",
+          "format": null
+        },
+        {
+          "code": "j5_construction_architecture_scada",
+          "num": 95,
+          "name": "Architecture SCADA",
+          "jalon": "J5_Construction",
+          "propriete": "Cas par cas",
+          "versioning": "Document unique",
+          "jalons_concernes": "Construction",
+          "note": "Plan supervision",
+          "format": null
+        }
+      ]
+    },
+    {
+      "jalon": "J6_MES",
+      "documents": [
+        {
+          "code": "j6_mes_consuel",
+          "num": 96,
+          "name": "CONSUEL",
+          "jalon": "J6_MES",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "MES",
+          "note": "Attestation conformite electrique",
+          "format": null
+        },
+        {
+          "code": "j6_mes_attestation_de_conformite_enedis_et_deie",
+          "num": 97,
+          "name": "Attestation de conformite ENEDIS et DEIE",
+          "jalon": "J6_MES",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "MES",
+          "note": "Validation raccordement",
+          "format": null
+        },
+        {
+          "code": "j6_mes_pv_de_reception_chantier",
+          "num": 98,
+          "name": "PV de reception chantier",
+          "jalon": "J6_MES",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "MES",
+          "note": "PV avec ou sans reserves",
+          "format": null
+        },
+        {
+          "code": "j6_mes_doe",
+          "num": 99,
+          "name": "DOE",
+          "jalon": "J6_MES",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "MES",
+          "note": "Dossier ouvrages executes",
+          "format": null
+        },
+        {
+          "code": "j6_mes_rapport_tests_pr",
+          "num": 100,
+          "name": "Rapport tests PR",
+          "jalon": "J6_MES",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "MES",
+          "note": "Performance ratio",
+          "format": null
+        },
+        {
+          "code": "j6_mes_rapport_tests_onduleurs",
+          "num": 101,
+          "name": "Rapport tests onduleurs",
+          "jalon": "J6_MES",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "MES",
+          "note": "Tests fonctionnement",
+          "format": null
+        },
+        {
+          "code": "j6_mes_dat",
+          "num": 102,
+          "name": "DAT",
+          "jalon": "J6_MES",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "MES",
+          "note": "Declaration achevement travaux",
+          "format": null
+        },
+        {
+          "code": "j6_mes_premiere_facture_edf_oa_ou_ppa",
+          "num": 103,
+          "name": "Premiere facture EDF OA ou PPA",
+          "jalon": "J6_MES",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "MES",
+          "note": "Demarrage vente electricite",
+          "format": null
+        }
+      ]
+    },
+    {
+      "jalon": "J7_Cloture",
+      "documents": [
+        {
+          "code": "j7_cloture_contrat_o_m_actif_avec_rapports_periodiques",
+          "num": 104,
+          "name": "Contrat O&M actif avec rapports periodiques",
+          "jalon": "J7_Cloture",
+          "propriete": "Obligatoire",
+          "versioning": "Versionne par jalon",
+          "jalons_concernes": "Cloture",
+          "note": "Rapports recurrents (annuels/semestriels)",
+          "format": null
+        },
+        {
+          "code": "j7_cloture_plan_de_demantelement",
+          "num": 105,
+          "name": "Plan de demantelement",
+          "jalon": "J7_Cloture",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "Cloture",
+          "note": "Document fin de bail",
+          "format": null
+        },
+        {
+          "code": "j7_cloture_certificat_recyclage_panneaux_et_acier",
+          "num": 106,
+          "name": "Certificat recyclage panneaux et acier",
+          "jalon": "J7_Cloture",
+          "propriete": "Obligatoire",
+          "versioning": "Document unique",
+          "jalons_concernes": "Cloture",
+          "note": "Justificatif traitement dechets",
+          "format": null
+        },
+        {
+          "code": "j7_cloture_pv_remise_en_etat_agricole",
+          "num": 107,
+          "name": "PV remise en etat agricole",
+          "jalon": "J7_Cloture",
+          "propriete": "Obligatoire",
+          "versioning": "Version signee uniquement",
+          "jalons_concernes": "Cloture",
+          "note": "Validation agriculteur",
+          "format": null
+        }
+      ]
+    }
+  ]
+}

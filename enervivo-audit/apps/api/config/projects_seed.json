@@ -1,0 +1,28 @@
+[
+  {
+    "code": "DIBOS_H",
+    "name": "DIBOS Hangar",
+    "type": "Toiture",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/09-Projets/DIBOS/Hangar",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "DIBOS",
+      "seeded_at": "2026-05-19"
+    }
+  },
+  {
+    "code": "DMONFLANQUIN",
+    "name": "DMONFLANQUIN",
+    "type": "AgriPV",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/09-Projets/DMONFLANQUIN",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "Monflanquin",
+      "seeded_at": "2026-05-19"
+    }
+  }
+]

@@ -1,0 +1,58 @@
+# Global
+.git
+.github
+.gitignore
+.DS_Store
+*.swp
+*.swo
+*~
+.env
+.env.local
+
+# Root
+README.md
+Makefile
+CHANGELOG.md
+SESSION.md
+LLM_CACHE_OPTIMIZATIONS.md
+
+# Development
+node_modules
+.venv
+venv
+*.pyc
+__pycache__
+.pytest_cache
+.mypy_cache
+.ruff_cache
+dist
+build
+*.egg-info
+coverage
+
+# IDE
+.vscode
+.idea
+*.iml
+.DS_Store
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.circleci
+.travis.yml
+
+# Turbo
+.turbo
+.next
+
+# Test
+tests
+test
+pytest.ini
+
+# Docker
+docker-compose.dev.yml
+infra/backups
+infra/certbot/conf
+infra/certbot/logs
