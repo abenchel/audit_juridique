@@ -42,6 +42,7 @@ from models.audit import (
 )
 from models.document import FileMetadata
 from services.audit.matcher import match_classified_to_expected
+from services.audit.plan_masse import reassign_plans_de_masse
 from services.audit.types import get_handler
 from services.extraction import extract_text, is_image
 from services.extraction.base import ExtractionError, ScanNoTextError
@@ -638,6 +639,23 @@ async def run_audit(audit_id: uuid.UUID) -> None:
             # ⚠️ Les classified_documents sont DÉJÀ persistés au fil de l'eau
             # par _wrapped (stream-write). Plus de bulk insert ici — éviterait
             # des doublons.
+
+            # 3.bis) PASSE 2 — désambiguïsation des plans de masse par jalon.
+            # En passe 1 le LLM voit chaque fichier isolément et ne peut pas
+            # deviner si un plan de masse est la version J1/J2a/J2b/J3/J4 (le
+            # jalon n'est jamais dans le nom). On rassemble ici TOUS les plans
+            # de masse et on fait UN seul appel LLM avec le contexte global
+            # (noms + dates + dossiers) pour les répartir. Fail-open : toute
+            # erreur conserve la classification passe 1, jamais de régression.
+            try:
+                reassigned = await reassign_plans_de_masse(classified, audit_id)
+                if reassigned:
+                    await _publish_progress(
+                        audit_id,
+                        {"event": "plan_masse_pass", "reassigned": reassigned},
+                    )
+            except Exception as _e:
+                log.warning("Passe 2 plans de masse ignorée : %s", _e)
 
             # 4) Matching
             jalons = audit.jalons or [j["jalon"] for j in reference["jalons"]]
