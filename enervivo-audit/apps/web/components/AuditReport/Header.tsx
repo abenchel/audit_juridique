@@ -1,10 +1,14 @@
 import type { AuditReport } from "@enervivo/shared-types";
+import { ExportHtmlButton } from "./ExportHtmlButton";
 
 export function ReportHeader({ report }: { report: AuditReport }) {
   return (
     <div className="max-w-[1280px] mx-auto px-8 pt-12 pb-8">
-      <div className="text-xs uppercase tracking-wider text-ink-soft mb-4">
-        Audit {report.audit_type} <span className="text-ink font-bold">/ {report.project_type}</span>
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <div className="text-xs uppercase tracking-wider text-ink-soft">
+          Audit {report.audit_type} <span className="text-ink font-bold">/ {report.project_type}</span>
+        </div>
+        <ExportHtmlButton projectCode={report.project_code} auditId={report.audit_id} />
       </div>
       <h1 className="font-display font-bold text-5xl md:text-6xl text-ink leading-none tracking-tight mb-3">
         {report.project_code}{" "}

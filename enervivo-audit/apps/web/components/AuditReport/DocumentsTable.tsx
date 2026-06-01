@@ -26,7 +26,7 @@ export function DocumentsTable({ jalon }: { jalon: JalonReport }) {
               <th className="text-left px-4 py-3">Propriété</th>
               <th className="text-left px-4 py-3">Statut</th>
               <th className="text-left px-4 py-3">Fichiers trouvés</th>
-              <th className="text-right px-4 py-3">Confiance</th>
+              <th className="text-right px-4 py-3">Confiance max</th>
             </tr>
           </thead>
           <tbody>
@@ -82,22 +82,37 @@ function DocumentRow({ doc }: { doc: ExpectedDocument }) {
           <span className="text-ink-soft text-xs italic">—</span>
         ) : (
           <ul className="space-y-1">
-            {doc.found_files.map((f) => (
-              <li key={f.sharepoint_path}>
-                <a
-                  href={f.sharepoint_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ink hover:underline font-mono text-xs"
-                  title={f.reason}
-                >
-                  {f.file_name}
-                </a>
-                {f.reason && (
-                  <div className="text-[11px] text-ink-soft italic mt-0.5">{f.reason}</div>
-                )}
-              </li>
-            ))}
+            {doc.found_files.map((f) => {
+              const confClass =
+                f.confidence >= 70
+                  ? "bg-green-soft text-green"
+                  : f.confidence >= 40
+                    ? "bg-amber-soft text-amber"
+                    : "bg-red-soft text-red";
+              return (
+                <li key={f.sharepoint_path}>
+                  <span className="flex items-baseline gap-2">
+                    <a
+                      href={f.sharepoint_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink hover:underline font-mono text-xs"
+                      title={f.reason}
+                    >
+                      {f.file_name}
+                    </a>
+                    <span
+                      className={`${confClass} px-1.5 py-0.5 rounded font-mono text-[10px] font-bold shrink-0`}
+                    >
+                      {f.confidence}%
+                    </span>
+                  </span>
+                  {f.reason && (
+                    <div className="text-[11px] text-ink-soft italic mt-0.5">{f.reason}</div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         )}
       </td>

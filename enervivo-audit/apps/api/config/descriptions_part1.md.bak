@@ -39,7 +39,7 @@ Convention **utile mais pas toujours respectée** (anciens projets, fichiers re�
 
 # AVANT J1 — Qualification
 
-## 1. LOI signee
+## 1. LOI signée
 
 - **Jalon** : Avant J1
 - **Propriété** : Obligatoire
@@ -76,7 +76,7 @@ lui-même. Mots-clés LOI à privilégier : « Offre_… », « LOI_… », « L
 
 # J1 — Validation comité VivEpic
 
-## 2. PDB signee
+## 2. PDB signée
 
 - **Jalon** : J1
 - **Propriété** : Obligatoire
@@ -245,7 +245,7 @@ Acte administratif délivré par le **maire au nom de la commune** (ou par la DD
 
 ---
 
-## 7. Compte-rendu RDV maire et elus
+## 7. Compte-rendu RDV maire et élus
 
 - **Jalon** : J2a
 - **Propriété** : Facultatif
@@ -427,7 +427,7 @@ Devis / PTF signé par EnerVivo auprès d'un bureau d'études environnemental, *
 
 ---
 
-## 14. DT - DT résumé
+## 14. DT — DT résumé
 
 - **Jalon** : J2a
 - **Propriété** : Obligatoire
@@ -461,7 +461,7 @@ Devis / PTF signé par EnerVivo auprès d'un bureau d'études environnemental, *
 
 ---
 
-## 15. DICT - DICT résumé
+## 15. DICT — DICT résumé
 
 - **Jalon** : J2a (décision Julien — habituellement plutôt Construction)
 - **Propriété** : Obligatoire
@@ -548,30 +548,22 @@ Copie de la Carte Nationale d'Identité du propriétaire (recto-verso). **Peut �
 
 ### Description
 
-Copie du livret de famille du propriétaire (document idéal) OU **tout document d'état civil équivalent** servant à identifier la composition familiale / régime matrimonial du propriétaire personne physique. Pour la PDB on s'intéresse principalement à l'identification du couple et leur régime matrimonial.
+Copie du livret de famille du propriétaire. Document officiel multi-pages avec en-tête "République Française" et mention "Livret de famille". Contient les actes de mariage, naissances des enfants, décès. Pour la PDB on s'intéresse principalement aux pages identifiant le couple et leur régime matrimonial.
 
-**Format observé** : PDF scan ou JPG, 1 à 8 pages selon document.
+**Format observé** : PDF scan, 2 à 8 pages selon composition familiale.
 
-**Indices internes** (livret idéal) :
+**Indices internes** :
 - Couverture "LIVRET DE FAMILLE" + "République Française"
 - Tampon de mairie sur les actes
 - Mentions des actes de mariage, naissances, divorces
 
-**Équivalents acceptés** (avec confidence légèrement réduite, 60-75 au lieu de 85+) :
-- **Acte de naissance** délivré par mairie (extrait avec ou sans filiation)
-- **Acte de mariage** seul (sans le livret complet)
-- **Attestation d'état civil** mairie ou notaire
-- **Certificat de PACS** si applicable
+**Nommage probable** : `Livret_famille_[NomProprio].pdf`.
 
-**Nommage probable** : `Livret_famille_[NomProprio].pdf`, `acte_naissance_[Nom].jpg`, `etat_civil_[Nom].pdf`.
-
-**Règle de classification** : si le fichier est un document officiel d'état civil français (mairie/INSEE/notaire) identifiant le propriétaire personne physique, classifier comme « Copie livret de famille (proprio personne physique) » même si ce n'est PAS strictement un livret de famille. Le BE jugera de la complétude au cas par cas.
-
-**Piège** : pages partielles fréquentes — livret incomplet si seul l'acte de mariage est scanné, sans les naissances. Acte de naissance sans mention marginale ne renseigne pas le régime matrimonial.
+**Piège** : pages partielles fréquentes — livret incomplet si seul l'acte de mariage est scanné, sans les naissances.
 
 ---
 
-## 20. Statuts societe (proprio personne morale)
+## 20. Statuts société (proprio personne morale)
 
 - **Jalon** : J2a
 - **Propriété** : Annexes 3 PDB
@@ -600,7 +592,7 @@ Statuts à jour de la société propriétaire (si le terrain est détenu par une
 
 ---
 
-## 21. Extrait Kbis a jour (proprio personne morale)
+## 21. Extrait Kbis à jour (proprio personne morale)
 
 - **Jalon** : J2a
 - **Propriété** : Annexes 3 PDB
@@ -608,11 +600,11 @@ Statuts à jour de la société propriétaire (si le terrain est détenu par une
 
 ### Description
 
-Document officiel attestant l'existence légale et l'identité de la société propriétaire personne morale. Document idéal = **Extrait Kbis** du Registre du Commerce et des Sociétés (RCS) à jour (< 3 mois) signé du greffier. À défaut, tout document officiel équivalent identifiant la société (dénomination, SIREN, forme juridique, siège) est accepté.
+Extrait Kbis du Registre du Commerce et des Sociétés (RCS) attestant l'existence légale et l'identité de la société propriétaire. **Doit être à jour et signé** (typiquement < 3 mois) — un Kbis ancien n'est pas valide.
 
-**Format observé** : PDF officiel, 1 à 5 pages.
+**Format observé** : PDF officiel, 1 à 3 pages, généré par Infogreffe ou le greffe du tribunal de commerce.
 
-**Indices internes typiques (Kbis idéal)** :
+**Indices internes typiques** :
 - **En-tête** : "EXTRAIT D'IMMATRICULATION PRINCIPALE AU REGISTRE DU COMMERCE ET DES SOCIÉTÉS" ou "Extrait Kbis"
 - **Mentions officielles** : "Greffe du Tribunal de Commerce de [ville]"
 - **Informations** : dénomination sociale, forme juridique, capital social, SIREN/SIRET, adresse siège, gérance, date d'immatriculation, objet social, durée
@@ -620,20 +612,317 @@ Document officiel attestant l'existence légale et l'identité de la société p
 - **Mention de validité** : "Extrait délivré le [date]" ou "Document à jour au [date]"
 - **Logos** : Infogreffe, RCS, Greffe
 
-**Équivalents acceptés** (avec confidence réduite, 60-75 au lieu de 85+) :
-- **Avis de situation au Répertoire SIRENE INSEE** (extrait public, gratuit, source officielle gouv.fr / insee.fr) — typiquement utilisé pour les SCEA, EARL, GAEC et autres sociétés agricoles, ainsi que pour les associations
-- **Extrait D1** (artisans) ou inscription au Répertoire des Métiers
-- **Avis d'immatriculation INSEE** ou **Fiche entreprise INPI**
-- **Statuts à jour + Procès-verbal AG récent** si pas d'extrait officiel disponible
-
-**Nommage probable** : `Kbis_[Societe]_[date].pdf`, `Extrait_Kbis_[Societe].pdf`, `SIRENE_[Societe].pdf`, `avis_situation_INSEE_[Societe].pdf`.
-
-**Règle de classification** : si le fichier est un document officiel français (Infogreffe / INSEE / INPI / Chambre des Métiers) attestant l'existence légale et l'identité d'une personne morale (avec au minimum SIREN/SIRET + dénomination + forme juridique), classifier comme « Extrait Kbis a jour » même si ce n'est PAS un Kbis stricto sensu. Le BE jugera de l'acceptabilité finale au cas par cas (notamment pour les sociétés agricoles non inscrites au RCS qui n'ont pas de Kbis).
+**Nommage probable** : `Kbis_[Societe]_[date].pdf`, `Extrait_Kbis_[Societe].pdf`.
 
 **Pièges à éviter** :
 - **Kbis > 3 mois** = potentiellement obsolète → flag Ambigu avec note "Date Kbis à vérifier"
-- **Kbis non signé / sans tampon greffier** = document à signaler mais accepter
-- Pour SCEA/EARL/GAEC : l'avis SIRENE INSEE est souvent la seule source officielle disponible (pas d'inscription RCS) → accepter sans réserve
+- **Kbis non signé / sans tampon greffier** = document non valide
+- Ne pas confondre avec un avis de situation Insee (qui est différent)
 
 ---
 
+## 22. Relevé d'identité bancaire (RIB)
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+Relevé d'Identité Bancaire au nom du propriétaire (personne physique ou morale), permettant le versement des redevances et loyers du bail emphytéotique.
+
+**Format observé** : PDF ou image, 1 page typiquement.
+
+**Indices internes typiques** :
+- **En-tête banque** : logo (BNP Paribas, Crédit Agricole, Caisse d'Épargne, Banque Populaire, LCL, Société Générale, etc.)
+- **Mentions obligatoires** : "Relevé d'Identité Bancaire" ou "RIB"
+- **Code IBAN** : FR76 XXXX XXXX XXXX XXXX XXXX XXX (27 caractères)
+- **Code BIC** : 8 ou 11 caractères
+- **Nom du titulaire** : doit correspondre au nom du propriétaire de la PDB
+- Code banque, code guichet, numéro de compte
+
+**Nommage probable** : `RIB_[NomProprio].pdf`.
+
+**Piège** : le RIB peut être au nom du conjoint ou d'une autre personne — vérifier que le nom du titulaire correspond bien au Promettant de la PDB. Si nom différent → flag Ambigu.
+
+---
+
+## 23. Titre de propriété des parcelles
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+Acte notarié complet attestant la propriété des parcelles du projet. **Toutes les pages doivent être en PDF (pas de photos)** comme stipulé dans l'Annexe 3 de la PDB.
+
+**Format observé** : PDF scanné ou numérique, **10 à 20+ pages**. Document juridique dense émis par un Office Notarial.
+
+**Indices internes typiques** :
+- **En-tête** : nom de l'Office Notarial, "Maître [Nom]", ville, "Notaire(s) Associé(s)"
+- **Structure en 2 parties** : "PARTIE NORMALISEE" (document hypothécaire) + "PARTIE DEVELOPPEE" (clauses)
+- **Sections clés** : "IDENTIFICATION DES PARTIES" (VENDEUR / ACQUEREUR), "DESIGNATION DU BIEN" avec **tableau cadastral** (Section / N° / Lieudit / Surface en ha, a, ca / Nature : pré, terre, taillis), "EFFET RELATIF" (historique de propriété, donations antérieures publiées au service de la publicité foncière), "PRIX", "CONDITIONS ET DECLARATIONS GENERALES", "ORIGINE DE PROPRIETE"
+- **Mention publication** : "publié au service de la publicité foncière de [ville]", volume, numéro
+- **Page de signature** : signatures manuscrites ou électroniques (tablette numérique) du vendeur et de l'acquéreur, mention "Fait à [ville], le [date]"
+
+**Nommage observé** : `YYYY_MM_DD_[CODEPROJET]_titre_de_propriété.pdf` (ex : `2025_04_25_DLAUGA_titre_de_propriété.pdf`).
+
+**Piège** : ne pas confondre avec l'attestation de vente du notaire (document court 1-2 pages, cf. doc #24). Le titre de propriété est **l'acte complet** (10+ pages), l'attestation est un **résumé certifié**.
+
+---
+
+## 24. Attestation de vente notaire (< 2 ans) ou relevé de propriété mairie
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+Attestation courte rédigée et signée par le notaire, certifiant la propriété des parcelles. Document de **moins de 2 ans** (ou relevé de propriété tamponné par la mairie en alternative).
+
+**Format observé** : PDF, **1 à 2 pages**, document notaire simple.
+
+**Indices internes typiques** :
+- **En-tête** : "OFFICE NOTARIAL", nom(s) du/des notaire(s), adresse de l'étude, logo Notaires
+- **Titre** : "ATTESTATION" (en gros)
+- **Formule type** : "JE SOUSSIGNE Maître [Nom], Notaire et membre de la Société Civile Professionnelle [...], CERTIFIE ET ATTESTE, QUE les biens ci-après désignés :"
+- **Localisation + tableau cadastral** : "A [COMMUNE] ([CP]), Lieu-dit [nom]", tableau Section / N° / Lieudit / Surface
+- **Identification des propriétaires** : noms, dates de naissance, adresses, mention usufruit/nue-propriété si applicable
+- **Clôture** : "EN FOI DE QUOI, j'ai délivré la présente attestation pour servir et valoir ce que de droit", "Fait à [ville], Le [date]", nom du notaire + **signature manuscrite + cachet de l'étude notariale**
+- Pied de page : "MEMBRE D'UN CENTRE DE GESTION AGREEE"
+
+**Cas alternatif (relevé de propriété mairie)** : document tamponné, daté et signé par la mairie, contenant la liste des parcelles avec sections cadastrales.
+
+**Nommage observé** : `YYYY_MM_DD_[CODEPROJET]_attestation_de_vente.pdf` (ex : `2025_08_25_DBOURDALE-DUFAU_attestation_de_vente.pdf`).
+
+**Piège** : vérifier la date d'émission — doit être **de moins de 2 ans** au moment de l'audit. Si la date "Fait à [ville], Le [date]" remonte à plus de 2 ans → document périmé, flag Ambigu.
+
+---
+
+## 25. Copie baux en cours + coordonnées preneurs
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+Copie de tous les baux ruraux en cours sur les parcelles objet de la PDB (baux à ferme, baux ruraux), avec les coordonnées des preneurs (locataires-exploitants). Permet à EnerVivo de connaître les engagements locatifs existants et d'organiser la libération des parcelles ou la coactivité.
+
+**Format observé** : PDF, plusieurs pages (chaque bail fait 5-15 pages), peut être plusieurs fichiers si plusieurs baux.
+
+**Indices internes typiques** :
+- **Titre** : "BAIL RURAL" ou "BAIL À FERME"
+- **Mention article L. 411-1 et suivants du Code rural**
+- **Identification du bailleur** (propriétaire) et **preneur** (exploitant agricole)
+- **Désignation des parcelles** : tableau cadastral
+- **Durée du bail** : 9 ans (durée légale minimale du bail rural), renouvelable
+- **Fermage** : montant annuel en €/ha
+- **Signatures** : bailleur + preneur
+
+**Nommage probable** : `Bail_rural_[Proprio]_[Preneur]_[date].pdf`, `Baux_en_cours_[CodeProjet].pdf`.
+
+**Piège** : il peut y avoir **plusieurs baux** sur les mêmes parcelles (succession de preneurs) — chercher tous les baux actifs. Coordonnées preneurs souvent en première page du bail.
+
+---
+
+## 26. Relevé d'hypothèques (état hypothécaire)
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+Document obtenu auprès du **Service de Publicité Foncière** (ex-Conservation des Hypothèques) attestant des inscriptions hypothécaires éventuelles sur les parcelles. **Uniquement sur demande spécifique du Bénéficiaire** (EnerVivo) — pas systématique.
+
+**Format observé** : PDF, document administratif officiel.
+
+**Indices internes typiques** :
+- **En-tête** : "Service de la publicité foncière de [ville]" ou "République Française - Ministère des Finances"
+- **Titre** : "État hypothécaire" ou "Relevé d'inscriptions hypothécaires"
+- **Mentions** : "Hypothèques", "Inscriptions", "Privilèges", "Saisies"
+- **Identification du bien** : références cadastrales, propriétaire
+- **Mention clé** : "Aucune inscription" si parcelles libres, ou détail des inscriptions si grevées
+- **Tampon et signature** du conservateur des hypothèques
+
+**Nommage probable** : `Etat_hypothecaire_[CodeProjet]_[date].pdf`, `Releve_hypotheques_[Proprio].pdf`.
+
+**Piège** : document souvent absent si non demandé explicitement par EnerVivo (cas par cas).
+
+---
+
+## 27. Relevé parcellaire à jour
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+**Relevé d'exploitation émis par la MSA** (Mutualité Sociale Agricole) listant l'ensemble des parcelles exploitées par un agriculteur avec leur désignation cadastrale, surface et revenu cadastral réel. **Attention** : ce document s'appelle "Relevé d'exploitation" (pas "relevé parcellaire") dans le jargon MSA — mais c'est bien ce qui correspond à la pièce "Relevé parcellaire" de l'Annexe 3 PDB.
+
+**Format observé** : PDF, **multi-pages** (souvent 3-8 pages selon le nombre de parcelles).
+
+**Indices internes typiques (signature très forte)** :
+- **Logo MSA** en haut à gauche : "santé / famille / retraite / services" + nom de la caisse régionale (ex : "MSA Ile de France")
+- **Logo "cerfa en cours"** en haut à droite
+- **Titre encadré** : "RELEVE D'EXPLOITATION"
+- **Mention** : "situation cadastrale au : [date]"
+- **Bloc destinataire** : nom de l'exploitant (Mme/M.), nom de l'exploitation (ex : "FRM LES AIGREFOINS"), adresse
+- **Référence** : "Réf : [SIRET]" (numéro SIRET de l'exploitation)
+- **Numéro de dossier** à droite : 6 chiffres (ex : "001464")
+- **Tableau structuré** : DEPT / COM / NUMERO (compte propriétaire) / SECTION / NUMERO PLAN / Sub.Fisc / CLASSE / SUPERFICIE (Ha, A, Ca) / R.C REEL (Euros, Cts) / Faire Valoir (F=Fermier, D=Direct, M=Métairie) / NOM DU PROPRIETAIRE
+- **Totaux par compte** : "* TOTAL DU COMPTE ="
+- **Totaux par commune** et **parcellaire total** en fin de document
+- **Pied de page** : "MSA [Caisse]", adresse, tél, fax, site web, "folio X/Y"
+
+**Nommage observé** : `YYYY_MM_DD_[CODEPROJET]_Relevé_parcellaire_[Nom_Exploitant].pdf` (ex : `2026_05_13_D2JUMEAUX_Relevé_parcellaire_Anne_Huges.pdf`).
+
+**Piège** : le nom de fichier dit "Relevé parcellaire" mais le document dit "RELEVE D'EXPLOITATION" — les deux désignent la même pièce pour l'Annexe 3 PDB. Ne pas chercher un document intitulé exactement "Relevé parcellaire" — chercher le relevé MSA.
+
+---
+
+## 28. Lettre de motivation projet agrivoltaïque
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+Lettre rédigée par le propriétaire/exploitant agricole justifiant l'intérêt du projet agrivoltaïque pour son exploitation. **Spécifique aux projets AgriPV** (centrales sol sur parcelles agricoles). Document central pour la CDPENAF et le cadre APER (Loi 2023-175).
+
+**Format observé** : Word/PDF, document court 1-2 pages.
+
+**Indices internes typiques** :
+- **Format** : lettre type avec en-tête (nom + adresse exploitant), destinataire (EnerVivo / Préfecture / DDT)
+- **Contenu** :
+  - Présentation de l'exploitation (nature, surface, productions)
+  - Motivations pour le projet agrivoltaïque : maintien activité, complément revenu, amélioration bien-être animal, adaptation changement climatique, protection aléas
+  - Engagement à poursuivre l'activité agricole pendant la durée du bail
+  - Référence aux 4 services APER (Loi 2023-175 art. L. 314-36) si projet agrivoltaïque
+- **Signature manuscrite** du propriétaire/exploitant
+- **Date et lieu**
+
+**Nommage probable** : `Lettre_motivation_[Proprio]_[CodeProjet].pdf`, `Motivation_projet_agriPV_[Nom].docx`.
+
+**Piège** : lettre type peu personnalisée → moins crédible aux yeux de la DDT/CDPENAF. Vérifier que la lettre fait référence aux spécificités de l'exploitation.
+
+---
+
+## 29. Déclaration ICPE OU attestation non-assujettissement
+
+- **Jalon** : J2a
+- **Propriété** : Cas par cas
+- **Versioning** : Document unique
+
+### Description
+
+**Deux cas possibles** selon que le projet est classé ICPE ou non :
+
+**Cas 1 (le plus courant pour les projets AgriPV EnerVivo) : Attestation de non-classement ICPE**
+
+**Format observé** : PDF, **1 page**, document minimaliste.
+
+**Indices internes typiques** :
+- **En-tête** : raison sociale du propriétaire/gérant du site (ex : "SCI ABEZIE")
+- **Titre** : "ATTESTATION" (en gros, centré)
+- **Corps** : formule type "Je soussigné [Nom], gérant de [Société], déclare sur l'honneur que le site immobilier sis [adresse complète], **n'est pas classé en Installations Classées pour la Protection de l'Environnement (ICPE)**."
+- **Clôture** : "Fait pour valoir ce que de droit.", lieu, date
+- **Signature manuscrite** du déclarant
+- **Pied de page** (optionnel) : adresse complète + numéro RCS
+
+**Nommage observé** : `Attestation_non_classement_ICPE.pdf`, `ICPE_attestation_non_assujettissement_[Commune].pdf`.
+
+**Cas 2 : Déclaration ICPE (si assujetti)**
+
+Document administratif de type récépissé préfectoral de déclaration ICPE. En-tête préfecture, numéro de dossier, rubriques ICPE concernées. Beaucoup plus long (5-20 pages). Cas rare pour les projets sol < 250 kWc mais possible pour les grands parcs.
+
+**Stratégie de classification** : si le document fait 1 page avec "déclare sur l'honneur" + "non classé ICPE" → attestation non-classement. Si document officiel préfectoral avec rubriques ICPE → déclaration ICPE.
+
+---
+
+## 30. RIB pour versement redevances et loyers du bail
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+**Doublon potentiel avec doc #22** (RIB) — peut être le même document. Si distinct : RIB spécifiquement dédié aux versements des redevances du bail emphytéotique (souvent un compte dédié pour les revenus locatifs).
+
+**Stratégie** : si un seul RIB trouvé pour le propriétaire, il couvre les deux exigences (doc #22 et #30). Si deux RIB distincts → typiquement un compte principal + un compte dédié aux revenus fonciers.
+
+Indices et format identiques au doc #22.
+
+---
+
+## 31. Attestation MSA chef d'exploitation (< 6 mois)
+
+- **Jalon** : J2a
+- **Propriété** : Annexes 3 PDB
+- **Versioning** : Document unique
+
+### Description
+
+Attestation officielle émise par la **MSA** (Mutualité Sociale Agricole) confirmant le statut de **chef d'exploitation agricole** du propriétaire/exploitant. **Contrainte de fraîcheur stricte : moins de 6 mois** au moment de l'audit.
+
+**Format observé** : PDF, 1 à 2 pages, document officiel MSA.
+
+**Indices internes typiques** :
+- **En-tête MSA** : logo "santé / famille / retraite / services" + nom de la caisse régionale
+- **Titre** : "Attestation" ou "Attestation de chef d'exploitation"
+- **Mention clé** : "chef d'exploitation agricole", "à titre principal" ou "à titre secondaire"
+- **Identification** : nom, prénom, date de naissance, SIRET de l'exploitation, surface exploitée
+- **Date d'émission** : doit être < 6 mois
+- **Signature ou tampon MSA**
+
+**Nommage probable** : `Attestation_MSA_[Proprio]_[date].pdf`, `MSA_chef_exploitation_[Nom].pdf`.
+
+**Piège clé** : **vérifier la date d'émission** — si > 6 mois, le document est périmé et doit être renouvelé → flag Ambigu avec note "Date attestation MSA > 6 mois, à renouveler". C'est un piège fréquent.
+
+---
+
+## 32. Dossier de qualification J2a
+
+- **Jalon** : J2a
+- **Propriété** : Obligatoire
+- **Versioning** : Versionné par jalon
+
+### Description
+
+Version J2a du Dossier de qualification — mêmes principes que J1 (cf. doc #5), avec contenu plus étoffé :
+- **Jalon `J2a` explicite dans le nom** du fichier
+- Intègre le CU obtenu, les devis EPA/Enviro lancés, le plan de masse APD, le TADD affiné J2a
+- Slides supplémentaires sur les contraintes urbanistiques (PLUi, SCoT, servitudes)
+- Slides sur la concertation locale (synthèses des CR mairie, EPCI, Chambre d'Agriculture)
+
+**Stratégie de classification** : identique à doc #5, jalon explicite dans nom de fichier (`_J2a_` ou `_J2A_`).
+
+---
+
+## 33. Lettre d'engagement
+
+- **Jalon** : J2a
+- **Propriété** : Facultatif
+- **Versioning** : Document unique
+
+### Description
+
+Lettre d'engagement signée par EnerVivo (ou par le propriétaire selon contexte) formalisant un engagement ponctuel : engagement à respecter certaines prescriptions, à mettre en œuvre des mesures de compensation, à maintenir certains usages, etc.
+
+**Format observé probable** : Word/PDF, lettre type 1-2 pages signée.
+
+**Indices internes** :
+- **Format lettre** : en-tête EnerVivo (logo + adresse Bordeaux), destinataire identifié
+- **Titre** : "Lettre d'engagement" ou "Engagement de [thème spécifique]"
+- **Corps** : objet de l'engagement, conditions, durée
+- **Signature** : Sylvain FREDERIC ou habilité EnerVivo
+
+**Nommage probable** : `Lettre_engagement_[Theme]_[CodeProjet].pdf`.
+
+**Piège** : document non standardisé, contenu très variable selon contexte. À traiter comme document opportuniste — si présent c'est un plus mais pas bloquant.

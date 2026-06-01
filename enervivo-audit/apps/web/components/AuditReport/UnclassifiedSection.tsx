@@ -69,7 +69,23 @@ export function UnclassifiedSection({ report }: { report: AuditReport }) {
                       )}
                     </td>
                     <td className="px-4 py-3 text-ink-mid">{u.classified_type ?? "—"}</td>
-                    <td className="px-4 py-3 text-right font-mono">{u.confidence ?? "—"}%</td>
+                    <td className="px-4 py-3 text-right font-mono">
+                      {u.confidence == null ? (
+                        <span className="text-ink-soft">—</span>
+                      ) : (
+                        <span
+                          className={`px-1.5 py-0.5 rounded font-bold ${
+                            u.confidence >= 70
+                              ? "bg-green-soft text-green"
+                              : u.confidence >= 40
+                                ? "bg-amber-soft text-amber"
+                                : "bg-red-soft text-red"
+                          }`}
+                        >
+                          {u.confidence}%
+                        </span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>

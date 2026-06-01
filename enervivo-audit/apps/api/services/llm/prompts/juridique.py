@@ -12,23 +12,31 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-_DESCRIPTIONS_FILE = (
-    Path(__file__).resolve().parents[3] / "config" / "descriptions_part1.md"
+_CONFIG_DIR = Path(__file__).resolve().parents[3] / "config"
+_DESCRIPTIONS_FILES = (
+    _CONFIG_DIR / "descriptions_part1.md",
+    _CONFIG_DIR / "descriptions_part2.md",
 )
 
 
 @lru_cache(maxsize=1)
 def _load_enriched_descriptions() -> str:
-    """Charge le référentiel V12 enrichi (descriptions_part1.md) si présent.
+    """Charge le référentiel V12 enrichi (descriptions_part1.md + descriptions_part2.md).
 
-    Document métier détaillé par type : définition, format observé, indices internes,
+    Documents métier détaillés par type : définition, format observé, indices internes,
     nommage, stratégie de classification, pièges. Servi en knowledge base au LLM,
     mis en cache OpenRouter (ephemeral) pour ne coûter qu'une fois par batch.
+
+    Part1 couvre #1-#21 (Avant J1 → J1 → J2a partiel), part2 couvre #22-#107
+    (J2a remainder → J7_Cloture). Numérotation 1:1 avec documents_v12.json.
     """
-    try:
-        return _DESCRIPTIONS_FILE.read_text(encoding="utf-8")
-    except OSError:
-        return ""
+    parts: list[str] = []
+    for f in _DESCRIPTIONS_FILES:
+        try:
+            parts.append(f.read_text(encoding="utf-8"))
+        except OSError:
+            continue
+    return "\n\n".join(parts)
 
 
 def _format_hint(v2: dict[str, Any] | None) -> str:

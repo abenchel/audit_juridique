@@ -30,11 +30,52 @@ from models.document import FileMetadata
 from .scoring import tier
 
 
+_DASH_VARIANTS = {
+    "‐", "‑", "‒", "–", "—", "―",  # ‐ ‑ ‒ – — ―
+    "−",  # math minus
+    "­",  # soft hyphen
+}
+
+
 def _normalize_type(s: str) -> str:
-    """Normalisation tolérante : sans accents, minuscule, espaces compactés."""
+    """Normalisation tolérante : sans accents, minuscule, espaces compactés.
+
+    Aussi : toutes les variantes de tirets (em-dash, en-dash, etc.) ramenées à un
+    espace, pour éviter que 'DT — DT résumé' (LLM, em-dash U+2014) ne matche pas
+    'DT - DT résumé' (V12, hyphen-minus U+002D).
+    """
+    for d in _DASH_VARIANTS:
+        s = s.replace(d, "-")
+    s = s.replace("-", " ")
     nfkd = unicodedata.normalize("NFKD", s)
     ascii_str = nfkd.encode("ascii", "ignore").decode("ascii")
     return " ".join(ascii_str.lower().split())
+
+
+def _find_prefix_match(
+    classified_key: str,
+    expected_keys: list[str],
+) -> str | None:
+    """Fallback : si le LLM a tronqué le nom (ex. 'Relevé d'identité bancaire (RIB)'
+    au lieu de 'Relevé d'identité bancaire (RIB) pour versement redevances...'),
+    on accepte un préfixe UNIQUE. Retourne la clé normalisée de l'expected
+    si exactement UN expected commence par classified_key + ' ' (ou inversement
+    classified_key commence par un expected unique). Sinon None.
+    """
+    if not classified_key:
+        return None
+    # Direction 1 : LLM a tronqué → expected name starts with classified key
+    candidates_a = [
+        k for k in expected_keys
+        if k.startswith(classified_key + " ") or k == classified_key
+    ]
+    # Direction 2 : LLM a paraphrasé en allongeant → classified key starts with expected
+    candidates_b = [
+        k for k in expected_keys
+        if classified_key.startswith(k + " ") or classified_key == k
+    ]
+    candidates = list({*candidates_a, *candidates_b})
+    return candidates[0] if len(candidates) == 1 else None
 
 
 def match_classified_to_expected(
@@ -52,9 +93,24 @@ def match_classified_to_expected(
     by_type: dict[str, list[dict[str, Any]]] = defaultdict(list)
     matched_ids: set[str] = set()
 
+    # 2-passes : d'abord exact match, puis prefix-match pour les orphelins.
+    expected_keys = [_normalize_type(e["name"]) for e in expected_for_jalons]
+    expected_keys_set = list(set(expected_keys))
+
     for c in classified:
-        if c.get("classified_type"):
-            by_type[_normalize_type(c["classified_type"])].append(c)
+        ctype = c.get("classified_type")
+        if not ctype:
+            continue
+        key = _normalize_type(ctype)
+        if key in expected_keys_set:
+            by_type[key].append(c)
+        else:
+            # Fallback : prefix-match si UN seul expected matche
+            alias = _find_prefix_match(key, expected_keys_set)
+            if alias is not None:
+                by_type[alias].append(c)
+            else:
+                by_type[key].append(c)  # restera orphelin si pas dans expected
 
     result: list[ExpectedDocument] = []
 
