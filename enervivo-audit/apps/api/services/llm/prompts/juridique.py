@@ -21,14 +21,14 @@ _DESCRIPTIONS_FILES = (
 
 @lru_cache(maxsize=1)
 def _load_enriched_descriptions() -> str:
-    """Charge le référentiel V12 enrichi (descriptions_part1.md + descriptions_part2.md).
+    """Charge le référentiel V13 enrichi (descriptions_part1.md + descriptions_part2.md).
 
     Documents métier détaillés par type : définition, format observé, indices internes,
     nommage, stratégie de classification, pièges. Servi en knowledge base au LLM,
     mis en cache OpenRouter (ephemeral) pour ne coûter qu'une fois par batch.
 
-    Part1 couvre #1-#21 (Avant J1 → J1 → J2a partiel), part2 couvre #22-#107
-    (J2a remainder → J7_Cloture). Numérotation 1:1 avec documents_v12.json.
+    Part1 couvre #1-#31 (Avant J1 → J1 → J2a partiel), part2 couvre #32-#106
+    (J2a remainder → J7_Cloture). Numérotation 1:1 avec documents_v12.json (contenu V13).
     """
     parts: list[str] = []
     for f in _DESCRIPTIONS_FILES:
@@ -107,7 +107,7 @@ classification cohérente avec le contenu juste parce qu'un indice ne colle pas.
 
 ---
 
-📚 RÉFÉRENTIEL ENRICHI V12 — descriptions métier détaillées par type de document.
+📚 RÉFÉRENTIEL ENRICHI V13 — descriptions métier détaillées par type de document.
 Pour CHAQUE type ci-dessus tu disposes ci-dessous d'une fiche : définition, format
 observé, indices internes typiques (en-têtes, cachets, formules), conventions de
 nommage, stratégie de classification, pièges classiques. **Utilise-les activement
@@ -132,7 +132,11 @@ Pour chaque extrait que je te donne, identifie le type le plus probable parmi ce
 
 Règles strictes :
 1. Réponds UNIQUEMENT en JSON valide avec exactement trois clés : "type", "confidence", "reason".
-2. "type" doit être copié EXACTEMENT depuis la liste ci-dessus (sans paraphrase, sans préfixe, sans les parenthèses d'indice). Si aucun ne convient, mets "Autre / Non identifié".
+2. ⚠️ RÈGLE ABSOLUE — "type" doit être l'UNE des chaînes EXACTES de la liste ci-dessus, copiée caractère pour caractère (sans paraphrase, sans préfixe, sans les parenthèses d'indice, sans reformuler).
+   • Tu n'as le DROIT de produire QUE : soit un libellé EXACT de la liste, soit EXACTEMENT "Autre / Non identifié".
+   • Il est INTERDIT d'inventer, traduire, abréger ou décrire un type qui n'est pas dans la liste. Décrire ce que tu vois (ex. "Avis de situation SIRENE", "Fiche technique onduleur", "Plan de situation") au lieu de copier un libellé de la liste est une ERREUR.
+   • Si le document correspond à un ÉQUIVALENT accepté décrit dans une fiche du référentiel enrichi (ex. un avis SIRENE INSEE est l'équivalent accepté de « Extrait Kbis a jour »), réponds avec le libellé EXACT de la liste (« Extrait Kbis a jour (proprio personne morale) »), PAS avec le nom de l'équivalent.
+   • Si VRAIMENT aucun libellé de la liste ne convient (document hors périmètre EnerVivo : fiche technique fournisseur, PLU, plan cadastral, ERP…), réponds EXACTEMENT "Autre / Non identifié" — ne force pas un type. C'est le bon choix dans ce cas.
 3. "confidence" est un entier de 0 à 100 reflétant ta certitude :
    - ≥ 80 : signature/cachet/référence officielle visible, contenu sans ambiguïté
    - 60-79 : contenu correspond au type mais éléments de signature manquants
@@ -160,16 +164,36 @@ Extrait du contenu :
 Identifie le type de ce document."""
 
 
-def build_user_prompt_vision(file_name: str, file_path: str | None = None) -> str:
+def build_user_prompt_vision(
+    file_name: str,
+    file_path: str | None = None,
+    ocr_text: str | None = None,
+) -> str:
     """Prompt utilisateur pour les PDF scannés (sans couche texte).
 
     Les images des pages sont jointes en multimodal. Le LLM doit lire les
     titres / cachets / signatures visibles pour classer le document.
+
+    `ocr_text` (optionnel) : texte extrait par Tesseract sur l'ensemble des
+    pages du scan. Quand il est fourni, le LLM dispose à la fois du contenu
+    textuel de tout le document (y compris pages du milieu non jointes en
+    image) ET du visuel des pages jointes. L'OCR pouvant être bruité, le
+    prompt précise que l'image fait foi en cas de divergence.
     """
     path_block = f"Chemin SharePoint : {file_path}\n" if file_path else ""
+    ocr_block = ""
+    if ocr_text and ocr_text.strip():
+        ocr_block = (
+            "\nTexte extrait par OCR (Tesseract) de l'ensemble des pages du scan "
+            "— peut contenir des erreurs de reconnaissance, l'image jointe fait foi "
+            "en cas de doute :\n"
+            "<<<OCR\n"
+            f"{ocr_text.strip()}\n"
+            "OCR>>>\n"
+        )
     return f"""Nom du fichier : {file_name}
 {path_block}
-Ce PDF est un SCAN sans couche texte extractible. Les pages t'ont été jointes en images.
-Lis le titre, l'en-tête, les cachets et les signatures pour identifier le type.
-
+Ce PDF est un SCAN sans couche texte extractible. Des pages t'ont été jointes en images, et le texte OCR de toutes les pages est fourni ci-dessous le cas échéant.
+Lis le titre, l'en-tête, les cachets et les signatures (sur l'image) ainsi que le contenu textuel (OCR) pour identifier le type.
+{ocr_block}
 Identifie le type de ce document."""

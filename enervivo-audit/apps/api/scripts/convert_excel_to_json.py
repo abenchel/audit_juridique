@@ -1,8 +1,9 @@
-"""Convertit le référentiel V12 (Excel EnerVivo) en documents_v12.json.
+"""Convertit le référentiel (Excel EnerVivo, V13) en documents_v12.json.
 
-Source : 260518_Document_par_Jalon_V12.xlsx, feuille 'Liste documents par jalon'.
+Source : 260518_Document_par_Jalon_V13.xlsx, feuille 'Liste documents par jalon'.
+(Le nom de sortie reste documents_v12.json par compat code ; --version tague le contenu.)
 
-Colonnes V12 attendues (ligne 4) :
+Colonnes attendues (ligne 4, inchangées V12→V13) :
   # | Jalon | Document | PROPRIETE | Type de versioning | Jalons concernes |
   Description | Format de doc | Lien_DIBOS_H | Lien_DMONFLANQUIN
 
@@ -61,7 +62,7 @@ def slugify(value: str) -> str:
     return slug or "doc"
 
 
-def convert(input_path: Path, output_path: Path) -> dict[str, Any]:
+def convert(input_path: Path, output_path: Path, version: str = "V13") -> dict[str, Any]:
     wb = openpyxl.load_workbook(input_path, data_only=True)
     if SHEET_NAME not in wb.sheetnames:
         raise SystemExit(f"❌ Feuille '{SHEET_NAME}' absente. Sheets : {wb.sheetnames}")
@@ -121,7 +122,7 @@ def convert(input_path: Path, output_path: Path) -> dict[str, Any]:
     total = sum(len(j["documents"]) for j in ordered_jalons)
 
     result = {
-        "version": "V12",
+        "version": version,
         "source": input_path.name,
         "total_documents": total,
         "jalons": ordered_jalons,
@@ -133,9 +134,10 @@ def convert(input_path: Path, output_path: Path) -> dict[str, Any]:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Convertit V12.xlsx → documents_v12.json")
-    parser.add_argument("--in", dest="input", required=True, help="Chemin V12.xlsx")
+    parser = argparse.ArgumentParser(description="Convertit le xlsx référentiel → documents_v12.json")
+    parser.add_argument("--in", dest="input", required=True, help="Chemin du xlsx (ex. V13)")
     parser.add_argument("--out", dest="output", default="config/documents_v12.json")
+    parser.add_argument("--version", dest="version", default="V13", help="Tag de version écrit dans le JSON")
     args = parser.parse_args()
 
     in_path = Path(args.input)
@@ -144,7 +146,7 @@ def main() -> None:
         print(f"❌ Introuvable : {in_path}", file=sys.stderr)
         sys.exit(1)
 
-    result = convert(in_path, out_path)
+    result = convert(in_path, out_path, version=args.version)
     print(f"✓ {result['total_documents']} documents convertis ({len(result['jalons'])} jalons)")
     print(f"✓ Écrit : {out_path}")
     for j in result["jalons"]:

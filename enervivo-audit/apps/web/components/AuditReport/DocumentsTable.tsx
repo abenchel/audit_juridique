@@ -68,7 +68,9 @@ function DocumentRow({ doc }: { doc: ExpectedDocument }) {
         {doc.note && <div className="text-xs text-ink-soft font-normal mt-1">{doc.note}</div>}
       </td>
       <td className="px-4 py-3">
-        <span className={`${proprieteAccent} px-2 py-1 rounded text-[10px] font-bold uppercase`}>
+        <span
+          className={`${proprieteAccent} px-2 py-1 rounded text-[10px] font-bold uppercase whitespace-nowrap inline-block`}
+        >
           {doc.propriete}
         </span>
       </td>

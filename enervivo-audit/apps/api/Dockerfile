@@ -25,8 +25,14 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 FROM python:3.11-slim AS runtime
 
-# Keep runtime image minimal
-RUN rm -rf /var/lib/apt/lists/*
+# Tesseract OCR (binaire système requis par pytesseract) + pack langue français.
+# Utilisé UNIQUEMENT pour les PDF scannés (services/extraction/ocr.py) afin de
+# joindre le texte OCR au prompt vision. Sans ces paquets, l'OCR est fail-open
+# (ocr.py renvoie "" → classification vision seule, comportement antérieur).
+# tesseract-ocr-eng est inclus par défaut ; on ajoute -fra pour le corpus FR.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-fra \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -37,6 +43,13 @@ COPY --from=builder /app/.venv /app/.venv
 #    uv.lock, README, etc. dans l'image runtime.
 COPY --from=builder /app/main.py /app/celery_app.py /app/alembic.ini ./
 COPY --from=builder /app/alembic /app/alembic
+# config/ embarque la knowledge base métier V13 injectée dans les prompts LLM :
+#   - descriptions_part1.md + descriptions_part2.md (référentiel enrichi V13)
+#   - annexe_plan_masse.md (règles passe 2 plan de masse)
+#   - Annexe_fichier_TADD.md (règles passe 2 TADD)
+#   - documents_v12.json (contenu V13) + documents_projet_v2.json (référentiels)
+#   - projects_seed.json (seed) + settings.py
+# Les .md ne sont copiés QUE parce que .dockerignore re-inclut !config/*.md.
 COPY --from=builder /app/config /app/config
 COPY --from=builder /app/db /app/db
 COPY --from=builder /app/models /app/models

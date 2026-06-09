@@ -22,6 +22,13 @@ export function JalonProgress({ report }: { report: AuditReport }) {
 function JalonRow({ jalon }: { jalon: JalonReport }) {
   const pct = jalon.completion_pct;
   const status = pct >= 90 ? "done" : pct >= 50 ? "active" : "pending";
+  // Les jalons "longs" (ex. "J5_Construction", "J7_Cloture") débordaient de la
+  // colonne label et chevauchaient la barre de progression. On découpe le code
+  // court (J5) du suffixe (Construction) UNIQUEMENT pour les codes de forme "Jx_…".
+  // Les libellés sans ce motif (ex. "Avant J1") restent affichés entiers.
+  const jalonMatch = jalon.jalon.match(/^(J\d+[a-z]?)[_ ](.+)$/);
+  const jalonCode = jalonMatch ? jalonMatch[1] : jalon.jalon;
+  const jalonLabel = jalonMatch ? jalonMatch[2] : "";
   const borderClass =
     status === "done"
       ? "border-l-4 border-l-green"
@@ -34,10 +41,17 @@ function JalonRow({ jalon }: { jalon: JalonReport }) {
       href={`#${jalonAnchorId(jalon.jalon)}`}
       className={`block bg-bg-card border border-line rounded-lg p-5 ${borderClass} hover:border-ink-soft hover:shadow-sm transition-all cursor-pointer no-underline`}
     >
-      <div className="grid grid-cols-1 md:grid-cols-[120px_1fr_360px] gap-8 items-center">
-        <div>
-          <div className="font-display text-2xl font-bold text-ink">{jalon.jalon}</div>
-          <div className="text-xs text-ink-soft">{jalon.total_expected} attendus</div>
+      <div className="grid grid-cols-1 md:grid-cols-[140px_1fr_360px] gap-8 items-center">
+        <div className="min-w-0">
+          <div className="font-display text-2xl font-bold text-ink leading-tight">
+            {jalonCode}
+          </div>
+          {jalonLabel && (
+            <div className="text-sm font-semibold text-ink-mid leading-tight truncate">
+              {jalonLabel}
+            </div>
+          )}
+          <div className="text-xs text-ink-soft mt-0.5">{jalon.total_expected} attendus</div>
         </div>
 
         <div>

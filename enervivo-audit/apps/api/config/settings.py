@@ -46,7 +46,12 @@ class Settings(BaseSettings):
     # --- OpenRouter (LLM) ---
     openrouter_api_key: SecretStr = SecretStr("")
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
-    openrouter_default_model: str = "anthropic/claude-haiku-4.5"
+    openrouter_default_model: str = "google/gemini-2.5-flash-lite"
+    # Modèle dédié à la VISION (PDF scannés, images). Vide → utilise
+    # openrouter_default_model (comportement actuel : Haiku partout). À remplir
+    # le jour où l'on veut SPLITTER : ex. garder un modèle vision soigné ici et
+    # mettre un modèle texte moins cher dans openrouter_default_model.
+    openrouter_vision_model: str = ""
     llm_max_retries: int = 3
     llm_timeout_seconds: int = 60
 

@@ -349,8 +349,6 @@ Document de preuve de tenue d'un comité de projet interne EnerVivo (ou élargi 
 
 **Piège** : ne pas confondre avec un CR de réunion (le CR a du contenu rédactionnel, la feuille d'émargement est juste un tableau de signatures). Les deux peuvent coexister pour le même comité.
 
-**✅ Variantes acceptées (ne pas rejeter en "Autre")** : la feuille d'émargement peut prendre des formes peu standardisées — un tableau structuré, une **liste manuscrite scannée** avec paraphes, une **photo** du tableau de signatures, ou un simple export texte d'une liste de présence. Les indices-clés suffisants sont : **mention d'une réunion/comité + une liste de noms + des traces de présence (signatures/paraphes/initiales)**. Ne pas rejeter pour cause de format peu structuré ou de scan de mauvaise qualité.
-
 ---
 
 ## 12. Devis signé EPA
@@ -387,11 +385,6 @@ Document de preuve de tenue d'un comité de projet interne EnerVivo (ou élargi 
 3. **Ne pas confondre avec le devis Enviro** : l'EPA mentionne CDPENAF et Décret 2016-1190, l'Enviro mentionne Code de l'environnement et espèces protégées
 4. **Cas par cas** : obligatoire uniquement si emprise > seuil départemental (défaut 5 ha)
 
-**⚠️ Ne pas confondre avec « Consultations / Devis aupres des fournisseurs » (#61)** :
-  - CE document (Devis EPA) : commande d'une **étude intellectuelle agricole** à un bureau d'études — mots-clés **"Étude Préalable Agricole", "CDPENAF", "Décret 2016-1190", "compensation agricole"** ; dossier `2-Foncier`/`Etudes`.
-  - L'AUTRE (#61) : devis pour la **fourniture/pose d'équipements physiques** (modules PV, onduleurs, structures, transformateurs, génie civil, EPC) ; dossier `7-Achat-Fournisseurs/1-Consultations/`.
-  → Discriminant décisif : la présence des mots-clés réglementaires agricoles (CDPENAF / Décret 2016-1190 / Étude Préalable Agricole) indique fortement un Devis EPA, jamais une consultation fournisseur.
-
 ---
 
 ## 13. Devis signé Enviro
@@ -419,11 +412,6 @@ Devis / PTF signé par EnerVivo auprès d'un bureau d'études environnemental, *
 - **Bon de commande signé** avec validation YouSign / signature Sylvain FREDERIC
 
 **Nommage observé probable** : `PTF_[BE]_ENERVIVO_[Mention]_[Commune]_[Dept]_[YYYYMMDD]_signed_.pdf`. Mentions possibles : `Enviro`, `VNEI`, `EIE`, `Faune_Flore`, `Etude_Impact`, `Loi_eau`.
-
-**⚠️ Ne pas confondre avec « Rapport etude pedologique / ZH / Faune et Flore / EIE » (#35)** :
-  - CE document (Devis Enviro) : c'est la **COMMANDE** de l'étude — **"Proposition technique et financière"** / bon de commande signé YouSign, ~20-30 pages, PAS encore de résultats d'inventaires.
-  - L'AUTRE (#35) : c'est le **LIVRABLE** final — rapport VNEI/EIE de 100-300+ pages avec inventaires faune/flore, sondages pédologiques, cartographies, mesures ERC.
-  → Discriminant décisif : un document "Proposition technique et financière" / devis / bon de commande est le Devis Enviro (#13) ; un rapport contenant des inventaires et résultats d'études est le rapport (#35).
 
 ---
 
@@ -617,7 +605,7 @@ Acte notarié complet attestant la propriété des parcelles du projet. **Toutes
 
 **Nommage observé** : `YYYY_MM_DD_[CODEPROJET]_titre_de_propriété.pdf`.
 
-**Piège** : ne pas confondre avec l'**« Attestation de vente notaire (< 2 ans) ou releve de propriete mairie »** (#22) — document **court (1-2 pages)** qui commence par "ATTESTATION" + "CERTIFIE ET ATTESTE". Le titre de propriété (#21) est l'**acte complet (10-20+ pages)** en deux parties "NORMALISEE"/"DEVELOPPEE".
+**Piège** : ne pas confondre avec l'attestation de vente du notaire (doc #22 — document court 1-2 pages).
 
 ---
 
@@ -643,11 +631,6 @@ Attestation courte rédigée et signée par le notaire, certifiant la propriét�
 **Nommage observé** : `YYYY_MM_DD_[CODEPROJET]_attestation_de_vente.pdf`.
 
 **Piège** : vérifier la date d'émission — doit être **de moins de 2 ans**. Si > 2 ans → flag Ambigu.
-
-**⚠️ Ne pas confondre avec « Titre de propriete des parcelles » (#21)** :
-  - CE document (Attestation de vente) : document **court (1-2 pages)**, commence par **"ATTESTATION"** + formule **"JE SOUSSIGNE Maître…, CERTIFIE ET ATTESTE"** — le notaire *certifie* la propriété.
-  - L'AUTRE (#21) : **acte notarié complet (10-20+ pages)**, structure **"PARTIE NORMALISEE" / "PARTIE DEVELOPPEE"** — l'acte intégral.
-  → Discriminant décisif : la formule "CERTIFIE ET ATTESTE" sur 1-2 pages indique fortement l'attestation (#22) ; un acte dense en deux parties normalisée/développée indique le titre (#21).
 
 ---
 
@@ -716,11 +699,6 @@ Document obtenu auprès du **Service de Publicité Foncière** attestant des ins
 **Nommage observé** : `YYYY_MM_DD_[CODEPROJET]_Relevé_parcellaire_[Nom_Exploitant].pdf`.
 
 **Piège** : le nom de fichier dit "Relevé parcellaire" mais le document dit "RELEVE D'EXPLOITATION" — les deux désignent la même pièce. Ne pas chercher un document intitulé exactement "Relevé parcellaire".
-
-**⚠️ Ne pas confondre avec « Rapport geometre » (#38)** :
-  - CE document (Relevé parcellaire) : émis par la **MSA** — **logo MSA**, titre **"RELEVE D'EXPLOITATION"**, référence **SIRET**, liste administrative des parcelles exploitées.
-  - L'AUTRE (#38) : émis par un **cabinet de géomètre-expert** — cartouche cabinet, inscription **OGE**, "Plan de bornage" / "PV de bornage", courbes de niveau, relevés topographiques.
-  → Discriminant décisif : l'émetteur. Logo MSA + "RELEVE D'EXPLOITATION" = relevé parcellaire (#25) ; cabinet géomètre + bornage/topographie = rapport géomètre (#38).
 
 ---
 

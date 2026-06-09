@@ -22,6 +22,10 @@ tests/
 *.md
 # Re-include README.md : requis par hatchling (pyproject.toml readme = "README.md")
 !README.md
+# Re-include les .md de config : knowledge base métier injectée dans les prompts
+# LLM (descriptions enrichies + annexe plan de masse). SANS ça, ils seraient
+# exclus du build → les prompts tomberaient sur leur fallback (dégradé).
+!config/*.md
 .git/
 .gitignore
 .dockerignore

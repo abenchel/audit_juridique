@@ -47,9 +47,25 @@ class OpenRouterProvider(LLMProvider):
     def model_name(self) -> str:
         return self._settings.openrouter_default_model
 
-    async def _post_chat(self, user_content: str | list[dict], system_prompt: str) -> dict:
+    async def _post_chat(
+        self,
+        user_content: str | list[dict],
+        system_prompt: str,
+        model: str | None = None,
+        max_tokens: int = 800,
+    ) -> dict:
         """POST /chat/completions avec retry et parsing JSON. `user_content` peut être
-        une string (texte simple) ou une liste de blocs multimodaux (texte + image_url)."""
+        une string (texte simple) ou une liste de blocs multimodaux (texte + image_url).
+
+        `model` : surcharge optionnelle du modèle (None → openrouter_default_model).
+        Sert au split texte/vision (cf. complete_json_vision).
+        `max_tokens` : 800 par défaut. 300 (ancien défaut) suffisait pour Haiku mais
+        TRONQUE le JSON de Gemini Flash-Lite, dont les `reason` sont plus longues
+        (observé sur DIBOS_H : « JSON LLM invalide '{"type": "..." ' » sur ~10
+        fichiers). 800 couvre {type,confidence,reason} verbeux. On ne paie que les
+        tokens réellement générés, pas le plafond. La passe 2 plans de masse renvoie
+        N objets d'un coup → passe une valeur encore plus haute (cf. plan_masse.py).
+        valeur plus haute, sinon le JSON est tronqué et le parsing échoue."""
         s = self._settings
         headers = {
             "Authorization": f"Bearer {s.openrouter_api_key.get_secret_value()}",
@@ -58,7 +74,7 @@ class OpenRouterProvider(LLMProvider):
             "X-Title": "EnerVivo Audit",
         }
         body = {
-            "model": s.openrouter_default_model,
+            "model": model or s.openrouter_default_model,
             "messages": [
                 {
                     "role": "system",
@@ -68,7 +84,7 @@ class OpenRouterProvider(LLMProvider):
                 {"role": "user", "content": user_content},
             ],
             "temperature": 0.0,
-            "max_tokens": 300,
+            "max_tokens": max_tokens,
             "response_format": {"type": "json_object"},
         }
 
@@ -112,8 +128,10 @@ class OpenRouterProvider(LLMProvider):
         except json.JSONDecodeError as e:
             raise OpenRouterError(f"JSON LLM invalide : {content!r}") from e
 
-    async def complete_json(self, system_prompt: str, user_prompt: str) -> dict:
-        return await self._post_chat(user_prompt, system_prompt)
+    async def complete_json(
+        self, system_prompt: str, user_prompt: str, max_tokens: int = 800
+    ) -> dict:
+        return await self._post_chat(user_prompt, system_prompt, max_tokens=max_tokens)
 
     async def complete_json_vision(
         self,
@@ -145,4 +163,7 @@ class OpenRouterProvider(LLMProvider):
                     "image_url": {"url": f"data:{mime};base64,{b64}"},
                 }
             )
-        return await self._post_chat(content, system_prompt)
+        # Split texte/vision : si openrouter_vision_model est défini, la vision
+        # l'utilise ; sinon None → _post_chat retombe sur le modèle par défaut.
+        vision_model = self._settings.openrouter_vision_model or None
+        return await self._post_chat(content, system_prompt, model=vision_model)

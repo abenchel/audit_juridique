@@ -1,0 +1,32 @@
+# Override "web-dev" : SEUL le frontend passe en hot-reload.
+# api / worker / beat / nginx / postgres / redis / minio restent en mode prod
+# (image normale, pas de montage de volume) → backend stable.
+#
+# Usage : make up-web-dev
+#   docker compose -f docker-compose.yml -f docker-compose.web-dev.yml up -d
+#
+# Détails techniques (important) :
+#  - On part du stage `builder` du Dockerfile web, dont le WORKDIR est /repo
+#    (le monorepo entier : /repo/apps/web + /repo/packages + /repo/node_modules).
+#  - On monte le code LOCAL apps/web dans /repo/apps/web (pas /app — ça c'était
+#    le bug du docker-compose.dev.yml historique qui montait sur /app et lançait
+#    `pnpm dev` à la racine → "Command dev not found", le script racine est dev:web).
+#  - Volumes anonymes : on protège /repo/node_modules (installé dans l'image) et
+#    /repo/apps/web/.next du montage local, sinon ils seraient masqués/absents.
+#  - Commande : `pnpm dev:web` depuis /repo = `pnpm --filter @enervivo/web dev`
+#    = `next dev --port 3000`. nginx route /front → web:3000.
+#  - api/worker NON touchés ici → pas de piège venv (cf. docker-compose.dev.yml).
+services:
+  web:
+    build:
+      target: builder
+    working_dir: /repo
+    command: ["pnpm", "dev:web"]
+    volumes:
+      - ../apps/web:/repo/apps/web
+      - /repo/node_modules
+      - /repo/apps/web/node_modules
+      - /repo/apps/web/.next
+    environment:
+      NODE_ENV: development
+      NEXT_TELEMETRY_DISABLED: "1"

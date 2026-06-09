@@ -193,8 +193,8 @@ def _enrich_v11_with_v2(v11: dict[str, Any], v2: dict[str, Any]) -> dict[str, An
 def _load_reference() -> dict[str, Any]:
     if not V11_PATH.exists():
         raise FileNotFoundError(
-            f"Référentiel V11 introuvable à {V11_PATH}. "
-            "Lance : python -m scripts.convert_excel_to_json --in ../EnerVivo_Documents_Jalon_V11.xlsx"
+            f"Référentiel introuvable à {V11_PATH}. "
+            "Lance : python -m scripts.convert_excel_to_json --in ../260518_Document_par_Jalon_V13.xlsx --version V13"
         )
     v11 = json.loads(V11_PATH.read_text(encoding="utf-8"))
 

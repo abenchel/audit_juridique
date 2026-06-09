@@ -91,11 +91,17 @@ async def reassign_plans_de_masse(
         )
 
     # 3) Un seul appel LLM (texte) avec prompt système dédié.
+    # ⚠️ max_tokens : on renvoie UN objet JSON PAR plan (~100 tokens chacun avec
+    # la reason). Le défaut 300 (calibré pour 1 fichier en passe 1) tronque le
+    # JSON dès ~3 plans → JSONDecodeError → fail-open → passe 1 conservée (bug
+    # observé sur DIBOS_H : 22 plans, passe 2 jamais appliquée). On dimensionne
+    # selon le nombre de plans, avec une marge et un plancher.
+    max_tokens = max(600, 200 + 120 * len(plan_indices))
     try:
         provider = get_llm_provider()
         system = build_plan_masse_system_prompt()
         user = build_plan_masse_user_prompt(files_payload)
-        raw = await provider.complete_json(system, user)
+        raw = await provider.complete_json(system, user, max_tokens=max_tokens)
     except Exception as e:  # fail-open
         log.warning("Passe 2 plans de masse : appel LLM KO (%s) — passe 1 conservée", e)
         return 0

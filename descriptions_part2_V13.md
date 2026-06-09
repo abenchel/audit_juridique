@@ -55,8 +55,6 @@ Trace écrite d'un échange avec le **Service Départemental d'Incendie et de Se
 
 **Piège** : ne pas confondre avec l'avis final sur le PC (qui vient après dépôt). Le cadrage est en amont, l'avis PC en aval.
 
-**✅ Variantes acceptées (ne pas rejeter en "Autre")** : le document peut être peu standardisé selon la DDT (en-tête abrégé, nom raccourci "Avis ENR", lettre simple). Les indices-clés suffisants sont : **en-tête ou émetteur DDT / DDTM (Direction Départementale des Territoires)** + une **mention de "cadrage" / "pré-instruction" / orientation du dossier à venir** + un **contenu prospectif** (doctrine ENR locale, études complémentaires demandées). Reconnaître ce document plutôt que le rejeter, dès lors que l'émetteur DDT(M) et l'intention de cadrage sont identifiables.
-
 ---
 
 ## 34. Rapport G2AVP
@@ -109,7 +107,6 @@ Trace écrite d'un échange avec le **Service Départemental d'Incendie et de Se
 **Pièges** :
 1. **Plusieurs versions saisons** : Saison 1 (printemps/été) puis Saison 2 (automne/hiver) → VNEI complet après 4 saisons. LLM marque Présent dès qu'au moins le rapport VNEI ou EIE final est trouvé.
 2. **Ne PAS confondre avec le rapport EPA** : l'EPA parle d'économie agricole, de CDPENAF, de compensation collective — l'EIE/VNEI parle d'espèces protégées, zones humides, habitats naturels.
-3. **Ne pas confondre avec le « Devis signe Enviro » (#13)** : le devis Enviro est la **commande** ("Proposition technique et financière" / bon de commande, ~20-30 p.) ; ce rapport-ci est le **livrable** (inventaires, cartographies, résultats, 100-300+ p.). Un document sans résultats d'études mais avec un montant/bon de commande est le devis (#13), pas le rapport.
 
 ---
 
@@ -189,8 +186,6 @@ Document du géomètre-expert attestant du bornage et de la délimitation préci
 - **Contenu** : courbes de niveau, limites parcellaires, bornes posées, table des superficies
 
 **Piège** : distinguer le **plan de bornage** (acte les limites) du **simple relevé topographique** (mesure le terrain).
-
-**⚠️ Ne pas confondre avec « Releve parcellaire a jour » (#25)** : un document avec **logo MSA** et titre **"RELEVE D'EXPLOITATION"** est le relevé parcellaire (#25), émis par la caisse agricole — PAS un rapport géomètre. Le rapport géomètre porte un cartouche de cabinet inscrit **OGE** et du contenu topographique/bornage.
 
 ---
 
@@ -560,9 +555,6 @@ Récépissé / accusé de réception de la **demande de raccordement** déposée
 - **Mention** : "Votre demande de raccordement a été enregistrée"
 - **Identification demandeur** : SPV (et non EnerVivo)
 
-**⚠️ Ne pas confondre avec « PTF / CRD recue d'ENEDIS » (#58) ni « PTF / CRD signee » (#59)** : CE document est un simple **accusé de réception court (1-3 pages)**. La PTF (#58/#59) est une **proposition technique et financière détaillée (20-50 pages avec coût HT et schémas)**.
-  → Discriminant décisif : "Accusé de réception / demande enregistrée" sur quelques pages = récépissé (#57) ; "Proposition Technique et Financière" avec coût de raccordement = PTF (#58 non signée / #59 signée).
-
 ---
 
 ## 58. PTF / CRD reçue d'ENEDIS
@@ -581,11 +573,6 @@ Récépissé / accusé de réception de la **demande de raccordement** déposée
 - **Titre** : "Proposition Technique et Financière" ou "PTF"
 - **Sections** : Caractéristiques du raccordement, Travaux côté Enedis, Travaux côté producteur, Coût total HT, Délais de validité
 
-**⚠️ Ne pas confondre** :
-  - avec le **« Recepisse de la demande de raccordement / CRD » (#57)** : le récépissé est un AR court (1-3 p.) « demande enregistrée » ; la PTF est une proposition complète (20-50 p.) avec coût HT.
-  - avec la **« PTF / CRD signee » (#59)** : cette fiche #58 = PTF **NON signée** (reçue). Si la PTF porte une **signature SPV "bon pour accord"** → c'est la version signée (#59).
-  → Discriminant décisif : longueur + "Proposition Technique et Financière" pour distinguer du récépissé ; présence/absence de signature SPV pour distinguer #58 (reçue) de #59 (signée).
-
 ---
 
 ## 59. PTF / CRD signée
@@ -603,9 +590,6 @@ Récépissé / accusé de réception de la **demande de raccordement** déposée
 - **Confirmation du versement d'acompte** (souvent 30% du montant total)
 
 **Piège** : seule la version signée valide le jalon — drafts à ignorer.
-
-**⚠️ Ne pas confondre** : ce document est une **PTF complète (20-50 p.) AVEC signature SPV** ("bon pour accord, lu et approuvé"). À distinguer du **« Recepisse de la demande de raccordement / CRD » (#57)** (AR court 1-3 p.) et de la **« PTF / CRD recue d'ENEDIS » (#58)** (même PTF mais SANS signature SPV).
-  → Discriminant décisif : signature SPV présente sur une PTF = #59 ; PTF sans signature = #58 ; simple accusé de réception = #57.
 
 ---
 
@@ -641,8 +625,6 @@ Ensemble des **consultations et devis** reçus des fournisseurs et sous-traitant
 
 **Stratégie** : LLM marque "Présent" dès qu'au moins 1-2 devis fournisseurs sont trouvés.
 
-**⚠️ Ne pas confondre avec « Devis signe EPA » (#12)** : un devis qui mentionne CDPENAF / Décret 2016-1190 / Étude Préalable Agricole est un Devis EPA (#12), PAS une consultation fournisseur. Ici on attend des devis d'**équipements/travaux** (modules, onduleurs, structures, génie civil, EPC, raccordement HTA).
-
 ---
 
 ## 62. CETI
@@ -666,11 +648,6 @@ Ensemble des **consultations et devis** reçus des fournisseurs et sous-traitant
 1. Projet < 500 kWc OU pas d'AO CRE → CETI N/A
 2. Projet > 500 kWc avec candidature AO CRE → CETI obligatoire
 
-**⚠️ Ne pas confondre avec « Candidature tarif d'achat (AO CRE, AOS, S21, ACC) » (#63)** :
-  - CE document (CETI) : **certificat unique délivré par le préfet de région** attestant l'éligibilité du terrain — court (3-10 p.), une seule pièce, titre "Certificat d'Éligibilité du Terrain d'Implantation".
-  - L'AUTRE (#63) : **dossier complet de candidature** monté par EnerVivo pour l'AO — multi-pièces (note descriptive, plans, justificatifs fonciers, **prix de vente €/MWh**), plusieurs dizaines de pages ; le CETI peut y figurer comme simple pièce jointe.
-  → Discriminant décisif : un certificat préfectoral d'éligibilité du terrain = CETI (#62) ; un dossier multi-pièces avec prix de vente proposé = candidature tarif (#63).
-
 ---
 
 ## 63. Candidature tarif d'achat (AO CRE, AOS, S21, ACC)
@@ -688,8 +665,6 @@ Dossier de candidature pour bénéficier d'un **tarif d'achat de l'électricité
 **Indices internes typiques** :
 - **Référence CRE** : numéro de période d'AO, famille tarifaire (T1, T2, T3, T4 selon puissance)
 - **Pièces du dossier** : note descriptive, plan d'implantation, justificatifs fonciers, **prix de vente proposé (€/MWh)**
-
-**⚠️ Ne pas confondre avec « CETI » (#62)** : le CETI est un **certificat préfectoral d'éligibilité du terrain** (pièce unique courte) ; cette candidature est le **dossier complet** (multi-pièces avec prix de vente €/MWh). Un document seul intitulé "Certificat d'Éligibilité du Terrain" est le CETI (#62), pas la candidature.
 
 ---
 

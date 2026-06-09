@@ -7,11 +7,17 @@ from abc import ABC, abstractmethod
 
 class LLMProvider(ABC):
     @abstractmethod
-    async def complete_json(self, system_prompt: str, user_prompt: str) -> dict:
+    async def complete_json(
+        self, system_prompt: str, user_prompt: str, max_tokens: int = 800
+    ) -> dict:
         """Appelle le LLM et retourne le JSON parsé.
 
         Doit gérer : timeout, retries 3x exponentiel sur 429/5xx, parsing JSON
         avec tolérance markdown fence ```json``` autour.
+
+        `max_tokens` : 300 par défaut (suffit pour classer un fichier). Les
+        appels qui renvoient plusieurs objets (passe 2 plans de masse) doivent
+        passer une valeur plus haute pour éviter un JSON tronqué.
         """
         raise NotImplementedError
 

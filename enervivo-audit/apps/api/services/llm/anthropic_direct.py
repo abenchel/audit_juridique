@@ -40,7 +40,9 @@ class AnthropicDirectProvider(LLMProvider):
         model = self._settings.openrouter_default_model
         return model.split("/", 1)[-1] if "/" in model else model
 
-    async def complete_json(self, system_prompt: str, user_prompt: str) -> dict:
+    async def complete_json(
+        self, system_prompt: str, user_prompt: str, max_tokens: int = 800
+    ) -> dict:
         s = self._settings
         if not s.anthropic_api_key:
             raise RuntimeError("ANTHROPIC_API_KEY non configuré")
@@ -52,7 +54,7 @@ class AnthropicDirectProvider(LLMProvider):
         }
         body = {
             "model": self.model_name,
-            "max_tokens": 300,
+            "max_tokens": max_tokens,
             "temperature": 0.0,
             "system": system_prompt,
             "messages": [{"role": "user", "content": user_prompt}],

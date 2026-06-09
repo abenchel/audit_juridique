@@ -43,12 +43,14 @@ from models.audit import (
 from models.document import FileMetadata
 from services.audit.matcher import match_classified_to_expected
 from services.audit.plan_masse import reassign_plans_de_masse
+from services.audit.tadd import reassign_tadd
 from services.audit.types import get_handler
 from services.extraction import extract_text, is_image
 from services.extraction.base import ExtractionError, ScanNoTextError
 from services.extraction.pdf import render_pdf_pages_to_png
 from services.extraction.registry import get_extractor
 from services.llm.classifier import classify, classify_vision
+from services.llm.type_snap import snap_type_to_referential
 from services.sharepoint import get_sharepoint_client
 from services.storage.cache import PDFCache
 
@@ -180,12 +182,35 @@ async def _process_file(
         file_hash = hashlib.sha256(content).hexdigest()
         result["file_hash"] = file_hash
 
-        # Cache cross-audit Postgres : si même hash déjà classifié, réutilise
+        # Cache cross-audit Postgres : si même hash déjà classifié, réutilise.
+        # ⚠️ On re-passe le type caché par snap_type_to_referential : une entrée
+        # classifiée sous un ANCIEN référentiel (ex. V12 "DICT - DICT résumé") doit
+        # être ramenée vers le type EXACT du référentiel courant (V13 "DT / DICT -
+        # resume"), sinon le matcher la voit comme orpheline. Le snap au moment de
+        # classer (classify/classify_vision) ne s'applique PAS aux cache-hits — ce
+        # garde-fou couvre tout décalage cache ↔ référentiel sans purge ni re-appel
+        # LLM. No-op si le type est déjà valide.
         cached = await find_by_hash(session, file_hash)
         if cached:
-            result["classified_type"] = cached.classified_type
+            # Snap UNIQUEMENT si un type non-vide est caché : un cache à type
+            # NULL/"" provient d'un fichier jadis ignoré — le snapper le
+            # transformerait à tort en "Autre / Non identifié" (régression). On
+            # le conserve tel quel.
+            cached_type = cached.classified_type
+            result["classified_type"] = (
+                snap_type_to_referential(cached_type, reference)
+                if cached_type
+                else cached_type
+            )
             result["confidence"] = cached.confidence
-            result["reason"] = (cached.reason or "") + " (cache)"
+            # Marqueur « (cache) » = info d'AFFICHAGE, pas une donnée. On le
+            # rend idempotent : un ré-audit relit une reason qui contient DÉJÀ
+            # « (cache) » (car re-persistée telle quelle au passage précédent) →
+            # sans nettoyage, le suffixe s'empile (« (cache) (cache) (cache) »).
+            # On retire toute occurrence résiduelle puis on en remet exactement
+            # une.
+            base_reason = (cached.reason or "").replace(" (cache)", "").rstrip()
+            result["reason"] = f"{base_reason} (cache)" if base_reason else "(cache)"
             result["llm_model"] = cached.llm_model
         else:
             # Cache MinIO pour éviter re-download SharePoint si re-classification
@@ -233,30 +258,22 @@ async def _process_file(
             # il bloque l'event loop → les 4 autres slots du sémaphore attendent
             # (CONCURRENCY=5 devient =1 pendant l'extraction). Avec to_thread, les
             # LLM calls des autres fichiers tournent en vraie parallèle.
-            try:
-                sample = await asyncio.to_thread(
-                    extract_text, content, file.mime_type, file.name
-                )
-            except ScanNoTextError:
-                # Fichier sans texte exploitable (PDF scanné, PPTX 100% image).
-                # Pour les PDFs on render page 1 + dernière en PNG → classify_vision.
-                # Pour les PPTX sans texte, on ne sait pas rendre via pymupdf
-                # directement → on marque error (cas marginal).
-                # `content` est libéré par l'outer finally après ce retour.
-                is_pdf = (file.mime_type or "").lower() == "application/pdf" or (
-                    file.name or ""
-                ).lower().endswith(".pdf")
-                if not is_pdf:
-                    result["status_extraction"] = "error"
-                    result["error"] = "Fichier sans texte (non-PDF, vision non disponible)"
-                    return result
+            # Fallback vision+OCR PyMuPDF — utilisé quand l'extraction texte
+            # échoue, que ce soit parce que le PDF est un scan sans couche texte
+            # (ScanNoTextError) OU parce que pdfplumber a planté sur un PDF
+            # abîmé/ré-encodé (ExtractionError, ex. "ATTESTATION_STANDARD.pdf (9)").
+            # PyMuPDF est bien plus tolérant que pdfplumber : il rend souvent les
+            # pages là où pdfplumber refuse de parser. Le fichier ne tombe en
+            # `error` que si PyMuPDF échoue AUSSI. Renvoie un dict result rempli
+            # en cas de succès, ou None pour laisser l'appelant marquer l'erreur.
+            async def _try_pdf_vision_fallback() -> dict | None:
                 try:
                     images = await asyncio.to_thread(render_pdf_pages_to_png, content)
                     if not images:
-                        raise ExtractionError("Scan : 0 page rendue")
+                        return None
                     # PyMuPDF rend à la résolution native du PDF — un scan 300 DPI
                     # peut dépasser 8000px et faire rejeter l'image par Bedrock/Claude
-                    # (cas CNI DMONFLANQUIN). On normalise (cap 1568px, JPEG ≤4 MB).
+                    # (cas CNI DMONFLANQUIN). On normalise (cap 2048px, JPEG ≤4 MB).
                     from services.extraction.image import normalize_image_for_vision
                     normalized: list[tuple[bytes, str]] = []
                     for png in images:
@@ -264,21 +281,62 @@ async def _process_file(
                             normalized.append(normalize_image_for_vision(png, "image/png"))
                         except Exception:
                             normalized.append((png, "image/png"))  # fail-open
+                    # OCR de toutes les pages (≤15, scans >2 p. seulement) via
+                    # Tesseract → joint au prompt vision pour couvrir le contenu
+                    # des pages NON rendues en image. Fail-open : Tesseract absent
+                    # ou plante → ocr_text = "" → vision seule.
+                    from services.extraction.ocr import ocr_pdf_pages
+                    try:
+                        ocr_text = await asyncio.to_thread(ocr_pdf_pages, content)
+                    except Exception:  # noqa: BLE001
+                        ocr_text = ""  # fail-open
                     classification, model = await classify_vision(
-                        file.name, normalized, audit_type, reference, file_path=file.path
+                        file.name,
+                        normalized,
+                        audit_type,
+                        reference,
+                        file_path=file.path,
+                        ocr_text=ocr_text,
                     )
                     result["classified_type"] = classification.type
                     result["confidence"] = classification.confidence
                     result["reason"] = classification.reason
                     result["llm_model"] = model
                     return result
-                except Exception as ve:
+                except Exception:  # noqa: BLE001
+                    return None
+
+            try:
+                sample = await asyncio.to_thread(
+                    extract_text, content, file.mime_type, file.name
+                )
+            except (ScanNoTextError, ExtractionError) as e:
+                # `content` est libéré par l'outer finally après ce retour.
+                is_pdf = (file.mime_type or "").lower() == "application/pdf" or (
+                    file.name or ""
+                ).lower().endswith(".pdf")
+                scan_no_text = isinstance(e, ScanNoTextError)
+                if not is_pdf:
+                    # Non-PDF : pas de rendu PyMuPDF possible → error directe.
                     result["status_extraction"] = "error"
-                    result["error"] = f"scan sans texte + échec vision : {ve}"
+                    result["error"] = (
+                        "Fichier sans texte (non-PDF, vision non disponible)"
+                        if scan_no_text
+                        else str(e)
+                    )
                     return result
-            except ExtractionError as e:
+                # PDF : on tente le fallback vision+OCR dans TOUS les cas (scan
+                # OU plantage pdfplumber).
+                fallback = await _try_pdf_vision_fallback()
+                if fallback is not None:
+                    return fallback
+                # Le fallback a échoué aussi → error, en gardant la cause d'origine.
                 result["status_extraction"] = "error"
-                result["error"] = str(e)
+                result["error"] = (
+                    "scan sans texte + échec vision"
+                    if scan_no_text
+                    else f"{e} + échec fallback vision"
+                )
                 return result
             finally:
                 # Libère les bytes du PDF dès que possible (uploadé MinIO + sample extrait)
@@ -656,6 +714,23 @@ async def run_audit(audit_id: uuid.UUID) -> None:
                     )
             except Exception as _e:
                 log.warning("Passe 2 plans de masse ignorée : %s", _e)
+
+            # 3.ter) PASSE 2 — désambiguïsation des TADD par jalon.
+            # Même principe que les plans de masse, mais la logique TADD diffère :
+            # le jalon est souvent EXPLICITE dans le nom (`_J1_`, `_J2B_`…). On
+            # rassemble tous les TADD, on retient l'unique version officielle par
+            # jalon (départage version interne puis date), on écarte les versions
+            # antérieures (→ "Autre"), et on laisse intacts les TADD sans jalon
+            # dans le nom. Fail-open : toute erreur conserve la passe 1.
+            try:
+                tadd_changed = await reassign_tadd(classified, audit_id)
+                if tadd_changed:
+                    await _publish_progress(
+                        audit_id,
+                        {"event": "tadd_pass", "changed": tadd_changed},
+                    )
+            except Exception as _e:
+                log.warning("Passe 2 TADD ignorée : %s", _e)
 
             # 4) Matching
             jalons = audit.jalons or [j["jalon"] for j in reference["jalons"]]

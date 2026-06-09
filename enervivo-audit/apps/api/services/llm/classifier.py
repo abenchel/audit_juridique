@@ -11,6 +11,7 @@ from . import get_llm_provider
 from .prompts.juridique import build_system_prompt as build_juridique_system
 from .prompts.juridique import build_user_prompt as build_juridique_user
 from .prompts.juridique import build_user_prompt_vision as build_juridique_user_vision
+from .type_snap import snap_type_to_referential
 
 log = logging.getLogger(__name__)
 
@@ -56,6 +57,10 @@ async def classify(
 
     # Validation / coercion
     type_value = str(raw.get("type", "Autre / Non identifié")).strip() or "Autre / Non identifié"
+    # Garde-fou : ramène un type inventé hors-référentiel V12 vers un type valide
+    # (alias métier / snap au plus proche / sinon Autre). `documents_v11` = nom de
+    # variable historique mais contient bien le V12. Cf. type_snap.py.
+    type_value = snap_type_to_referential(type_value, documents_v11)
     try:
         conf = int(raw.get("confidence", 0))
     except (TypeError, ValueError):
@@ -75,19 +80,24 @@ async def classify_vision(
     audit_type: str,
     documents_v11: dict[str, Any],
     file_path: str | None = None,
+    ocr_text: str | None = None,
 ) -> tuple[ClassificationResult, str]:
     """Classification multimodale (vision LLM).
 
     Cas d'usage :
-      - PDF scannés (sans couche texte) → images = pages rendues en PNG via pymupdf
-      - Images natives (jpg/png/heic) → images = [(content, mime_type)] directement
+      - PDF scannés (sans couche texte) → images = pages rendues en PNG via pymupdf,
+        + `ocr_text` = texte Tesseract de toutes les pages (complément du visuel)
+      - Images natives (jpg/png/heic) → images = [(content, mime_type)] directement,
+        `ocr_text` laissé à None (pas d'OCR sur les images natives)
 
     Mêmes contrats que `classify()` mais le sample texte est remplacé par
-    les images. `images` accepte `list[bytes]` (PNG par défaut) ou
-    `list[tuple[bytes, mime_type]]`.
+    les images (+ OCR optionnel). `images` accepte `list[bytes]` (PNG par
+    défaut) ou `list[tuple[bytes, mime_type]]`.
     """
     system_prompt = _get_system_prompt(audit_type, documents_v11)
-    user_prompt = build_juridique_user_vision(file_name, file_path=file_path)
+    user_prompt = build_juridique_user_vision(
+        file_name, file_path=file_path, ocr_text=ocr_text
+    )
     provider = get_llm_provider()
 
     try:
@@ -97,6 +107,8 @@ async def classify_vision(
         raise
 
     type_value = str(raw.get("type", "Autre / Non identifié")).strip() or "Autre / Non identifié"
+    # Même garde-fou que classify() : snap vers le référentiel V12.
+    type_value = snap_type_to_referential(type_value, documents_v11)
     try:
         conf = int(raw.get("confidence", 0))
     except (TypeError, ValueError):
