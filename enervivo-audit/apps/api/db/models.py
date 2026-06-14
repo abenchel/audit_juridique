@@ -15,7 +15,7 @@ import uuid
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import ARRAY, CheckConstraint, DateTime, Float, ForeignKey, Index, Integer, String, Text
+from sqlalchemy import ARRAY, Boolean, CheckConstraint, DateTime, Float, ForeignKey, Index, Integer, String, Text
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
@@ -77,6 +77,13 @@ class Audit(Base):
     result: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
 
+    # Versioning de l'outil : version courante (config/tool_version.json) au
+    # lancement de l'audit. Nullable pour rétro-compat (audits pré-migration).
+    tool_version: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    # Intention de relance transportée jusqu'au worker (Celery ne reçoit que
+    # l'id) : True → l'engine ignore le cache et re-classe tout le projet.
+    purge_cache: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default="false")
+
     triggered_by: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
@@ -109,6 +116,10 @@ class ClassifiedDocument(Base):
 
     jalon: Mapped[str | None] = mapped_column(String(20), nullable=True)
     llm_model: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    # Version de l'outil qui a produit cette classification. Sur un cache-hit,
+    # on hérite la version de l'entrée réutilisée → la "version du cache" d'un
+    # audit = min(tool_version) de ses classifs. Nullable (entrées pré-migration).
+    tool_version: Mapped[str | None] = mapped_column(String(20), nullable=True)
     classified_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
 
     audit: Mapped[Audit] = relationship(back_populates="documents")

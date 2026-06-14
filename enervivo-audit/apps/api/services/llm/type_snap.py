@@ -34,7 +34,10 @@ _OTHER = OTHER_TYPE
 # La passe 2 TADD utilise ce libellé pour un TADD sans token de jalon dans le
 # nom (annexe : "Non classé, exclu de la sélection, ne pas deviner").
 TADD_UNCLASSIFIED_TYPE = "TADD (non classé)"
-_PROTECTED_TYPES = frozenset({TADD_UNCLASSIFIED_TYPE})
+# Idem pour les dossiers de qualification sans token de jalon dans le nom
+# (annexe PPT : "Non classé, exclu de la sélection, ne pas deviner").
+QUALIF_UNCLASSIFIED_TYPE = "Dossier de qualification (non classé)"
+_PROTECTED_TYPES = frozenset({TADD_UNCLASSIFIED_TYPE, QUALIF_UNCLASSIFIED_TYPE})
 
 # Snap par INCLUSION DE TOKENS plutôt que par ratio de similarité global.
 # Un type inventé est rapproché d'un type V12 SSI TOUS ses mots significatifs

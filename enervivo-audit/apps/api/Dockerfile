@@ -47,6 +47,7 @@ COPY --from=builder /app/alembic /app/alembic
 #   - descriptions_part1.md + descriptions_part2.md (référentiel enrichi V13)
 #   - annexe_plan_masse.md (règles passe 2 plan de masse)
 #   - Annexe_fichier_TADD.md (règles passe 2 TADD)
+#   - Annexe_dossier_qualification.md (règles passe 2 dossier de qualification)
 #   - documents_v12.json (contenu V13) + documents_projet_v2.json (référentiels)
 #   - projects_seed.json (seed) + settings.py
 # Les .md ne sont copiés QUE parce que .dockerignore re-inclut !config/*.md.

@@ -43,6 +43,7 @@ from models.audit import (
 from models.document import FileMetadata
 from services.audit.matcher import match_classified_to_expected
 from services.audit.plan_masse import reassign_plans_de_masse
+from services.audit.qualification import reassign_qualification
 from services.audit.tadd import reassign_tadd
 from services.audit.types import get_handler
 from services.extraction import extract_text, is_image
@@ -731,6 +732,21 @@ async def run_audit(audit_id: uuid.UUID) -> None:
                     )
             except Exception as _e:
                 log.warning("Passe 2 TADD ignorée : %s", _e)
+
+            # 3.quater) PASSE 2 — désambiguïsation des dossiers de qualification.
+            # Même logique que TADD : jalon explicite dans le nom (.pptx/.ppt), un
+            # seul retenu par jalon (départage date du nom puis date système), les
+            # versions antérieures → "Autre", les fichiers sans jalon → type neutre
+            # "Dossier de qualification (non classé)". Fail-open.
+            try:
+                qualif_changed = await reassign_qualification(classified, audit_id)
+                if qualif_changed:
+                    await _publish_progress(
+                        audit_id,
+                        {"event": "qualification_pass", "changed": qualif_changed},
+                    )
+            except Exception as _e:
+                log.warning("Passe 2 qualification ignorée : %s", _e)
 
             # 4) Matching
             jalons = audit.jalons or [j["jalon"] for j in reference["jalons"]]

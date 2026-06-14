@@ -1,4 +1,5 @@
 import type { JalonReport, ExpectedDocument } from "@enervivo/shared-types";
+import { statsForDocuments } from "./completion";
 
 /** Slug stable utilisé comme ancre URL (#jalon-XXX). */
 export function jalonAnchorId(jalon: string): string {
@@ -6,6 +7,11 @@ export function jalonAnchorId(jalon: string): string {
 }
 
 export function DocumentsTable({ jalon }: { jalon: JalonReport }) {
+  // Les documents "not_applicable" sont traités comme s'ils n'existaient pas :
+  // on ne les affiche pas et ils ne comptent ni dans le total ni dans le %.
+  const documents = jalon.documents.filter((d) => d.status !== "not_applicable");
+  const stats = statsForDocuments(jalon.documents, "all");
+
   return (
     <div
       id={jalonAnchorId(jalon.jalon)}
@@ -14,7 +20,7 @@ export function DocumentsTable({ jalon }: { jalon: JalonReport }) {
       <div className="border-b border-line pb-4 mb-6">
         <h3 className="font-display text-2xl font-bold text-ink">{jalon.jalon}</h3>
         <p className="text-sm text-ink-soft mt-1">
-          {jalon.total_expected} documents attendus — {jalon.completion_pct}% complétés
+          {stats.expected} documents attendus — {stats.pct}% complétés
         </p>
       </div>
 
@@ -30,7 +36,7 @@ export function DocumentsTable({ jalon }: { jalon: JalonReport }) {
             </tr>
           </thead>
           <tbody>
-            {jalon.documents.map((d) => (
+            {documents.map((d) => (
               <DocumentRow key={d.code} doc={d} />
             ))}
           </tbody>
@@ -46,7 +52,7 @@ function DocumentRow({ doc }: { doc: ExpectedDocument }) {
     present: { bg: "bg-green-soft", fg: "text-green", label: "Trouvé" },
     ambiguous: { bg: "bg-amber-soft", fg: "text-amber", label: "Ambigu" },
     missing: { bg: "bg-red-soft", fg: "text-red", label: "Manquant" },
-    not_applicable: { bg: "bg-bg-soft", fg: "text-ink-soft", label: "N/A" },
+    not_applicable: { bg: "bg-red-soft", fg: "text-red", label: "Manquant" },
     other: { bg: "bg-violet-soft", fg: "text-violet", label: "Autre" },
     error: { bg: "bg-bg-soft", fg: "text-ink-soft", label: "Erreur" },
   } as const;

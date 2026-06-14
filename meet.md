@@ -1,9 +1,5 @@
-savoir a quelle jalon on est  apartir de nombre de document et pour les dossier obligatoire   et aussi change en completude  parc hoisir le jalon 
+deux role  admin qui lance les udit et des personne que voie l audit
 
+j ajoute le cache en historique  et pour chaque projet j ajoute la chache la plus anciens  meme si tous les document sont en v3 et un seule est en v0 je prends v0
 
-
-facultative ( enleve  les n/a)
-
-
-
-pour les pourcentage en calcule selon les document obligatoire en fait    une click ou je peux choisi complitude  soit avec  les piece obligatoire + piece annexes ) 
+j ajoute changelog

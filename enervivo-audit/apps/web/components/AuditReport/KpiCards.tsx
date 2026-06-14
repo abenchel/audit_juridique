@@ -1,6 +1,21 @@
 import type { AuditReport } from "@enervivo/shared-types";
+import { overallStats, type CompletionScope } from "./completion";
 
-export function KpiCards({ report }: { report: AuditReport }) {
+export function KpiCards({
+  report,
+  currentJalon,
+  scope,
+}: {
+  report: AuditReport;
+  currentJalon: string | null;
+  scope: CompletionScope;
+}) {
+  // Recalcul côté client selon le jalon actuel (cumul ≤ jalon) et le périmètre
+  // (toutes les pièces / Obligatoire + Annexes 3). Sans filtre actif, on retombe
+  // sur les chiffres du backend.
+  const stats = overallStats(report, currentJalon, scope);
+  const scopeLabel = scope === "required" ? "obligatoires + annexes 3" : "documents";
+
   return (
     <div className="max-w-[1280px] mx-auto px-8 pb-8">
       <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-px bg-line border border-line rounded-lg overflow-hidden">
@@ -8,36 +23,25 @@ export function KpiCards({ report }: { report: AuditReport }) {
         <div className="bg-gradient-to-br from-ink to-[#155A4A] text-white p-7 relative overflow-hidden">
           <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-solar opacity-[0.18]" />
           <div className="text-[10px] uppercase tracking-wider opacity-70 font-bold mb-2">
-            Complétude globale
+            Complétude {currentJalon ? `jusqu'à ${currentJalon}` : "globale"}
           </div>
           <div className="font-display text-6xl font-bold leading-none">
-            {report.overall_completion_pct}
+            {stats.pct}
             <sup className="text-2xl font-semibold opacity-60 -top-5 ml-1">%</sup>
           </div>
           <div className="text-sm opacity-80 mt-2">
-            {report.total_present + report.total_ambiguous} / {report.total_expected} documents
-            identifiés
+            {stats.present + stats.ambiguous} / {stats.expected} {scopeLabel} identifiés
           </div>
         </div>
 
-        <KpiCell
-          label="Trouvés"
-          value={report.total_present}
-          accent="green"
-          subtitle="conf. ≥ 70 %"
-        />
+        <KpiCell label="Trouvés" value={stats.present} accent="green" subtitle="conf. ≥ 70 %" />
         <KpiCell
           label="Ambigus"
-          value={report.total_ambiguous}
+          value={stats.ambiguous}
           accent="amber"
           subtitle="40 – 70 % — revue"
         />
-        <KpiCell
-          label="Manquants"
-          value={report.total_missing}
-          accent="red"
-          subtitle="à fournir"
-        />
+        <KpiCell label="Manquants" value={stats.missing} accent="red" subtitle="à fournir" />
       </div>
     </div>
   );

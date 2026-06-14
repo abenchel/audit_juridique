@@ -4,13 +4,67 @@ import { useState } from "react";
 
 type Props = { projectCode: string; auditId: string };
 
+/**
+ * Grave dans le DOM l'état runtime des contrôles, pour qu'un cloneNode (qui
+ * ne copie que les attributs HTML, pas les propriétés JS) reflète la sélection
+ * courante dans l'export statique. Renvoie une fonction qui annule ces
+ * modifications — le DOM live ne doit pas changer pour l'utilisateur.
+ */
+function freezeControlsState(doc: Document): () => void {
+  const undo: Array<() => void> = [];
+
+  // <select> : poser l'attribut `selected` sur l'option active (et le retirer
+  // des autres). Sinon le HTML statique réaffiche la 1ère option.
+  doc.querySelectorAll("select").forEach((sel) => {
+    Array.from(sel.options).forEach((opt) => {
+      const had = opt.hasAttribute("selected");
+      const shouldHave = opt.selected;
+      if (had === shouldHave) return;
+      if (shouldHave) opt.setAttribute("selected", "selected");
+      else opt.removeAttribute("selected");
+      undo.push(() => {
+        if (had) opt.setAttribute("selected", "selected");
+        else opt.removeAttribute("selected");
+      });
+    });
+  });
+
+  // Toggles (boutons aria-pressed) : on marque l'actif via un attribut data
+  // stable. L'apparence du bouton actif vient déjà de aria-pressed (rendu dans
+  // les classes), donc rien d'autre à graver — mais on fige aria-pressed au cas
+  // où il serait piloté par une prop runtime non sérialisée.
+  doc.querySelectorAll('[aria-pressed]').forEach((btn) => {
+    const live = btn.getAttribute("aria-pressed");
+    const attr = btn.getAttributeNode("aria-pressed");
+    // aria-pressed est déjà un attribut → normalement cloné tel quel. No-op de
+    // sécurité : on s'assure que la valeur live est bien posée comme attribut.
+    if (attr && attr.value !== live && live != null) {
+      const prev = attr.value;
+      btn.setAttribute("aria-pressed", live);
+      undo.push(() => btn.setAttribute("aria-pressed", prev));
+    }
+  });
+
+  return () => undo.forEach((fn) => fn());
+}
+
 export function ExportHtmlButton({ projectCode, auditId }: Props) {
   const [busy, setBusy] = useState(false);
 
   async function handleExport() {
     setBusy(true);
     try {
-      const clone = document.documentElement.cloneNode(true) as HTMLElement;
+      // ⚠️ cloneNode ne sérialise PAS l'état runtime des contrôles de formulaire
+      // (.value d'un <select>, focus d'un toggle) : le HTML statique réaffiche
+      // sinon la 1ère option. On "grave" donc l'état choisi dans le DOM AVANT le
+      // clone, puis on le restaure (le DOM live ne doit pas être altéré).
+      const restore = freezeControlsState(document);
+      let clone: HTMLElement;
+      try {
+        clone = document.documentElement.cloneNode(true) as HTMLElement;
+      } finally {
+        restore();
+      }
 
       const head = clone.querySelector("head");
       const body = clone.querySelector("body");

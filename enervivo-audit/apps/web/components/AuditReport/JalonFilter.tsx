@@ -3,6 +3,7 @@
 import type { AuditReport as AuditReportType, JalonReport } from "@enervivo/shared-types";
 import { useState } from "react";
 import { DocumentsTable } from "./DocumentsTable";
+import { statsForDocuments } from "./completion";
 
 /**
  * Sélecteur de jalon de vue (cf maquette rapport_audit_DDENIS_v6.html).
@@ -28,11 +29,14 @@ export function JalonFilter({ report }: { report: AuditReportType }) {
           className="border border-line rounded px-3 py-2 text-sm font-semibold bg-white text-ink"
         >
           <option value="all">Tous les jalons ({report.jalons.length})</option>
-          {report.jalons.map((j) => (
-            <option key={j.jalon} value={j.jalon}>
-              {j.jalon} — {j.total_expected} attendus · {j.completion_pct}%
-            </option>
-          ))}
+          {report.jalons.map((j) => {
+            const s = statsForDocuments(j.documents, "all");
+            return (
+              <option key={j.jalon} value={j.jalon}>
+                {j.jalon} — {s.expected} attendus · {s.pct}%
+              </option>
+            );
+          })}
         </select>
         {selected !== "all" && (
           <button
