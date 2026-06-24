@@ -24,5 +24,96 @@
       "client": "Monflanquin",
       "seeded_at": "2026-05-19"
     }
+  },
+  {
+    "code": "DBOUISSOUS",
+    "name": "DBOUISSOUS",
+    "type": "Toiture",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/09-Projets/DBOUISSOUS",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "Bouissous",
+      "seeded_at": "2026-06-23"
+    }
+  },
+  {
+    "code": "DCASTEL",
+    "name": "DCASTEL",
+    "type": "Toiture",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/09-Projets/DCASTEL",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "Castel",
+      "seeded_at": "2026-06-23"
+    }
+  },
+  {
+    "code": "DVAUJANY_V",
+    "name": "DVAUJANY Voliere",
+    "type": "Toiture",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/09-Projets/DVAUJANY/Voliere",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "Vaujany",
+      "seeded_at": "2026-06-23"
+    }
+  },
+  {
+    "code": "DIBOS_V",
+    "name": "DIBOS Voliere",
+    "type": "Toiture",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/09-Projets/DIBOS/Voliere",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "DIBOS",
+      "seeded_at": "2026-06-23"
+    }
+  },
+  {
+    "code": "RTRUPAN",
+    "name": "RTRUPAN",
+    "type": "Toiture",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/09-Projets/RTRUPAN",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "Trupan",
+      "seeded_at": "2026-06-23"
+    }
+  },
+  {
+    "code": "RPANEAU",
+    "name": "RPANEAU",
+    "type": "Toiture",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/09-Projets/RPANEAU",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "Paneau",
+      "seeded_at": "2026-06-23"
+    }
+  },
+  {
+    "code": "CAVAILLON",
+    "name": "CAVAILLON",
+    "type": "Comité",
+    "sharepoint_url": "https://enervivo.sharepoint.com/Documents%20partages/18-Comités%20internes/Cavaillon",
+    "current_jalon": null,
+    "power_mwc": null,
+    "department": null,
+    "project_metadata": {
+      "client": "Cavaillon",
+      "seeded_at": "2026-06-23"
+    }
   }
 ]

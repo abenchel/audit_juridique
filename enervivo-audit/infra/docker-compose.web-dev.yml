@@ -24,6 +24,10 @@ services:
     command: ["pnpm", "dev:web"]
     volumes:
       - ../apps/web:/repo/apps/web
+      # Types partagés montés AUSSI (consommés en source directe par le front) :
+      # sans ça, le conteneur garde la version figée à l'image et les nouveaux
+      # types (ToolVersionEntry, purge_cache…) ne sont pas vus → erreurs TS.
+      - ../packages/shared-types:/repo/packages/shared-types
       - /repo/node_modules
       - /repo/apps/web/node_modules
       - /repo/apps/web/.next

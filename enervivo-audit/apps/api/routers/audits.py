@@ -12,12 +12,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sse_starlette.sse import EventSourceResponse
 
 from db.repositories import audits as audits_repo
+from db.repositories import classifications as classifications_repo
 from db.repositories import projects as projects_repo
 from db.repositories import users as users_repo
 from db.session import get_session
 from models.audit import AuditCreateRequest, AuditCreateResponse
 from services.auth.deps import get_current_user
 from services.auth.jwt_verify import TokenPayload
+from services.version import current_version, oldest_version
 
 router = APIRouter(prefix="/audits", tags=["audits"])
 
@@ -33,6 +35,13 @@ async def create_audit(
         raise HTTPException(status.HTTP_404_NOT_FOUND, f"Projet {body.project_code} introuvable")
 
     db_user = await users_repo.get_by_email(session, user.email)
+
+    # Relance « + nettoyer le cache » : on purge les classifications du projet
+    # AVANT de créer le nouvel audit (qui n'en a pas encore → pas de conflit).
+    # Le bypass du cache global est assuré par purge_cache=True côté engine.
+    if body.purge_cache:
+        await classifications_repo.purge_for_project(session, body.project_code)
+
     audit = await audits_repo.create_audit(
         session,
         project_code=body.project_code,
@@ -40,6 +49,9 @@ async def create_audit(
         jalons=body.jalons or [project.current_jalon] if project.current_jalon else body.jalons,
         status="pending",
         triggered_by=db_user.id if db_user else None,
+        # Versioning : on fige la version courante de l'outil au lancement.
+        tool_version=current_version(),
+        purge_cache=body.purge_cache,
     )
     await session.commit()
 
@@ -207,6 +219,11 @@ async def list_audits_for_project(
     session: AsyncSession = Depends(get_session),
 ) -> list[dict[str, Any]]:
     audits = await audits_repo.list_audits_for_project(session, project_code)
+    # Versions du cache : agrège les tool_version des classifs de chaque audit
+    # en une requête (évite le N+1) → "version du cache" = la plus ancienne.
+    versions_map = await classifications_repo.tool_versions_by_audit(
+        session, [a.id for a in audits]
+    )
     return [
         {
             "id": str(a.id),
@@ -218,6 +235,8 @@ async def list_audits_for_project(
             "total_found": a.total_found,
             "total_ambiguous": a.total_ambiguous,
             "total_missing": a.total_missing,
+            "tool_version": a.tool_version,
+            "cache_version": oldest_version(versions_map.get(a.id, [])),
         }
         for a in audits
     ]

@@ -41,6 +41,7 @@ x-api-env: &api-env
   NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
   NEXTAUTH_URL: ${NEXTAUTH_URL}
   ALLOWED_EMAIL_DOMAIN: ${ALLOWED_EMAIL_DOMAIN:-enervivo.fr}
+  ADMIN_EMAILS: ${ADMIN_EMAILS:-}
   CONFIDENCE_THRESHOLD_PRESENT: ${CONFIDENCE_THRESHOLD_PRESENT:-70}
   CONFIDENCE_THRESHOLD_AMBIGUOUS: ${CONFIDENCE_THRESHOLD_AMBIGUOUS:-40}
 
@@ -122,13 +123,16 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment: *api-env
-    command: ["celery", "-A", "celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    command: ["celery", "-A", "celery_app", "worker", "--loglevel=info", "--concurrency=1"]
     # Mémoire augmentée pour traiter les gros PDF (plans cadastraux, PADD scannés).
-    # --concurrency réduit à 2 (au lieu de 4) pour limiter le pic RAM.
+    # --concurrency=1 : un seul fichier en vol à la fois → pic RAM ÷~2. Nécessaire
+    # car Docker n'a que ~7,8G total (worker plafond réel ~5,5G) et un audit
+    # « + nettoyer le cache » (re-classification LLM des 221 fichiers) OOM-killait
+    # le worker à concurrency=2. Plus lent mais évite le SIGKILL.
     deploy:
       resources:
         limits:
-          memory: 4G
+          memory: 8G
     depends_on:
       init:     { condition: service_completed_successfully }
       postgres: { condition: service_healthy }

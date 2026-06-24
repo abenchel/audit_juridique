@@ -129,7 +129,7 @@ class OpenRouterProvider(LLMProvider):
             raise OpenRouterError(f"JSON LLM invalide : {content!r}") from e
 
     async def complete_json(
-        self, system_prompt: str, user_prompt: str, max_tokens: int = 800
+        self, system_prompt: str, user_prompt: str, max_tokens: int = 1200
     ) -> dict:
         return await self._post_chat(user_prompt, system_prompt, max_tokens=max_tokens)
 

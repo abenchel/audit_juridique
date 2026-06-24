@@ -94,7 +94,7 @@ export function ExportHtmlButton({ projectCode, auditId }: Props) {
       body.querySelectorAll("next-route-announcer").forEach((n) => n.remove());
       body.querySelectorAll('[data-nextjs-toast]').forEach((n) => n.remove());
 
-      const wrapper = document.querySelector("article.bg-bg");
+      const wrapper = clone.querySelector("article.bg-bg");
       if (wrapper) {
         body.innerHTML = "";
         const wrapped = document.createElement("div");

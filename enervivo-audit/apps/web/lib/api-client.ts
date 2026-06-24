@@ -12,7 +12,14 @@ import type {
   AuditSummary,
   ProjectOut,
   ProjectSummary,
+  ToolVersionEntry,
 } from "@enervivo/shared-types";
+
+export interface MeInfo {
+  email: string;
+  name: string;
+  role: "user" | "admin";
+}
 
 const API_INTERNAL_URL =
   process.env.API_INTERNAL_URL ?? // Docker compose : http://api:8000
@@ -80,6 +87,16 @@ export async function cancelAudit(id: string): Promise<{ id: string; status: str
 
 export async function fetchAuditsForProject(code: string): Promise<AuditSummary[]> {
   return apiFetch<AuditSummary[]>(`/audits/project/${encodeURIComponent(code)}`);
+}
+
+/** Profil de l'utilisateur courant (dont le rôle réel, calculé côté backend). */
+export async function fetchMe(): Promise<MeInfo> {
+  return apiFetch<MeInfo>("/auth/me");
+}
+
+/** Changelog de l'outil (admin only — l'API renvoie 403 sinon). */
+export async function fetchChangelog(): Promise<ToolVersionEntry[]> {
+  return apiFetch<ToolVersionEntry[]>("/admin/changelog");
 }
 
 // Pour SSE (client-side) — on issue un token côté serveur et on le passe via query

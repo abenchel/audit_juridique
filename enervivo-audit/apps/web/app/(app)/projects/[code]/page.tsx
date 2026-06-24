@@ -11,14 +11,27 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   const project = await fetchProject(code);
   const audits = await fetchAuditsForProject(code);
 
+  // Deux modes de relance (toujours audit complet sur les 9 jalons) :
+  //  - sans purge : on réutilise le cache (économie LLM).
+  //  - avec purge : on nettoie le cache du projet → re-classification complète.
   async function launchAudit() {
     "use server";
-    // Toujours audit complet sur les 9 jalons (référentiel V11).
-    // Le filtre par jalon se fait côté UI dans le rapport.
     const res = await createAudit({
       project_code: code,
       audit_type: "juridique",
       jalons: [],
+      purge_cache: false,
+    });
+    redirect(`/projects/${code}/audits/${res.id}`);
+  }
+
+  async function launchAuditPurge() {
+    "use server";
+    const res = await createAudit({
+      project_code: code,
+      audit_type: "juridique",
+      jalons: [],
+      purge_cache: true,
     });
     redirect(`/projects/${code}/audits/${res.id}`);
   }
@@ -71,19 +84,38 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <div className="flex-1 min-w-[300px]">
             <h2 className="font-display text-2xl font-bold text-ink mb-1">Lancer un audit juridique</h2>
             <p className="text-sm text-ink-mid">
-              Audit complet sur les <strong>9 jalons</strong> (107 documents attendus).
-              Tu pourras filtrer la vue par jalon dans le rapport, et cliquer sur un jalon
-              dans la barre de progression pour aller directement à sa section.
+              Audit complet sur les <strong>9 jalons</strong>. Tu pourras filtrer la vue par
+              jalon dans le rapport.
             </p>
+            <ul className="text-xs text-ink-soft mt-3 space-y-1">
+              <li>
+                <strong className="text-ink-mid">Mise à jour de l&apos;audit</strong> — réutilise
+                le cache de classification (rapide, économe).
+              </li>
+              <li>
+                <strong className="text-ink-mid">+ nettoyer le cache</strong> — re-classifie tous
+                les fichiers du projet avec la version courante de l&apos;outil (plus long).
+              </li>
+            </ul>
           </div>
-          <form action={launchAudit}>
-            <button
-              type="submit"
-              className="bg-ink text-white px-6 py-3 rounded font-semibold hover:bg-[#155A4A] whitespace-nowrap"
-            >
-              Lancer audit complet →
-            </button>
-          </form>
+          <div className="flex flex-col gap-2 min-w-[240px]">
+            <form action={launchAudit}>
+              <button
+                type="submit"
+                className="w-full bg-ink text-white px-6 py-3 rounded font-semibold hover:bg-[#155A4A] whitespace-nowrap"
+              >
+                Mise à jour de l&apos;audit →
+              </button>
+            </form>
+            <form action={launchAuditPurge}>
+              <button
+                type="submit"
+                className="w-full bg-white text-ink border border-ink px-6 py-3 rounded font-semibold hover:bg-bg whitespace-nowrap"
+              >
+                + nettoyer le cache
+              </button>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -104,6 +136,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   <th className="text-left px-4 py-3">Présent</th>
                   <th className="text-left px-4 py-3">Ambigu</th>
                   <th className="text-left px-4 py-3">Manquant</th>
+                  <th className="text-left px-4 py-3">Version outil</th>
+                  <th className="text-left px-4 py-3">Version cache</th>
                   <th className="text-right px-4 py-3"></th>
                 </tr>
               </thead>
@@ -120,6 +154,8 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     <td className="px-4 py-3 text-green font-bold">{a.total_found ?? "—"}</td>
                     <td className="px-4 py-3 text-amber font-bold">{a.total_ambiguous ?? "—"}</td>
                     <td className="px-4 py-3 text-red font-bold">{a.total_missing ?? "—"}</td>
+                    <td className="px-4 py-3 text-ink-mid font-mono text-xs">{a.tool_version ?? "—"}</td>
+                    <td className="px-4 py-3 text-ink-mid font-mono text-xs">{a.cache_version ?? "—"}</td>
                     <td className="px-4 py-3 text-right">
                       <Link
                         href={`/projects/${code}/audits/${a.id}`}

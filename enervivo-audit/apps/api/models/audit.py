@@ -99,6 +99,9 @@ class AuditCreateRequest(BaseModel):
     project_code: str
     audit_type: Literal["juridique", "technique", "financier"] = "juridique"
     jalons: list[str] = Field(default_factory=list)  # vide = tous les jalons attendus du projet
+    # Relance « + nettoyer le cache » : purge les classifications du projet et
+    # force une re-classification LLM complète (bypass du cache cross-audit).
+    purge_cache: bool = False
 
 
 class AuditCreateResponse(BaseModel):

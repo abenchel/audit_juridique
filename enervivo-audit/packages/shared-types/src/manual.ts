@@ -110,6 +110,11 @@ export interface AuditSummary {
   total_found: number | null;
   total_ambiguous: number | null;
   total_missing: number | null;
+  // Versioning : version de l'outil au lancement + version du cache (la plus
+  // ancienne tool_version des classifications réutilisées). Optionnels pour
+  // rétro-compat avec les audits d'avant le versioning (→ null).
+  tool_version?: string | null;
+  cache_version?: string | null;
 }
 
 export interface AuditDetail extends AuditSummary {
@@ -126,6 +131,15 @@ export interface AuditCreateRequest {
   project_code: string;
   audit_type?: AuditType;
   jalons?: string[];
+  // Relance « + nettoyer le cache » : purge les classifs du projet + re-classe tout.
+  purge_cache?: boolean;
+}
+
+/** Une entrée du changelog de l'outil (config/tool_version.json). */
+export interface ToolVersionEntry {
+  version: string;
+  date: string;
+  description: string;
 }
 
 export interface AuditCreateResponse {

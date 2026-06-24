@@ -78,8 +78,14 @@ up-dev:
 
 # Frontend en hot-reload, backend (api/worker/...) en image prod stable.
 # Idéal pour itérer sur le front sans rebuild et sans le piège venv du mode dev.
+# ⚠️ On NE build QUE le web : `--build` sur toute la stack rebuilderait les
+# services à base du Dockerfile api (api/worker/init/beat/flower) → re-déclenche
+# l'install tesseract (apt) qui échoue si le réseau/miroir Debian flanche
+# (exit 100). Le Dockerfile du web (node) n'a pas tesseract. On démarre le reste
+# avec `up -d` SANS --build (réutilise les images déjà construites).
 up-web-dev:
-	$(DCWEB) up -d --build
+	$(DCWEB) build web
+	$(DCWEB) up -d
 	@echo ""
 	@echo "✓ Frontend en hot-reload → http://localhost:$${PUBLIC_PORT:-11118}"
 	@echo "  Modifie apps/web/**/*.tsx|css → rechargement à chaud, pas de rebuild."

@@ -157,8 +157,17 @@ async def _process_file(
     reference: dict[str, Any],
     cache: PDFCache,
     session: AsyncSession,
+    tool_version: str | None = None,
+    purge_cache: bool = False,
 ) -> dict[str, Any]:
-    """Traite un fichier : download → cache → extract → classify (ou cache hit)."""
+    """Traite un fichier : download → cache → extract → classify (ou cache hit).
+
+    `tool_version` : version de l'outil de l'audit courant, posée sur les
+    classifications NEUVES. Sur un cache-hit, on hérite la version de l'entrée
+    réutilisée.
+    `purge_cache` : si True, on IGNORE le cache cross-audit → re-classification
+    LLM complète (utilisé par la relance « + nettoyer le cache »).
+    """
     sp_client = get_sharepoint_client()
     result: dict[str, Any] = {
         "file": file,
@@ -169,6 +178,9 @@ async def _process_file(
         "status_extraction": "ok",
         "error": None,
         "llm_model": None,
+        # Version par défaut = version courante de l'audit ; un cache-hit
+        # l'écrasera par la version de l'entrée réutilisée.
+        "tool_version": tool_version,
     }
 
     try:
@@ -191,7 +203,9 @@ async def _process_file(
         # classer (classify/classify_vision) ne s'applique PAS aux cache-hits — ce
         # garde-fou couvre tout décalage cache ↔ référentiel sans purge ni re-appel
         # LLM. No-op si le type est déjà valide.
-        cached = await find_by_hash(session, file_hash)
+        # Relance « + nettoyer le cache » : purge_cache=True → on IGNORE le cache
+        # cross-audit pour forcer une re-classification LLM complète du projet.
+        cached = None if purge_cache else await find_by_hash(session, file_hash)
         if cached:
             # Snap UNIQUEMENT si un type non-vide est caché : un cache à type
             # NULL/"" provient d'un fichier jadis ignoré — le snapper le
@@ -213,6 +227,10 @@ async def _process_file(
             base_reason = (cached.reason or "").replace(" (cache)", "").rstrip()
             result["reason"] = f"{base_reason} (cache)" if base_reason else "(cache)"
             result["llm_model"] = cached.llm_model
+            # On HÉRITE la version de l'entrée réutilisée (peut être None pour les
+            # entrées d'avant migration) → la « version du cache » de l'audit =
+            # min(tool_version) reflète bien la plus vieille classif réutilisée.
+            result["tool_version"] = cached.tool_version
         else:
             # Cache MinIO pour éviter re-download SharePoint si re-classification
             await cache.put(file_hash, content, file.mime_type)
@@ -539,6 +557,11 @@ async def run_audit(audit_id: uuid.UUID) -> None:
             reference = handler.load_reference()
             sp_client = get_sharepoint_client()
             cache = PDFCache()
+            # Versioning : capter les scalaires de l'audit AVANT les sous-sessions
+            # parallèles (évite tout accès lazy hors session). tool_version a été
+            # posée à la création de l'audit ; purge_cache pilote le bypass cache.
+            audit_tool_version: str | None = audit.tool_version
+            audit_purge_cache: bool = bool(audit.purge_cache)
 
             # 1) Listing — sépare immédiatement les fichiers classifiables des
             # types non supportés (vidéos, images, pptx, xlsx, etc.) pour
@@ -610,7 +633,10 @@ async def run_audit(audit_id: uuid.UUID) -> None:
                     # Vérifie l'annulation avant d'engager du temps/coût LLM
                     if await _is_cancelled():
                         raise asyncio.CancelledError("audit annulé par l'utilisateur")
-                    res = await _process_file(f, audit_id, audit.audit_type, reference, cache, session)
+                    res = await _process_file(
+                        f, audit_id, audit.audit_type, reference, cache, session,
+                        tool_version=audit_tool_version, purge_cache=audit_purge_cache,
+                    )
                     counter["done"] += 1
                     # ★ Stream-write : on persiste la classification IMMÉDIATEMENT
                     # dans une session indépendante. Si le worker meurt après, on
@@ -630,6 +656,7 @@ async def run_audit(audit_id: uuid.UUID) -> None:
                                 reason=res["reason"],
                                 status="error" if res["status_extraction"] == "error" else "present",
                                 llm_model=res["llm_model"],
+                                tool_version=res["tool_version"],
                             )
                             sub_session.add(doc)
                             await sub_session.commit()

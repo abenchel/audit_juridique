@@ -1,0 +1,12 @@
+[
+  {
+    "version": "V1",
+    "date": "2026-05-13",
+    "description": "Mise en place de l'outil d'audit juridique (référentiel V12, pipeline classification + matching)."
+  },
+  {
+    "version": "V2",
+    "date": "2026-06-10",
+    "description": "Bascule référentiel V13 (fusion DT/DICT), passes 2 TADD + dossier de qualification, enrichissement des fiches descriptions (désambiguïsation), versioning de l'outil."
+  }
+]

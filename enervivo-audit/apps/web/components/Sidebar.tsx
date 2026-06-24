@@ -1,10 +1,21 @@
 import Link from "next/link";
 import { auth, signOut } from "@/lib/auth";
+import { fetchMe } from "@/lib/api-client";
 
 export async function Sidebar() {
   const session = await auth();
   const email = session?.user?.email ?? "";
   const initials = email.slice(0, 2).toUpperCase();
+
+  // Rôle réel calculé côté backend (ADMIN_EMAILS). Fallback "user" si l'appel
+  // échoue (réseau/non connecté) — le lien admin reste alors masqué.
+  let isAdmin = false;
+  try {
+    const me = await fetchMe();
+    isAdmin = me.role === "admin";
+  } catch {
+    isAdmin = false;
+  }
 
   return (
     <aside className="w-64 border-r border-line bg-bg-card flex flex-col">
@@ -29,6 +40,14 @@ export async function Sidebar() {
         >
           Projets
         </Link>
+        {isAdmin && (
+          <Link
+            href="/changelog"
+            className="block px-3 py-2 rounded text-sm font-semibold text-ink hover:bg-bg-soft"
+          >
+            Changelog
+          </Link>
+        )}
       </nav>
 
       <div className="p-4 border-t border-line">
@@ -38,7 +57,7 @@ export async function Sidebar() {
           </div>
           <div className="text-xs">
             <div className="font-semibold text-ink truncate max-w-[160px]">{email}</div>
-            <div className="text-ink-soft">Collaborateur</div>
+            <div className="text-ink-soft">{isAdmin ? "Administrateur" : "Collaborateur"}</div>
           </div>
         </div>
         <form

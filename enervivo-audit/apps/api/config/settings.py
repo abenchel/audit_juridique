@@ -67,8 +67,9 @@ class Settings(BaseSettings):
     sharepoint_drive_id: str = ""
     # Dossier racine des projets à auditer (path drive-relatif). Pour l'audit juridique : /09-Projets.
     sharepoint_folder_path: str = "/09-Projets"
-    # Garde-fou : refuse tout chemin résolu hors de cette racine.
-    sharepoint_allowed_root_path: str = "/09-Projets"
+    # Garde-fou : refuse tout chemin résolu hors de ces racines autorisées (CSV).
+    # Ex: /09-Projets,/18-Comités internes
+    sharepoint_allowed_root_paths: str = "/09-Projets"
     # Dossiers à skipper au listing (case-insensitive, match par nom exact).
     # Visuels = renders 3D / photomontages, hors-scope juridique.
     # Format CSV dans .env, parsé via @property sharepoint_excluded_folders_list.
@@ -78,6 +79,12 @@ class Settings(BaseSettings):
     nextauth_secret: SecretStr = SecretStr("changeme")
     nextauth_url: str = "http://localhost:3000"
     allowed_email_domain: str = "enervivo.fr"
+
+    # --- Admins ---
+    # Liste CSV d'emails qui ont le rôle admin (changelog, etc.). Source de
+    # vérité du rôle : un email présent ici → admin, sinon user. Modifiable
+    # dans .env sans toucher la DB. Parsé via @property admin_emails_set.
+    admin_emails: str = ""
 
     # --- Audit thresholds ---
     confidence_threshold_present: int = 70
@@ -114,6 +121,14 @@ class Settings(BaseSettings):
     @property
     def sharepoint_excluded_folders_set(self) -> set[str]:
         return {f.strip().lower() for f in self.sharepoint_excluded_folders.split(",") if f.strip()}
+
+    @property
+    def sharepoint_allowed_root_paths_set(self) -> set[str]:
+        return {p.strip() for p in self.sharepoint_allowed_root_paths.split(",") if p.strip()}
+
+    @property
+    def admin_emails_set(self) -> set[str]:
+        return {e.strip().lower() for e in self.admin_emails.split(",") if e.strip()}
 
     @field_validator("confidence_threshold_present", "confidence_threshold_ambiguous")
     @classmethod
