@@ -123,11 +123,11 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment: *api-env
-    command: ["celery", "-A", "celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    command: ["celery", "-A", "celery_app", "worker", "--loglevel=info", "--concurrency=8"]
     deploy:
       resources:
         limits:
-          memory: 8G
+          memory: 24G
     depends_on:
       init:     { condition: service_completed_successfully }
       postgres: { condition: service_healthy }
