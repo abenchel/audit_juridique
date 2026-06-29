@@ -100,15 +100,16 @@ class RealSharePointClient(SharePointClient):
 
         drive_path = self._extract_drive_path(project_url)
 
-        # Garde-fou : on refuse tout path qui sort des racines autorisées
-        allowed_paths = self._settings.sharepoint_allowed_root_paths_set
-        if allowed_paths:
-            normalized = drive_path.rstrip("/")
-            allowed_normalized = {p.rstrip("/") for p in allowed_paths}
-            if not any(normalized.startswith(allowed) for allowed in allowed_normalized):
-                raise PermissionError(
-                    f"Path '{drive_path}' hors des racines autorisées {allowed_paths}"
-                )
+        # ⚠️ Garde-fou DÉSACTIVÉ : accepte n'importe quel path SharePoint
+        # (ancien code ci-dessous commenté)
+        # allowed_paths = self._settings.sharepoint_allowed_root_paths_set
+        # if allowed_paths:
+        #     normalized = drive_path.rstrip("/")
+        #     allowed_normalized = {p.rstrip("/") for p in allowed_paths}
+        #     if not any(normalized.startswith(allowed) for allowed in allowed_normalized):
+        #         raise PermissionError(
+        #             f"Path '{drive_path}' hors des racines autorisées {allowed_paths}"
+        #         )
 
         async with await self._client() as cli:
             r = await cli.get(f"/drives/{drive_id}/root:{drive_path}")

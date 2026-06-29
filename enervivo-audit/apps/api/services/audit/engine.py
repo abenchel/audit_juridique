@@ -60,7 +60,7 @@ log = logging.getLogger(__name__)
 # 5 parallèles = 5 PDFs en extraction simultanée, soit ~150-200s d'extraction pure + LLM calls.
 # Réduire davantage (3) = plus lent mais moins de pics mémoire.
 # Augmenter (10+) = pics OpenRouter/Bedrock (RemoteProtocolError).
-CONCURRENCY = 5
+CONCURRENCY = 10
 # Skip les fichiers énormes (plans cadastraux, scans HD) — pdfplumber explose la RAM
 # au-delà de ~80MB et le worker se fait SIGKILL. 80 MB couvre tous les docs juridiques.
 MAX_FILE_SIZE_BYTES = 80 * 1024 * 1024
@@ -205,7 +205,11 @@ async def _process_file(
         # LLM. No-op si le type est déjà valide.
         # Relance « + nettoyer le cache » : purge_cache=True → on IGNORE le cache
         # cross-audit pour forcer une re-classification LLM complète du projet.
-        cached = None if purge_cache else await find_by_hash(session, file_hash)
+        if purge_cache:
+            cached = None
+        else:
+            async with AsyncSessionLocal() as _cache_session:
+                cached = await find_by_hash(_cache_session, file_hash)
         if cached:
             # Snap UNIQUEMENT si un type non-vide est caché : un cache à type
             # NULL/"" provient d'un fichier jadis ignoré — le snapper le
@@ -373,6 +377,7 @@ async def _process_file(
         log.exception("Échec traitement %s : %s", file.path, e)
         result["status_extraction"] = "error"
         result["error"] = str(e)
+        result["reason"] = str(e)
 
     return result
 

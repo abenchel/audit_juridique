@@ -123,12 +123,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment: *api-env
-    command: ["celery", "-A", "celery_app", "worker", "--loglevel=info", "--concurrency=1"]
-    # Mémoire augmentée pour traiter les gros PDF (plans cadastraux, PADD scannés).
-    # --concurrency=1 : un seul fichier en vol à la fois → pic RAM ÷~2. Nécessaire
-    # car Docker n'a que ~7,8G total (worker plafond réel ~5,5G) et un audit
-    # « + nettoyer le cache » (re-classification LLM des 221 fichiers) OOM-killait
-    # le worker à concurrency=2. Plus lent mais évite le SIGKILL.
+    command: ["celery", "-A", "celery_app", "worker", "--loglevel=info", "--concurrency=2"]
     deploy:
       resources:
         limits:

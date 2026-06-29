@@ -165,6 +165,24 @@ async def cancel_audit(
     return {"id": str(audit.id), "status": "failed", "cancelled": True}
 
 
+@router.delete("/{audit_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_audit(
+    audit_id: uuid.UUID,
+    _user: Annotated[TokenPayload, Depends(get_current_user)],
+    session: AsyncSession = Depends(get_session),
+) -> None:
+    audit = await audits_repo.get_audit(session, audit_id)
+    if not audit:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Audit introuvable")
+    if audit.status in {"pending", "running"}:
+        raise HTTPException(
+            status.HTTP_409_CONFLICT,
+            "Impossible de supprimer un audit en cours — annule-le d'abord",
+        )
+    await session.delete(audit)
+    await session.commit()
+
+
 @router.get("/{audit_id}/stream")
 async def stream_audit(
     audit_id: uuid.UUID,

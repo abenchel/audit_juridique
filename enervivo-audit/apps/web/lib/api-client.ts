@@ -57,6 +57,7 @@ async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
     const text = await res.text();
     throw new Error(`API ${res.status} ${path}: ${text.slice(0, 200)}`);
   }
+  if (res.status === 204) return undefined as T;
   return (await res.json()) as T;
 }
 
@@ -83,6 +84,10 @@ export async function fetchAudit(id: string): Promise<AuditDetail> {
 
 export async function cancelAudit(id: string): Promise<{ id: string; status: string; cancelled: boolean }> {
   return apiFetch(`/audits/${id}/cancel`, { method: "POST" });
+}
+
+export async function deleteAudit(id: string): Promise<void> {
+  await apiFetch(`/audits/${id}`, { method: "DELETE" });
 }
 
 export async function fetchAuditsForProject(code: string): Promise<AuditSummary[]> {

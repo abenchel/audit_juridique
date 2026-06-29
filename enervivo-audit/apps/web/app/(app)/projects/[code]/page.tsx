@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { createAudit, fetchAuditsForProject, fetchProject } from "@/lib/api-client";
+import { createAudit, deleteAudit, fetchAuditsForProject, fetchProject } from "@/lib/api-client";
+import { DeleteAuditButton } from "@/components/DeleteAuditButton";
 
 interface PageProps {
   params: Promise<{ code: string }>;
@@ -34,6 +35,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       purge_cache: true,
     });
     redirect(`/projects/${code}/audits/${res.id}`);
+  }
+
+  async function removeAudit(auditId: string) {
+    "use server";
+    await deleteAudit(auditId);
+    redirect(`/projects/${code}`);
   }
 
   return (
@@ -156,13 +163,16 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                     <td className="px-4 py-3 text-red font-bold">{a.total_missing ?? "—"}</td>
                     <td className="px-4 py-3 text-ink-mid font-mono text-xs">{a.tool_version ?? "—"}</td>
                     <td className="px-4 py-3 text-ink-mid font-mono text-xs">{a.cache_version ?? "—"}</td>
-                    <td className="px-4 py-3 text-right">
+                    <td className="px-4 py-3 text-right flex items-center justify-end gap-4">
                       <Link
                         href={`/projects/${code}/audits/${a.id}`}
                         className="text-ink font-semibold hover:underline"
                       >
                         Voir →
                       </Link>
+                      {a.status !== "pending" && a.status !== "running" && (
+                        <DeleteAuditButton auditId={a.id} onDelete={removeAudit} />
+                      )}
                     </td>
                   </tr>
                 ))}
